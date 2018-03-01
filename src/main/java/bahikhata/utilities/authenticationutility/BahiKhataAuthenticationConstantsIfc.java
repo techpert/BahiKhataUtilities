@@ -14,7 +14,8 @@ public interface BahiKhataAuthenticationConstantsIfc {
 	 * Techpert:Bahikhata : 0.0.1 :Certificate Specific Constants
 	 */
 	public static final String SERVER_CERTIFICATE = "server.p12";
-	public static final String KEYSTORE_PASSWORD = "";
+	public static final String KEYSTORE_PASSWORD = "Techpert";
+	public static final String BAHIKHATA_CERTIFICATE_ALIAS = "1";
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :Claim Specific Constants

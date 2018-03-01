@@ -376,7 +376,8 @@ public class BahiKhataAuthenticationUtility implements BahiKhataAuthenticationCo
 			}
 			alias = null;
 			while (aliases.hasMoreElements()) {
-				alias = aliases.nextElement();
+				if(aliases.nextElement().equalsIgnoreCase(BAHIKHATA_CERTIFICATE_ALIAS))
+				alias = BAHIKHATA_CERTIFICATE_ALIAS;
 			}
 		} else {
 			logger.debug("Supplied keystore is not valid");
@@ -406,7 +407,8 @@ public class BahiKhataAuthenticationUtility implements BahiKhataAuthenticationCo
 			}
 			alias = null;
 			while (aliases.hasMoreElements()) {
-				alias = aliases.nextElement();
+				if(aliases.nextElement().equalsIgnoreCase(BAHIKHATA_CERTIFICATE_ALIAS))
+				alias = BAHIKHATA_CERTIFICATE_ALIAS;
 			}
 		} else {
 			logger.debug("Could not load keystore from classpath");
