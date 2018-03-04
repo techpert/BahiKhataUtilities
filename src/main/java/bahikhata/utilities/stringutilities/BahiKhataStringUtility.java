@@ -47,7 +47,16 @@ public class BahiKhataStringUtility {
 			matches = true;
 		} else if (s2 == null && s1 == null) {
 			matches = true;
-		} else if (s1.equalsIgnoreCase("") && s1.equalsIgnoreCase(s2)) {
+		}
+		else if (s1 == null && s2!=null)
+		{
+			matches=false;
+		}
+		else if (s2 == null && s1!=null)
+		{
+			matches=false;
+		}
+		else if (s1.equalsIgnoreCase("") && s1.equalsIgnoreCase(s2)) {
 			matches = true;
 		}
 		return matches;
