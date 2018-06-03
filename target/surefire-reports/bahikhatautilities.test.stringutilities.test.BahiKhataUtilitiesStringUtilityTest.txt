@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: bahikhatautilities.test.stringutilities.test.BahiKhataUtilitiesStringUtilityTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in bahikhatautilities.test.stringutilities.test.BahiKhataUtilitiesStringUtilityTest
