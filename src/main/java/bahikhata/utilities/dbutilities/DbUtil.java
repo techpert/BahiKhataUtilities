@@ -16,7 +16,7 @@ import bahikhata.utilities.stringutilities.BahiKhataStringUtility;
  * @author Rudhra Koul This is a utility class for database related methods
  *
  */
-public class DbUtil implements DbConstantsIfc {
+public class DbUtil implements CommonDatabaseConstantsIfc {
 
 	private static Logger logger = LogManager.getLogger(DbUtil.class);
 
