@@ -64,7 +64,7 @@ public class BahiKhataJsonResponseUtility {
 	 *            HashMap<String, Object>
 	 * @return jsonErrorString String
 	 */
-	public String generateErrorResponseJson(HashMap<String, Object> errorMap) {
+	public static String generateErrorResponseJson(HashMap<String, Object> errorMap) {
 
 		ObjectMapper mapper = new ObjectMapper();
 
