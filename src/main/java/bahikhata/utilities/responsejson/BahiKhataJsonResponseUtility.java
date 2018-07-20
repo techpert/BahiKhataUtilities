@@ -66,6 +66,8 @@ public class BahiKhataJsonResponseUtility {
 	 */
 	public static String generateErrorResponseJson(HashMap<String, Object> errorMap) {
 
+		errorMap.put("isError", true);
+		errorMap.put("isSuccess", false);
 		ObjectMapper mapper = new ObjectMapper();
 
 		try {
@@ -133,6 +135,34 @@ public class BahiKhataJsonResponseUtility {
 			values.add(pojoMap.get(p));
 		}
 		pojoObjectNode.putPOJO(collectionName, values);
+		pojoObjectNode.put("isSuccess", true);
+		pojoObjectNode.put("isError", false);
+
+		try {
+			return mapper.writeValueAsString(pojoObjectNode);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
+	 * response JSON for a collection of objects supplied as a List<T>
+	 * 
+	 * @author Rudhra Koul
+	 * @param pojoList
+	 *            List<T>
+	 * @param collectionName
+	 *            String
+	 * @return responseJson String
+	 */
+	public static <T> String generateSuccessResponseJsonForList(List<T> pojoList, String collectionName) {
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode pojoObjectNode = mapper.createObjectNode();
+		pojoObjectNode.putPOJO(collectionName, pojoList);
 		pojoObjectNode.put("isSuccess", true);
 		pojoObjectNode.put("isError", false);
 
