@@ -92,22 +92,18 @@ public class BahiKhataJsonResponseUtility {
 	public static <T> T generatePojoFromJson(String json, Class<T> type) {
 
 		// create ObjectMapper instance
-		ObjectMapper objectMapper = new ObjectMapper();
-		// read JSON like DOM Parser
-		JsonNode rootNode = null;
-		try {
-			rootNode = objectMapper.readTree(json);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		JsonNode idNode = rootNode.path(type.getSimpleName());
-		ObjectMapper mapper = new ObjectMapper();
+		
 		if (json != null) {
-			try {
-				return mapper.readValue(idNode.asText(), type);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			byte[] jsonData = json.toString().getBytes();
+			if (jsonData!= null && jsonData.length>0) {
+				
+				ObjectMapper mapper = new ObjectMapper();
+				try {
+					return mapper.readValue(jsonData, type);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} 
 		}
 		return null;
 	}
