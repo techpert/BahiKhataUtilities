@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -44,10 +46,10 @@ public class BahiKhataTestDataPreparator
 	private ResourceLoader resourceLoader;
 
 	/**
-	 * Techpert:Bahikhata : 0.0.1 :Autowired instance for HibernateSessionFactory
+	 * Techpert:Bahikhata : 0.0.1 :Autowired instance for EntityManager
 	 */
-	@Autowired
-	private SessionFactory sessionFactory;
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method is used to return session to interact
@@ -56,15 +58,14 @@ public class BahiKhataTestDataPreparator
 	 * @return Session org.hibernate.Session
 	 */
 	protected Session getSession() {
-		return this.sessionFactory.getCurrentSession();
+		return entityManager.unwrap(Session.class);
 	}
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method runs Sql script based on passed
 	 * scriptName
 	 * 
-	 * @param scriptName
-	 *            String
+	 * @param scriptName String
 	 * 
 	 * @return 1 on success 0 on failure
 	 */
@@ -109,8 +110,7 @@ public class BahiKhataTestDataPreparator
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method fetches Sql file from classpath
 	 * 
-	 * @param fileName
-	 *            String
+	 * @param fileName String
 	 * 
 	 * @return resource org.springframework.core.io.Resource
 	 */
