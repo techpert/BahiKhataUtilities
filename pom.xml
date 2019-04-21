@@ -45,12 +45,42 @@
 
 	<contributors>
 		<contributor>
+			<name>Chirag Goyal</name>
+			<email>chirag.goyal@techpertitsolutions.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<url>https://github.com/chiragtech25</url>
+			<organization>Techpert IT Solutions Private Limited</organization>
+			<organizationUrl>http://techpertitsolutions.com/</organizationUrl>
+		</contributor>
+		<contributor>
 			<name>Vrinda</name>
 			<email>vrinda@techpertitsolutions.com/</email>
 			<roles>
 				<role>Developer</role>
 			</roles>
 			<url>https://github.com/TechpertVrinda</url>
+			<organization>Techpert IT Solutions Private Limited</organization>
+			<organizationUrl>http://techpertitsolutions.com/</organizationUrl>
+		</contributor>
+		<contributor>
+			<name>Neeraj Jain</name>
+			<email>neeraj.jain@techpertitsolutions.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<url>https://github.com/7483neeraj</url>
+			<organization>Techpert IT Solutions Private Limited</organization>
+			<organizationUrl>http://techpertitsolutions.com/</organizationUrl>
+		</contributor>
+		<contributor>
+			<name>Akanksha Kesari</name>
+			<email>akanksha.kesari@techpertitsolutions.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<url>https://github.com/AkankshaKesari</url>
 			<organization>Techpert IT Solutions Private Limited</organization>
 			<organizationUrl>http://techpertitsolutions.com/</organizationUrl>
 		</contributor>
@@ -85,6 +115,53 @@
 		<servlet-api-version>4.0.1</servlet-api-version>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<additionalparam>-Xdoclint:none</additionalparam>
+		<!-- This format is used by SonarQube. If you need another format see "buildnumber-maven-plugin" -->
+		<maven.build.timestamp.format>MM.yyyy</maven.build.timestamp.format>
+		<yearMonth>${maven.build.timestamp}</yearMonth>
+		<!-- ************************ -->
+		<!-- Sonar/Reporting settings -->
+		<!-- ************************ -->
+		<!-- Sonar/Jacoco integration. Note that these properties need to be defined 
+			outside the "coverage" profile because we want to be to able to execute mvn 
+			sonar:sonar without passing a profile -->
+		<!-- Tells Sonar to use jacoco for coverage results -->
+		<sonar.projectKey>bahikhata:BahiKhataUtilities</sonar.projectKey>
+		<sonar.projectName>BahiKhataUtilities</sonar.projectName>
+		<sonar.projectVersion>${yearMonth}</sonar.projectVersion>
+		<sonar.language>java</sonar.language>
+		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.host.url>http://localhost:8585/sonar/</sonar.host.url>
+		<!-- Jacoco version to use -->
+		<jacoco.version>0.8.3</jacoco.version>
+		<!-- The Sonar Jacoco Listener for JUnit to extract coverage details per 
+			test -->
+		<sonar-jacoco-listeners.version>5.11.0.17289</sonar-jacoco-listeners.version>
+		<!-- Don't let Sonar execute tests. We will ask it to Maven 'sonar.dynamicAnalysis' 
+			is deprecated since version 4.3 and should no longer be used. -->
+		<!-- <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis> -->
+		<!-- The system property jacoco.outputDir needs to be override on the command 
+			line with an absolute path if you want to merge results from all modules. 
+			Example in a Jenkisn build where ${WORKSPACE} is defined and your project 
+			in the root directory of the workspace : mvn clean install -Prun-its,coverage 
+			-Djacoco.outputDir=${WORKSPACE}/target Note that unfortunately using the 
+			following does not work because of http://jira.codehaus.org/browse/SONAR-3427: 
+			<jacoco.outputDir>${session.executionRootDirectory}/target/</jacoco.outputDir> -->
+		<jacoco.outputDir>${project.build.directory}/jacoco-ut</jacoco.outputDir>
+		<!-- Jacoco output file for UTs -->
+		<jacoco.out.ut.file>jacoco.exec</jacoco.out.ut.file>
+		<!-- Tells Sonar where the Jacoco coverage result file is located for Unit 
+			Tests -->
+		<sonar.jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPath>
+		<!-- Jacoco output file for ITs -->
+		<jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
+		<!-- Tells Sonar where the Jacoco coverage result file is located for Integration 
+			Tests -->
+		<sonar.jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.itReportPath>
+		<!-- <sonar.junit.reportsPath>${project.build.directory}/surefire-reports/</sonar.junit.reportsPath> -->
+		<!-- <sonar.tests>src/test/java</sonar.tests> -->
+		<!-- === END of Sonar/Reporting settings === -->
+		<sonar.host.url>http://localhost:8585/sonar</sonar.host.url>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -298,7 +375,44 @@
 				<artifactId>maven-site-plugin</artifactId>
 				<version>${maven-site-plugin-version}</version><!--$NO-MVN-MAN-VER$ -->
 			</plugin>
+<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.3</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>post-unit-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<!-- Sets the path to the file which contains the execution data. -->
 
+							<dataFile>target/jacoco.exec</dataFile>
+							<!-- Sets the output directory for the code coverage report. -->
+							<outputDirectory>target/jacoco-ut</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.6.0.1398</version>
+			</plugin>
 		</plugins>
 
 	</build>
