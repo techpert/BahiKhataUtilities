@@ -1,5 +1,5 @@
 /**
- * copyright © 2017 Techpert It Solutions Private Limited
+ * copyright © 2019 Techpert It Solutions Private Limited
  */
 package bahikhata.utilities.dbutilities;
 
@@ -16,8 +16,6 @@ public interface CommonDatabaseConstantsIfc {
 	 * Techpert:Bahikhata : 0.0.1 :Database specific constants
 	 */
 	public static final String DATABASE_SCHEMA = "dbo";
-	public static final String SEQUENCE_NEXTVAL_SQL = "select next value for ";
-
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :Sequence Constants
 	 */

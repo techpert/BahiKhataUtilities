@@ -1,5 +1,5 @@
 /**
- * copyright © 2018 Techpert It Solutions Private Limited
+ *  copyright © 2019 Techpert It Solutions Private Limited
  */
 package bahikhata.utilities.responsejson;
 
@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -45,8 +44,6 @@ public class BahiKhataJsonResponseUtility {
 		ObjectNode pojoObjectNode = mapper.createObjectNode();
 		pojoObjectNode.putPOJO(pojo.getClass().getSimpleName(), pojo);
 		pojoObjectNode.put("isSuccess", true);
-		pojoObjectNode.put("isError", false);
-
 		try {
 			return mapper.writeValueAsString(pojoObjectNode);
 		} catch (JsonProcessingException e) {
@@ -66,7 +63,6 @@ public class BahiKhataJsonResponseUtility {
 	 */
 	public static String generateErrorResponseJson(HashMap<String, Object> errorMap) {
 
-		errorMap.put("isError", true);
 		errorMap.put("isSuccess", false);
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -132,8 +128,6 @@ public class BahiKhataJsonResponseUtility {
 		}
 		pojoObjectNode.putPOJO(collectionName, values);
 		pojoObjectNode.put("isSuccess", true);
-		pojoObjectNode.put("isError", false);
-
 		try {
 			return mapper.writeValueAsString(pojoObjectNode);
 		} catch (JsonProcessingException e) {
@@ -160,8 +154,6 @@ public class BahiKhataJsonResponseUtility {
 		ObjectNode pojoObjectNode = mapper.createObjectNode();
 		pojoObjectNode.putPOJO(collectionName, pojoList);
 		pojoObjectNode.put("isSuccess", true);
-		pojoObjectNode.put("isError", false);
-
 		try {
 			return mapper.writeValueAsString(pojoObjectNode);
 		} catch (JsonProcessingException e) {
