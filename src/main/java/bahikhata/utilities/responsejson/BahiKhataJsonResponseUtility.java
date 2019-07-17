@@ -31,7 +31,7 @@ public class BahiKhataJsonResponseUtility {
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
 	 * response JSONs for the supplied POJO class. This method also adds some
-	 * additional keys to the JSON like isError, isSuccess etc
+	 * additional keys to the JSON like , isSuccess etc
 	 * 
 	 * @author Rudhra Koul
 	 * @param pojo
@@ -52,6 +52,29 @@ public class BahiKhataJsonResponseUtility {
 		return null;
 	}
 
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating error
+	 * response JSONs for the supplied POJO class. This method also adds some
+	 * additional keys to the JSON like isSuccess etc
+	 * 
+	 * @author Rudhra Koul
+	 * @param pojo
+	 * @return jsonstring String
+	 */
+	public static <T> String generateErrorResponseJson(T pojo) {
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode pojoObjectNode = mapper.createObjectNode();
+		pojoObjectNode.putPOJO(pojo.getClass().getSimpleName(), pojo);
+		pojoObjectNode.put("isSuccess", false);
+		try {
+			return mapper.writeValueAsString(pojoObjectNode);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating error response
 	 * JSONs for the supplied errorMap.
