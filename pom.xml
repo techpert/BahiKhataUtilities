@@ -199,11 +199,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate-version}</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-jcl</artifactId>
 		</dependency>
@@ -375,7 +370,7 @@
 				<artifactId>maven-site-plugin</artifactId>
 				<version>${maven-site-plugin-version}</version><!--$NO-MVN-MAN-VER$ -->
 			</plugin>
-<plugin>
+			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.3</version>

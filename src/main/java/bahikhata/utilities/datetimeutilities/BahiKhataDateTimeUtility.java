@@ -1,5 +1,5 @@
 /**
- * copyright © 2017 Techpert It Solutions Private Limited
+ * copyright © 2019 Techpert It Solutions Private Limited
  */
 package bahikhata.utilities.datetimeutilities;
 
@@ -24,7 +24,7 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :Logger instance for DateTimeUtility
 	 */
-	private static Logger logger = LogManager.getLogger(BahiKhataDateTimeUtility.class);
+	private static final Logger logger = LogManager.getLogger(BahiKhataDateTimeUtility.class);
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 : This method returns Sql date
