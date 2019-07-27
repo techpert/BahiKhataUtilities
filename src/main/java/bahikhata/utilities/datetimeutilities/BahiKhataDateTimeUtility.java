@@ -81,8 +81,7 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 	 * Techpert:Bahikhata : 0.0.1 :This method returns System default locale based
 	 * date time N hours after current date time
 	 * 
-	 * @param hours
-	 *            long
+	 * @param hours long
 	 * @return dateTimeAfterNHours java.time.ZonedDateTime
 	 */
 	public static ZonedDateTime getTimestampAfterNHours(long hours) {
@@ -97,8 +96,7 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 	 * Techpert:Bahikhata : 0.0.1 :This method checks if supplied date is ahead of
 	 * GMT
 	 * 
-	 * @param zonedDateTime
-	 *            java.time.ZonedDateTime
+	 * @param zonedDateTime java.time.ZonedDateTime
 	 * @return afterGMT boolean
 	 */
 	public static boolean isTimeZoneAfterGMT(ZonedDateTime zonedDateTime) {
@@ -119,8 +117,7 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 	 * Techpert:Bahikhata : 0.0.1 :This method checks if supplied date is ahead of
 	 * GMT
 	 * 
-	 * @param zonedDateTime
-	 *            String
+	 * @param zonedDateTime String
 	 * @return afterGMT boolean
 	 */
 	public static boolean isTimeZoneAfterGMT(String zonedDateTime) {
@@ -138,8 +135,7 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method checks if supplied date is behind GMT
 	 * 
-	 * @param zonedDateTime
-	 *            java.time.ZonedDateTime
+	 * @param zonedDateTime java.time.ZonedDateTime
 	 * @return beforeGMT boolean
 	 */
 	public static boolean isTimeZoneBeforeGMT(ZonedDateTime zonedDateTime) {
@@ -158,8 +154,7 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method checks if supplied date is behind GMT
 	 * 
-	 * @param zonedDateTime
-	 *            String
+	 * @param zonedDateTime String
 	 * @return beforeGMT boolean
 	 */
 	public static boolean isTimeZoneBeforeGMT(String zonedDateTime) {
@@ -177,11 +172,9 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method converts String Date To ZonedDateTime
 	 * 
-	 * @param dateTime
-	 *            in 2007-12-03T10:15:30+01:00z format String
-	 * @param timeLag
-	 *            Value should be either + or - based on whether ahead or behind GMT
-	 *            String
+	 * @param dateTime in 2007-12-03T10:15:30+01:00z format String
+	 * @param timeLag  Value should be either + or - based on whether ahead or
+	 *                 behind GMT String
 	 * @return zonedDateTime java.time.ZonedDateTime
 	 */
 	public static ZonedDateTime convertStringDateToZonedDateTime(String dateTime, String timeLag) {
@@ -197,4 +190,54 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 			return logger.traceExit(m, zonedDateTime);
 		}
 	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method converts String unixTime in
+	 * milliseconds To ZonedDateTime
+	 * 
+	 * @author Chirag.Goyal
+	 * @since July 28,2019
+	 * 
+	 * @param unixTimeMilliSec in "1564278027"
+	 * @return zonedDateTime java.time.ZonedDateTime in
+	 *         2019-07-28T07:10:27+05:30[Asia/Calcutta]
+	 * 
+	 */
+	public static ZonedDateTime convertUnixTimeToZonedDateTime(String unixTimeMilliSec) {
+		Message m = logger.traceEntry("convertUnixTimeToZonedDateTime");
+		ZonedDateTime zonedDateTime = null;
+		if (unixTimeMilliSec != null) {
+			zonedDateTime = convertUnixTimeToZonedDateTime(new Long(unixTimeMilliSec));
+			return logger.traceExit(m, zonedDateTime);
+		} else {
+			logger.debug("Supplied unixTimeFormat is empty");
+			return logger.traceExit(m, zonedDateTime);
+		}
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method converts long unixTime in
+	 * milliseconds To ZonedDateTime
+	 * 
+	 * @author Chirag.Goyal
+	 * @since July 28,2019
+	 * 
+	 * @param unixTimeMilliSec in 1564278027
+	 * @return zonedDateTime java.time.ZonedDateTime in
+	 *         2019-07-28T07:10:27+05:30[Asia/Calcutta]
+	 * 
+	 */
+	public static ZonedDateTime convertUnixTimeToZonedDateTime(Long unixTimeMilliSec) {
+		Message m = logger.traceEntry("convertUnixTimeToZonedDateTime");
+		ZonedDateTime zonedDateTime = null;
+		if (unixTimeMilliSec != null) {
+			zonedDateTime = Instant.ofEpochMilli(unixTimeMilliSec * 1000L).atZone(ZoneId.systemDefault());
+			return logger.traceExit(m, zonedDateTime);
+		} else {
+			logger.debug("Supplied unixTimeMilliSec is empty");
+			return logger.traceExit(m, zonedDateTime);
+		}
+
+	}
+
 }
