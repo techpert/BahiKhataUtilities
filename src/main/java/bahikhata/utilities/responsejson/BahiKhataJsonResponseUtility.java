@@ -31,12 +31,13 @@ public class BahiKhataJsonResponseUtility {
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
 	 * response JSONs for the supplied POJO class. This method also adds some
-	 * additional keys to the JSON like , isSuccess etc
+	 * additional keys to the JSON like , isSuccess etc.
 	 * 
 	 * @author Rudhra Koul
 	 * @param pojo
 	 * @return jsonstring String
 	 */
+	@Deprecated
 	public static <T> String generateSuccessResponseJson(T pojo) {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -53,21 +54,21 @@ public class BahiKhataJsonResponseUtility {
 	}
 
 	/**
-	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating error
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
 	 * response JSONs for the supplied POJO class. This method also adds some
-	 * additional keys to the JSON like isSuccess etc
+	 * additional keys to the JSON like , isSuccess etc.
 	 * 
-	 * @author Rudhra Koul
+	 * @author Namit Jain
 	 * @param pojo
 	 * @return jsonstring String
 	 */
-	public static <T> String generateErrorResponseJson(T pojo) {
+	public static <T> String generateSuccessResponseJson(T pojo, String pojoName) {
 
 		ObjectMapper mapper = new ObjectMapper();
 
 		ObjectNode pojoObjectNode = mapper.createObjectNode();
-		pojoObjectNode.putPOJO(pojo.getClass().getSimpleName(), pojo);
-		pojoObjectNode.put("isSuccess", false);
+		pojoObjectNode.putPOJO(pojoName, pojo);
+		pojoObjectNode.put("isSuccess", true);
 		try {
 			return mapper.writeValueAsString(pojoObjectNode);
 		} catch (JsonProcessingException e) {
@@ -75,68 +76,16 @@ public class BahiKhataJsonResponseUtility {
 		}
 		return null;
 	}
-	/**
-	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating error response
-	 * JSONs for the supplied errorMap.
-	 * 
-	 * @author Rudhra Koul
-	 * @param errorMap
-	 *            HashMap<String, Object>
-	 * @return jsonErrorString String
-	 */
-	public static String generateErrorResponseJson(HashMap<String, Object> errorMap) {
-
-		errorMap.put("isSuccess", false);
-		ObjectMapper mapper = new ObjectMapper();
-
-		try {
-			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(errorMap);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	/**
-	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating POJO from
-	 * supplied JSON.
-	 * 
-	 * @author Rudhra Koul
-	 * @param json
-	 *            String
-	 * @param type
-	 *            Class<T>
-	 * @return pojo
-	 */
-	public static <T> T generatePojoFromJson(String json, Class<T> type) {
-
-		// create ObjectMapper instance
-		
-		if (json != null) {
-			byte[] jsonData = json.toString().getBytes();
-			if (jsonData!= null && jsonData.length>0) {
-				
-				ObjectMapper mapper = new ObjectMapper();
-				try {
-					return mapper.readValue(jsonData, type);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			} 
-		}
-		return null;
-	}
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
 	 * response JSON for a collection of objects supplied as a HashMap<Identifier,
-	 * POJO>.
+	 * POJO>.This method also adds some additional keys to the JSON like isSuccess
+	 * etc.
 	 * 
 	 * @author Rudhra Koul
-	 * @param pojoMap
-	 *            HashMap<P, T>
-	 * @param collectionName
-	 *            String
+	 * @param pojoMap        HashMap<P, T>
+	 * @param collectionName String
 	 * @return responseJson String
 	 */
 	public static <P, T> String generateSuccessResponseJsonForMap(HashMap<P, T> pojoMap, String collectionName) {
@@ -161,13 +110,12 @@ public class BahiKhataJsonResponseUtility {
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
-	 * response JSON for a collection of objects supplied as a List<T>
+	 * response JSON for a collection of objects supplied as a List<T>. This method
+	 * also adds some additional keys to the JSON like isSuccess etc.
 	 * 
 	 * @author Rudhra Koul
-	 * @param pojoList
-	 *            List<T>
-	 * @param collectionName
-	 *            String
+	 * @param pojoList       List<T>
+	 * @param collectionName String
 	 * @return responseJson String
 	 */
 	public static <T> String generateSuccessResponseJsonForList(List<T> pojoList, String collectionName) {
@@ -181,6 +129,130 @@ public class BahiKhataJsonResponseUtility {
 			return mapper.writeValueAsString(pojoObjectNode);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating error response
+	 * JSONs for the supplied POJO class. This method also adds some additional keys
+	 * to the JSON like isSuccess etc.
+	 * 
+	 * @author Rudhra Koul
+	 * @param pojo
+	 * @return jsonstring String
+	 */
+	@Deprecated
+	public static <T> String generateErrorResponseJson(T pojo) {
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode pojoObjectNode = mapper.createObjectNode();
+		pojoObjectNode.putPOJO(pojo.getClass().getSimpleName(), pojo);
+		pojoObjectNode.put("isSuccess", false);
+		try {
+			return mapper.writeValueAsString(pojoObjectNode);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating error response
+	 * JSONs for the supplied POJO class. This method also adds some additional keys
+	 * to the JSON like isSuccess etc.
+	 * 
+	 * @author Namit Jain
+	 * @param pojo
+	 * @return jsonstring String
+	 */
+	public static <T> String generateErrorResponseJson(T pojo, String pojoName) {
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode pojoObjectNode = mapper.createObjectNode();
+		pojoObjectNode.putPOJO(pojoName, pojo);
+		pojoObjectNode.put("isSuccess", false);
+		try {
+			return mapper.writeValueAsString(pojoObjectNode);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating error response
+	 * JSONs for the supplied errorMap. This method also adds some additional keys
+	 * to the JSON like isSuccess etc.
+	 * 
+	 * @author Rudhra Koul
+	 * @param errorMap HashMap<String, Object>
+	 * @return jsonErrorString String
+	 */
+	public static String generateErrorResponseJson(HashMap<String, Object> errorMap) {
+
+		errorMap.put("isSuccess", false);
+		ObjectMapper mapper = new ObjectMapper();
+
+		try {
+			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(errorMap);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
+	 * response JSON for a collection of objects supplied as a List<T>. This method
+	 * also adds some additional keys to the JSON like isSuccess etc.
+	 * 
+	 * @author Namit Jain
+	 * @param errorList      List<T>
+	 * @param collectionName String
+	 * @return responseJson String
+	 */
+	public static <T> String generateErrorResponseJson(List<T> errorList, String listName) {
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode pojoObjectNode = mapper.createObjectNode();
+		pojoObjectNode.putPOJO(listName, errorList);
+		pojoObjectNode.put("isSuccess", false);
+		try {
+			return mapper.writeValueAsString(pojoObjectNode);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating POJO from
+	 * supplied JSON.
+	 * 
+	 * @author Rudhra Koul
+	 * @param json String
+	 * @param type Class<T>
+	 * @return pojo
+	 */
+	public static <T> T generatePojoFromJson(String json, Class<T> type) {
+
+		// create ObjectMapper instance
+
+		if (json != null) {
+			byte[] jsonData = json.toString().getBytes();
+			if (jsonData != null && jsonData.length > 0) {
+
+				ObjectMapper mapper = new ObjectMapper();
+				try {
+					return mapper.readValue(jsonData, type);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return null;
 	}
