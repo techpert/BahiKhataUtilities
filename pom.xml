@@ -336,11 +336,11 @@
 			<version>${spring-security-jwt.version}</version>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.security.oauth.boot</groupId>
 			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
-			<version>${spring-security-oauth2-autoconfigure-version}</version><!--$NO-MVN-MAN-VER$ -->
-		</dependency>
+			<version>${spring-security-oauth2-autoconfigure-version}</version>$NO-MVN-MAN-VER$
+		</dependency> -->
 
 	</dependencies>
 
