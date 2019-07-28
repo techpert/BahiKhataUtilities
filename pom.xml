@@ -322,25 +322,8 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<version>5.1.4.RELEASE</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.springframework.security.oauth</groupId>
-			<artifactId>spring-security-oauth2</artifactId>
-			<version>${spring-security-oauth2.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-jwt</artifactId>
-			<version>${spring-security-jwt.version}</version>
-		</dependency> -->
-
-		<!-- <dependency>
-			<groupId>org.springframework.security.oauth.boot</groupId>
-			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
-			<version>${spring-security-oauth2-autoconfigure-version}</version>$NO-MVN-MAN-VER$
-		</dependency> -->
 
 	</dependencies>
 
