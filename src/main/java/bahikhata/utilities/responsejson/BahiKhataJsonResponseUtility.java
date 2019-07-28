@@ -240,7 +240,7 @@ public class BahiKhataJsonResponseUtility {
 	 * @param collectionName String
 	 * @return responseJson String
 	 */
-	public static <K,V> String generateErrorResponseJson1(List< Map<K,V>> errorList, String listName) {
+	public static <K,V> String generateErrorResponseJson1(List< HashMap<K,V>> errorList, String listName) {
 
 		ObjectMapper mapper = new ObjectMapper();
 
