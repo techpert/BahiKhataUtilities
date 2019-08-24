@@ -97,8 +97,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param accountNumber
-	 *            the accountNumber to set
+	 * @param accountNumber the accountNumber to set
 	 */
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
@@ -112,8 +111,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param accountName
-	 *            the accountName to set
+	 * @param accountName the accountName to set
 	 */
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
@@ -127,8 +125,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param balanceSheetType
-	 *            the balanceSheetType to set
+	 * @param balanceSheetType the balanceSheetType to set
 	 */
 	public void setBalanceSheetType(String balanceSheetType) {
 		this.balanceSheetType = balanceSheetType;
@@ -142,8 +139,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param dateAdded
-	 *            the dateAdded to set
+	 * @param dateAdded the dateAdded to set
 	 */
 	public void setDateAdded(LocalDate dateAdded) {
 		this.dateAdded = dateAdded;
@@ -157,8 +153,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param operator
-	 *            the operator to set
+	 * @param operator the operator to set
 	 */
 	public void setOperator(String operator) {
 		this.operator = operator;
@@ -172,8 +167,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param profitAndLossType
-	 *            the profitAndLossType to set
+	 * @param profitAndLossType the profitAndLossType to set
 	 */
 	public void setProfitAndLossType(String profitAndLossType) {
 		this.profitAndLossType = profitAndLossType;
@@ -187,8 +181,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param accountStatuses
-	 *            the accountStatuses to set
+	 * @param accountStatuses the accountStatuses to set
 	 */
 	public void setAccountStatuses(List<AccountStatus> accountStatuses) {
 		this.accountStatuses = accountStatuses;
@@ -202,8 +195,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param balanceSheetAccount
-	 *            the balanceSheetAccount to set
+	 * @param balanceSheetAccount the balanceSheetAccount to set
 	 */
 	public void setBalanceSheetAccount(List<BalanceSheet> balanceSheetAccount) {
 		this.balanceSheetAccount = balanceSheetAccount;
@@ -217,8 +209,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param creditJournal
-	 *            the creditJournal to set
+	 * @param creditJournal the creditJournal to set
 	 */
 	public void setCreditJournal(List<Journal> creditJournal) {
 		this.creditJournal = creditJournal;
@@ -232,8 +223,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param debitJournal
-	 *            the debitJournal to set
+	 * @param debitJournal the debitJournal to set
 	 */
 	public void setDebitJournal(List<Journal> debitJournal) {
 		this.debitJournal = debitJournal;
@@ -247,8 +237,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param debitLedger
-	 *            the debitLedger to set
+	 * @param debitLedger the debitLedger to set
 	 */
 	public void setDebitLedger(List<Ledger> debitLedger) {
 		this.debitLedger = debitLedger;
@@ -262,8 +251,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param creditLedger
-	 *            the creditLedger to set
+	 * @param creditLedger the creditLedger to set
 	 */
 	public void setCreditLedger(List<Ledger> creditLedger) {
 		this.creditLedger = creditLedger;
@@ -277,8 +265,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param ledgerAccount
-	 *            the ledgerAccount to set
+	 * @param ledgerAccount the ledgerAccount to set
 	 */
 	public void setLedgerAccount(List<Ledger> ledgerAccount) {
 		this.ledgerAccount = ledgerAccount;
@@ -292,8 +279,7 @@ public class Account implements Serializable {
 	}
 
 	/**
-	 * @param profitAndLossAccount
-	 *            the profitAndLossAccount to set
+	 * @param profitAndLossAccount the profitAndLossAccount to set
 	 */
 	public void setProfitAndLossAccount(List<ProfitAndLoss> profitAndLossAccount) {
 		this.profitAndLossAccount = profitAndLossAccount;

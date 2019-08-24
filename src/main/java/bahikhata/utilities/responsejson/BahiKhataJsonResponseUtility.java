@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -35,12 +34,12 @@ public class BahiKhataJsonResponseUtility {
 	 * additional keys to the JSON like , isSuccess etc.
 	 * 
 	 * @author Rudhra Koul
-	 * @param <T>
+	 * @param      <T>
 	 * @param pojo
 	 * @return jsonstring String
 	 */
 	@Deprecated
-	public static  <T> String generateSuccessResponseJson(T pojo) {
+	public static <T> String generateSuccessResponseJson(T pojo) {
 
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -230,6 +229,7 @@ public class BahiKhataJsonResponseUtility {
 		}
 		return null;
 	}
+
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
 	 * response JSON for a collection of objects supplied as a List<T>. This method
@@ -240,7 +240,7 @@ public class BahiKhataJsonResponseUtility {
 	 * @param collectionName String
 	 * @return responseJson String
 	 */
-	public static <K,V> String generateErrorResponseJson1(List< HashMap<K,V>> errorList, String listName) {
+	public static <K, V> String generateErrorResponseJson1(List<HashMap<K, V>> errorList, String listName) {
 
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -254,6 +254,7 @@ public class BahiKhataJsonResponseUtility {
 		}
 		return null;
 	}
+
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating POJO from
 	 * supplied JSON.

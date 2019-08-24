@@ -59,8 +59,7 @@ public class Till implements Serializable {
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param id the id to set
 	 */
 	public void setId(TillPK id) {
 		this.id = id;
@@ -74,8 +73,7 @@ public class Till implements Serializable {
 	}
 
 	/**
-	 * @param openingDateTime
-	 *            the openingDateTime to set
+	 * @param openingDateTime the openingDateTime to set
 	 */
 	public void setOpeningDateTime(ZonedDateTime openingDateTime) {
 		this.openingDateTime = openingDateTime;
@@ -89,8 +87,7 @@ public class Till implements Serializable {
 	}
 
 	/**
-	 * @param closingDateTime
-	 *            the closingDateTime to set
+	 * @param closingDateTime the closingDateTime to set
 	 */
 	public void setClosingDateTime(ZonedDateTime closingDateTime) {
 		this.closingDateTime = closingDateTime;
@@ -104,8 +101,7 @@ public class Till implements Serializable {
 	}
 
 	/**
-	 * @param tillOpeningAmount
-	 *            the tillOpeningAmount to set
+	 * @param tillOpeningAmount the tillOpeningAmount to set
 	 */
 	public void setTillOpeningAmount(BigDecimal tillOpeningAmount) {
 		this.tillOpeningAmount = tillOpeningAmount;
@@ -119,8 +115,7 @@ public class Till implements Serializable {
 	}
 
 	/**
-	 * @param tillClosingAmount
-	 *            the tillClosingAmount to set
+	 * @param tillClosingAmount the tillClosingAmount to set
 	 */
 	public void setTillClosingAmount(BigDecimal tillClosingAmount) {
 		this.tillClosingAmount = tillClosingAmount;
@@ -134,8 +129,7 @@ public class Till implements Serializable {
 	}
 
 	/**
-	 * @param tillOverShort
-	 *            the tillOverShort to set
+	 * @param tillOverShort the tillOverShort to set
 	 */
 	public void setTillOverShort(BigDecimal tillOverShort) {
 		this.tillOverShort = tillOverShort;
@@ -149,8 +143,7 @@ public class Till implements Serializable {
 	}
 
 	/**
-	 * @param overShortFlag
-	 *            the overShortFlag to set
+	 * @param overShortFlag the overShortFlag to set
 	 */
 	public void setOverShortFlag(String overShortFlag) {
 		this.overShortFlag = overShortFlag;

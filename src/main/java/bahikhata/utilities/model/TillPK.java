@@ -38,8 +38,7 @@ public class TillPK implements Serializable {
 	}
 
 	/**
-	 * @param till_Id
-	 *            the till_Id to set
+	 * @param till_Id the till_Id to set
 	 */
 	public void setTill_Id(int till_Id) {
 		this.till_Id = till_Id;
@@ -53,8 +52,7 @@ public class TillPK implements Serializable {
 	}
 
 	/**
-	 * @param businessDay
-	 *            the businessDay to set
+	 * @param businessDay the businessDay to set
 	 */
 	public void setBusinessDay(LocalDate businessDay) {
 		this.businessDay = businessDay;

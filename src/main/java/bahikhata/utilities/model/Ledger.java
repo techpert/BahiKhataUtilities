@@ -63,8 +63,7 @@ public class Ledger implements Serializable {
 	}
 
 	/**
-	 * @param sequenceNumber
-	 *            the sequenceNumber to set
+	 * @param sequenceNumber the sequenceNumber to set
 	 */
 	public void setSequenceNumber(int sequenceNumber) {
 		this.sequenceNumber = sequenceNumber;
@@ -78,8 +77,7 @@ public class Ledger implements Serializable {
 	}
 
 	/**
-	 * @param journalTransactionNumber
-	 *            the journalTransactionNumber to set
+	 * @param journalTransactionNumber the journalTransactionNumber to set
 	 */
 	public void setJournalTransactionNumber(Journal journalTransactionNumber) {
 		this.journalTransactionNumber = journalTransactionNumber;
@@ -93,8 +91,7 @@ public class Ledger implements Serializable {
 	}
 
 	/**
-	 * @param debitedAccount
-	 *            the debitedAccount to set
+	 * @param debitedAccount the debitedAccount to set
 	 */
 	public void setDebitedAccount(Account debitedAccount) {
 		this.debitedAccount = debitedAccount;
@@ -108,8 +105,7 @@ public class Ledger implements Serializable {
 	}
 
 	/**
-	 * @param creditedAccount
-	 *            the creditedAccount to set
+	 * @param creditedAccount the creditedAccount to set
 	 */
 	public void setCreditedAccount(Account creditedAccount) {
 		this.creditedAccount = creditedAccount;
@@ -123,8 +119,7 @@ public class Ledger implements Serializable {
 	}
 
 	/**
-	 * @param creditAmount
-	 *            the creditAmount to set
+	 * @param creditAmount the creditAmount to set
 	 */
 	public void setCreditAmount(BigDecimal creditAmount) {
 		this.creditAmount = creditAmount;
@@ -138,8 +133,7 @@ public class Ledger implements Serializable {
 	}
 
 	/**
-	 * @param debitAmount
-	 *            the debitAmount to set
+	 * @param debitAmount the debitAmount to set
 	 */
 	public void setDebitAmount(BigDecimal debitAmount) {
 		this.debitAmount = debitAmount;
@@ -153,8 +147,7 @@ public class Ledger implements Serializable {
 	}
 
 	/**
-	 * @param ledgerAccount
-	 *            the ledgerAccount to set
+	 * @param ledgerAccount the ledgerAccount to set
 	 */
 	public void setLedgerAccount(Account ledgerAccount) {
 		this.ledgerAccount = ledgerAccount;

@@ -15,10 +15,8 @@ public class BahiKhataStringUtility {
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method compares the string with the regex
 	 * 
-	 * @param s
-	 *            String to match
-	 * @param regex
-	 *            regex to match with
+	 * @param s     String to match
+	 * @param regex regex to match with
 	 * @return true if the string s matches the regex exactly
 	 * 
 	 *
@@ -47,16 +45,11 @@ public class BahiKhataStringUtility {
 			matches = true;
 		} else if (s2 == null && s1 == null) {
 			matches = true;
-		}
-		else if (s1 == null && s2!=null)
-		{
-			matches=false;
-		}
-		else if (s2 == null && s1!=null)
-		{
-			matches=false;
-		}
-		else if (s1.equalsIgnoreCase("") && s1.equalsIgnoreCase(s2)) {
+		} else if (s1 == null && s2 != null) {
+			matches = false;
+		} else if (s2 == null && s1 != null) {
+			matches = false;
+		} else if (s1.equalsIgnoreCase("") && s1.equalsIgnoreCase(s2)) {
 			matches = true;
 		}
 		return matches;

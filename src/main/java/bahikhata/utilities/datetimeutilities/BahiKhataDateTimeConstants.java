@@ -4,10 +4,17 @@
 package bahikhata.utilities.datetimeutilities;
 
 /**
- * @author Rudhra Koul This interface contains DateTime specific constants
+ * @author Rudhra Koul This class contains DateTime specific constants
  *
  */
-public interface BahiKhataDateTimeConstantsIfc {
+public final class BahiKhataDateTimeConstants {
+
+	/**
+	 * 
+	 */
+	private BahiKhataDateTimeConstants() {
+		throw new UnsupportedOperationException(BahiKhataDateTimeConstants.class.getName());
+	}
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :Date Time Constants

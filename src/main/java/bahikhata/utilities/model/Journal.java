@@ -58,8 +58,7 @@ public class Journal implements Serializable {
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param id the id to set
 	 */
 	public void setId(JournalPK id) {
 		this.id = id;
@@ -73,8 +72,7 @@ public class Journal implements Serializable {
 	}
 
 	/**
-	 * @param accountDebited
-	 *            the accountDebited to set
+	 * @param accountDebited the accountDebited to set
 	 */
 	public void setAccountDebited(Account accountDebited) {
 		this.accountDebited = accountDebited;
@@ -88,8 +86,7 @@ public class Journal implements Serializable {
 	}
 
 	/**
-	 * @param accountCredited
-	 *            the accountCredited to set
+	 * @param accountCredited the accountCredited to set
 	 */
 	public void setAccountCredited(Account accountCredited) {
 		this.accountCredited = accountCredited;
@@ -103,8 +100,7 @@ public class Journal implements Serializable {
 	}
 
 	/**
-	 * @param creditAmount
-	 *            the creditAmount to set
+	 * @param creditAmount the creditAmount to set
 	 */
 	public void setCreditAmount(BigDecimal creditAmount) {
 		this.creditAmount = creditAmount;
@@ -118,8 +114,7 @@ public class Journal implements Serializable {
 	}
 
 	/**
-	 * @param debitAmount
-	 *            the debitAmount to set
+	 * @param debitAmount the debitAmount to set
 	 */
 	public void setDebitAmount(BigDecimal debitAmount) {
 		this.debitAmount = debitAmount;
@@ -133,8 +128,7 @@ public class Journal implements Serializable {
 	}
 
 	/**
-	 * @param transactionNumber
-	 *            the transactionNumber to set
+	 * @param transactionNumber the transactionNumber to set
 	 */
 	public void setTransactionNumber(List<Ledger> transactionNumber) {
 		this.transactionNumber = transactionNumber;

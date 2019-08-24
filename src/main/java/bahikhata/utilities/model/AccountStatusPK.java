@@ -39,8 +39,7 @@ public class AccountStatusPK implements Serializable {
 	}
 
 	/**
-	 * @param accountName
-	 *            the accountName to set
+	 * @param accountName the accountName to set
 	 */
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
@@ -54,8 +53,7 @@ public class AccountStatusPK implements Serializable {
 	}
 
 	/**
-	 * @param businessDay
-	 *            the businessDay to set
+	 * @param businessDay the businessDay to set
 	 */
 	public void setBusinessDay(LocalDate businessDay) {
 		this.businessDay = businessDay;

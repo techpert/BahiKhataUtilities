@@ -38,8 +38,7 @@ public class ItemQupDiscountPK implements Serializable {
 	}
 
 	/**
-	 * @param itemId
-	 *            the itemId to set
+	 * @param itemId the itemId to set
 	 */
 	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
@@ -53,8 +52,7 @@ public class ItemQupDiscountPK implements Serializable {
 	}
 
 	/**
-	 * @param itemQty
-	 *            the itemQty to set
+	 * @param itemQty the itemQty to set
 	 */
 	public void setItemQty(int itemQty) {
 		this.itemQty = itemQty;

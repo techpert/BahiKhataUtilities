@@ -39,8 +39,7 @@ public class ItemQupDiscount implements Serializable {
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param id the id to set
 	 */
 	public void setId(ItemQupDiscountPK id) {
 		this.id = id;
@@ -54,8 +53,7 @@ public class ItemQupDiscount implements Serializable {
 	}
 
 	/**
-	 * @param discPrcnt
-	 *            the discPrcnt to set
+	 * @param discPrcnt the discPrcnt to set
 	 */
 	public void setDiscPrcnt(BigDecimal discPrcnt) {
 		this.discPrcnt = discPrcnt;
@@ -126,5 +124,4 @@ public class ItemQupDiscount implements Serializable {
 		return builder.toString();
 	}
 
-	
 }

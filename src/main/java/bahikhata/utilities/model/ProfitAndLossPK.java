@@ -39,8 +39,7 @@ public class ProfitAndLossPK implements Serializable {
 	}
 
 	/**
-	 * @param periodStartDay
-	 *            the periodStartDay to set
+	 * @param periodStartDay the periodStartDay to set
 	 */
 	public void setPeriodStartDay(LocalDate periodStartDay) {
 		this.periodStartDay = periodStartDay;
@@ -54,8 +53,7 @@ public class ProfitAndLossPK implements Serializable {
 	}
 
 	/**
-	 * @param profitAndLossAccount
-	 *            the profitAndLossAccount to set
+	 * @param profitAndLossAccount the profitAndLossAccount to set
 	 */
 	public void setProfitAndLossAccount(String profitAndLossAccount) {
 		this.profitAndLossAccount = profitAndLossAccount;

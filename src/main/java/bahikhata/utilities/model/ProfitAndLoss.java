@@ -53,8 +53,7 @@ public class ProfitAndLoss implements Serializable {
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param id the id to set
 	 */
 	public void setId(ProfitAndLossPK id) {
 		this.id = id;
@@ -68,8 +67,7 @@ public class ProfitAndLoss implements Serializable {
 	}
 
 	/**
-	 * @param profitAndLossType
-	 *            the profitAndLossType to set
+	 * @param profitAndLossType the profitAndLossType to set
 	 */
 	public void setProfitAndLossType(String profitAndLossType) {
 		this.profitAndLossType = profitAndLossType;
@@ -83,8 +81,7 @@ public class ProfitAndLoss implements Serializable {
 	}
 
 	/**
-	 * @param profitAndLossAccount
-	 *            the profitAndLossAccount to set
+	 * @param profitAndLossAccount the profitAndLossAccount to set
 	 */
 	public void setProfitAndLossAccount(Account profitAndLossAccount) {
 		this.profitAndLossAccount = profitAndLossAccount;
@@ -98,8 +95,7 @@ public class ProfitAndLoss implements Serializable {
 	}
 
 	/**
-	 * @param amount
-	 *            the amount to set
+	 * @param amount the amount to set
 	 */
 	public void setAmount(BigDecimal amount) {
 		Amount = amount;
@@ -113,8 +109,7 @@ public class ProfitAndLoss implements Serializable {
 	}
 
 	/**
-	 * @param periodEndDay
-	 *            the periodEndDay to set
+	 * @param periodEndDay the periodEndDay to set
 	 */
 	public void setPeriodEndDay(LocalDate periodEndDay) {
 		this.periodEndDay = periodEndDay;

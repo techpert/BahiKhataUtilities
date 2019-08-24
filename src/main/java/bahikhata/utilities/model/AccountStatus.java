@@ -47,8 +47,7 @@ public class AccountStatus implements Serializable {
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param id the id to set
 	 */
 	public void setId(AccountStatusPK id) {
 		this.id = id;
@@ -62,8 +61,7 @@ public class AccountStatus implements Serializable {
 	}
 
 	/**
-	 * @param closingBalance
-	 *            the closingBalance to set
+	 * @param closingBalance the closingBalance to set
 	 */
 	public void setClosingBalance(BigDecimal closingBalance) {
 		this.closingBalance = closingBalance;
@@ -77,8 +75,7 @@ public class AccountStatus implements Serializable {
 	}
 
 	/**
-	 * @param openingBalance
-	 *            the openingBalance to set
+	 * @param openingBalance the openingBalance to set
 	 */
 	public void setOpeningBalance(BigDecimal openingBalance) {
 		this.openingBalance = openingBalance;
@@ -92,8 +89,7 @@ public class AccountStatus implements Serializable {
 	}
 
 	/**
-	 * @param account
-	 *            the account to set
+	 * @param account the account to set
 	 */
 	public void setAccount(Account account) {
 		this.account = account;

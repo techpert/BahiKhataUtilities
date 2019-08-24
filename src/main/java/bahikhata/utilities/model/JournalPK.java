@@ -38,8 +38,7 @@ public class JournalPK implements Serializable {
 	}
 
 	/**
-	 * @param businessDay
-	 *            the businessDay to set
+	 * @param businessDay the businessDay to set
 	 */
 	public void setBusinessDay(LocalDate businessDay) {
 		this.businessDay = businessDay;
@@ -53,8 +52,7 @@ public class JournalPK implements Serializable {
 	}
 
 	/**
-	 * @param transactionNumber
-	 *            the transactionNumber to set
+	 * @param transactionNumber the transactionNumber to set
 	 */
 	public void setTransactionNumber(int transactionNumber) {
 		this.transactionNumber = transactionNumber;

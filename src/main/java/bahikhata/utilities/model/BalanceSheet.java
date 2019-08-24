@@ -52,8 +52,7 @@ public class BalanceSheet implements Serializable {
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param id the id to set
 	 */
 	public void setId(BalanceSheetPK id) {
 		this.id = id;
@@ -67,8 +66,7 @@ public class BalanceSheet implements Serializable {
 	}
 
 	/**
-	 * @param type
-	 *            the type to set
+	 * @param type the type to set
 	 */
 	public void setType(String type) {
 		this.type = type;
@@ -82,8 +80,7 @@ public class BalanceSheet implements Serializable {
 	}
 
 	/**
-	 * @param balanceSheetAccount
-	 *            the balanceSheetAccount to set
+	 * @param balanceSheetAccount the balanceSheetAccount to set
 	 */
 	public void setBalanceSheetAccount(Account balanceSheetAccount) {
 		this.balanceSheetAccount = balanceSheetAccount;
@@ -97,8 +94,7 @@ public class BalanceSheet implements Serializable {
 	}
 
 	/**
-	 * @param amount
-	 *            the amount to set
+	 * @param amount the amount to set
 	 */
 	public void setAmount(BigDecimal amount) {
 		Amount = amount;
@@ -112,8 +108,7 @@ public class BalanceSheet implements Serializable {
 	}
 
 	/**
-	 * @param periodEndDay
-	 *            the periodEndDay to set
+	 * @param periodEndDay the periodEndDay to set
 	 */
 	public void setPeriodEndDay(LocalDate periodEndDay) {
 		this.periodEndDay = periodEndDay;

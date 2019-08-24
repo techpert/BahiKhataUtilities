@@ -20,7 +20,7 @@ import bahikhata.utilities.stringutilities.BahiKhataStringUtility;
  * @author Rudhra Koul This is a utility class for date related methods
  *
  */
-public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
+public class BahiKhataDateTimeUtility {
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :Logger instance for DateTimeUtility
 	 */
@@ -46,7 +46,7 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 
 	public static String getCurrentDateString() {
 		LocalDate localDate = LocalDate.now();
-		return (DateTimeFormatter.ofPattern(LOCAL_DATE_FORMAT).format(localDate));
+		return (DateTimeFormatter.ofPattern(BahiKhataDateTimeConstants.LOCAL_DATE_FORMAT).format(localDate));
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 		Message m = logger.traceEntry("isTimeZoneAfterGMT");
 		boolean afterGMT = false;
 		String zonedDateTimeString = zonedDateTime.toString();
-		if (zonedDateTime != null && zonedDateTimeString.contains(GMT_AFTER)) {
+		if (zonedDateTime != null && zonedDateTimeString.contains(BahiKhataDateTimeConstants.GMT_AFTER)) {
 			afterGMT = true;
 			return logger.traceExit(m, afterGMT);
 		} else {
@@ -123,7 +123,8 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 	public static boolean isTimeZoneAfterGMT(String zonedDateTime) {
 		Message m = logger.traceEntry("isTimeZoneAfterGMT");
 		boolean afterGMT = false;
-		if (BahiKhataStringUtility.isNotNullAndNotEmpty(zonedDateTime) && zonedDateTime.contains(GMT_AFTER)) {
+		if (BahiKhataStringUtility.isNotNullAndNotEmpty(zonedDateTime)
+				&& zonedDateTime.contains(BahiKhataDateTimeConstants.GMT_AFTER)) {
 			afterGMT = true;
 			return logger.traceExit(m, afterGMT);
 		} else {
@@ -142,7 +143,7 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 		Message m = logger.traceEntry("isTimeZoneBeforeGMT");
 		boolean beforeGMT = false;
 		String zonedDateTimeString = zonedDateTime.toString();
-		if (zonedDateTime != null && zonedDateTimeString.contains(GMT_BEFORE)) {
+		if (zonedDateTime != null && zonedDateTimeString.contains(BahiKhataDateTimeConstants.GMT_BEFORE)) {
 			beforeGMT = true;
 			return logger.traceExit(m, beforeGMT);
 		} else {
@@ -160,7 +161,8 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 	public static boolean isTimeZoneBeforeGMT(String zonedDateTime) {
 		Message m = logger.traceEntry("isTimeZoneBeforeGMT");
 		boolean beforeGMT = false;
-		if (BahiKhataStringUtility.isNotNullAndNotEmpty(zonedDateTime) && zonedDateTime.contains(GMT_BEFORE)) {
+		if (BahiKhataStringUtility.isNotNullAndNotEmpty(zonedDateTime)
+				&& zonedDateTime.contains(BahiKhataDateTimeConstants.GMT_BEFORE)) {
 			beforeGMT = true;
 			return logger.traceExit(m, beforeGMT);
 		} else {
@@ -182,8 +184,8 @@ public class BahiKhataDateTimeUtility implements BahiKhataDateTimeConstantsIfc {
 		ZonedDateTime zonedDateTime = null;
 		if (BahiKhataStringUtility.isNotNullAndNotEmpty(dateTime)
 				&& BahiKhataStringUtility.isNotNullAndNotEmpty(timeLag)) {
-			zonedDateTime = Instant.parse(dateTime.substring(0, dateTime.indexOf(timeLag)).concat(ZONE_PLACEHOLDER))
-					.atZone(ZoneId.systemDefault());
+			zonedDateTime = Instant.parse(dateTime.substring(0, dateTime.indexOf(timeLag))
+					.concat(BahiKhataDateTimeConstants.ZONE_PLACEHOLDER)).atZone(ZoneId.systemDefault());
 			return logger.traceExit(m, zonedDateTime);
 		} else {
 			logger.debug("Supplied date or time lag is empty");

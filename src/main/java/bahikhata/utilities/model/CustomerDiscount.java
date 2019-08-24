@@ -38,8 +38,7 @@ public class CustomerDiscount implements Serializable {
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param id the id to set
 	 */
 	public void setId(CustomerDiscountPK id) {
 		this.id = id;
@@ -53,8 +52,7 @@ public class CustomerDiscount implements Serializable {
 	}
 
 	/**
-	 * @param discPrcnt
-	 *            the discPrcnt to set
+	 * @param discPrcnt the discPrcnt to set
 	 */
 	public void setDiscPrcnt(BigDecimal discPrcnt) {
 		this.discPrcnt = discPrcnt;

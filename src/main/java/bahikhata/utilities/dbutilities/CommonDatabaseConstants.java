@@ -10,7 +10,14 @@ package bahikhata.utilities.dbutilities;
  * @author Rudhra Koul
  *
  */
-public interface CommonDatabaseConstantsIfc {
+public final class CommonDatabaseConstants {
+
+	/**
+	 * 
+	 */
+	private CommonDatabaseConstants() {
+		throw new UnsupportedOperationException(CommonDatabaseConstants.class.getName());
+	}
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :Database specific constants

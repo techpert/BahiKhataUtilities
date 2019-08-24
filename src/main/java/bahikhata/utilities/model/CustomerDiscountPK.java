@@ -39,8 +39,7 @@ public class CustomerDiscountPK implements Serializable {
 	}
 
 	/**
-	 * @param itemId
-	 *            the itemId to set
+	 * @param itemId the itemId to set
 	 */
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
@@ -54,8 +53,7 @@ public class CustomerDiscountPK implements Serializable {
 	}
 
 	/**
-	 * @param custType
-	 *            the custType to set
+	 * @param custType the custType to set
 	 */
 	public void setCustType(String custType) {
 		this.custType = custType;

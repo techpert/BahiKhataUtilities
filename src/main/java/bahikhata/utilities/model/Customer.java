@@ -101,8 +101,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param customerId
-	 *            the customerId to set
+	 * @param customerId the customerId to set
 	 */
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
@@ -116,8 +115,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param custCategory
-	 *            the custCategory to set
+	 * @param custCategory the custCategory to set
 	 */
 	public void setCustCategory(String custCategory) {
 		this.custCategory = custCategory;
@@ -131,8 +129,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param custComment
-	 *            the custComment to set
+	 * @param custComment the custComment to set
 	 */
 	public void setCustComment(String custComment) {
 		this.custComment = custComment;
@@ -146,8 +143,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param custFirstName
-	 *            the custFirstName to set
+	 * @param custFirstName the custFirstName to set
 	 */
 	public void setCustFirstName(String custFirstName) {
 		this.custFirstName = custFirstName;
@@ -161,8 +157,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param custLastName
-	 *            the custLastName to set
+	 * @param custLastName the custLastName to set
 	 */
 	public void setCustLastName(String custLastName) {
 		this.custLastName = custLastName;
@@ -176,8 +171,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param custType
-	 *            the custType to set
+	 * @param custType the custType to set
 	 */
 	public void setCustType(String custType) {
 		this.custType = custType;
@@ -191,8 +185,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param cityNme
-	 *            the cityNme to set
+	 * @param cityNme the cityNme to set
 	 */
 	public void setCityNme(String cityNme) {
 		this.cityNme = cityNme;
@@ -206,8 +199,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param line1Text
-	 *            the line1Text to set
+	 * @param line1Text the line1Text to set
 	 */
 	public void setLine1Text(String line1Text) {
 		this.line1Text = line1Text;
@@ -221,8 +213,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param line2Text
-	 *            the line2Text to set
+	 * @param line2Text the line2Text to set
 	 */
 	public void setLine2Text(String line2Text) {
 		this.line2Text = line2Text;
@@ -236,8 +227,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param line3Text
-	 *            the line3Text to set
+	 * @param line3Text the line3Text to set
 	 */
 	public void setLine3Text(String line3Text) {
 		this.line3Text = line3Text;
@@ -251,8 +241,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param pincode
-	 *            the pincode to set
+	 * @param pincode the pincode to set
 	 */
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
@@ -266,8 +255,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param stateNme
-	 *            the stateNme to set
+	 * @param stateNme the stateNme to set
 	 */
 	public void setStateNme(String stateNme) {
 		this.stateNme = stateNme;
@@ -281,8 +269,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param custPhn
-	 *            the custPhn to set
+	 * @param custPhn the custPhn to set
 	 */
 	public void setCustPhn(String custPhn) {
 		this.custPhn = custPhn;
@@ -296,8 +283,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param custEmail
-	 *            the custEmail to set
+	 * @param custEmail the custEmail to set
 	 */
 	public void setCustEmail(String custEmail) {
 		this.custEmail = custEmail;
@@ -311,8 +297,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param panNbr
-	 *            the panNbr to set
+	 * @param panNbr the panNbr to set
 	 */
 	public void setPanNbr(String panNbr) {
 		this.panNbr = panNbr;
@@ -326,8 +311,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param gstin
-	 *            the gstin to set
+	 * @param gstin the gstin to set
 	 */
 	public void setGstin(String gstin) {
 		this.gstin = gstin;
@@ -341,8 +325,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param syntacticallyValid
-	 *            the syntacticallyValid to set
+	 * @param syntacticallyValid the syntacticallyValid to set
 	 */
 	public void setSyntacticallyValid(boolean syntacticallyValid) {
 		this.syntacticallyValid = syntacticallyValid;
@@ -356,8 +339,7 @@ public class Customer implements Serializable {
 	}
 
 	/**
-	 * @param functionallyValid
-	 *            the functionallyValid to set
+	 * @param functionallyValid the functionallyValid to set
 	 */
 	public void setFunctionallyValid(boolean functionallyValid) {
 		this.functionallyValid = functionallyValid;

@@ -5,13 +5,12 @@ import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConv
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.stereotype.Component;
 
-
 /**
  * @author Rudhra.Koul
  *
  */
 @Component
-public class BahiKhataJwtConverter extends DefaultAccessTokenConverter implements JwtAccessTokenConverterConfigurer{
+public class BahiKhataJwtConverter extends DefaultAccessTokenConverter implements JwtAccessTokenConverterConfigurer {
 
 	@Override
 	public void configure(JwtAccessTokenConverter converter) {

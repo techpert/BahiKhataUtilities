@@ -39,8 +39,7 @@ public class BalanceSheetPK implements Serializable {
 	}
 
 	/**
-	 * @param periodStartDay
-	 *            the periodStartDay to set
+	 * @param periodStartDay the periodStartDay to set
 	 */
 	public void setPeriodStartDay(LocalDate periodStartDay) {
 		this.periodStartDay = periodStartDay;
@@ -54,8 +53,7 @@ public class BalanceSheetPK implements Serializable {
 	}
 
 	/**
-	 * @param balanceSheetAccount
-	 *            the balanceSheetAccount to set
+	 * @param balanceSheetAccount the balanceSheetAccount to set
 	 */
 	public void setBalanceSheetAccount(String balanceSheetAccount) {
 		this.balanceSheetAccount = balanceSheetAccount;
