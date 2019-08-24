@@ -10,7 +10,7 @@ package bahikhata.utilities.dbutilities;
  * @author Rudhra Koul
  *
  */
-public final class CommonDatabaseConstants {
+public class CommonDatabaseConstants {
 
 	/**
 	 * 
