@@ -7,11 +7,15 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<name>BahiKhataUtilities</name>
 	<description>This is the utilities JAR for BahiKhata</description>
-	<packaging>jar</packaging>
 
 	<url>https://github.com/techpert/BahiKhataUtilities/</url>
 	<inceptionYear>2018</inceptionYear>
-
+	<licenses>
+		<license>
+			<name>BahiKhata License</name>
+			<url>https://techpertitsolutions.com/BahiKhataLicense</url>
+		</license>
+	</licenses>
 	<developers>
 		<developer>
 			<name>Rudhra Koul</name>
@@ -23,8 +27,10 @@
 			<email>rudhra.koul@techpertitsolutions.com</email>
 			<organization>Techpert IT Solutions Private Limited</organization>
 			<organizationUrl>http://techpertitsolutions.com/</organizationUrl>
+			<timezone>+5:30</timezone>
 		</developer>
 	</developers>
+
 
 	<organization>
 		<name>Techpert IT Solutions Private Limited</name>
@@ -53,16 +59,18 @@
 			<url>https://github.com/chiragtech25</url>
 			<organization>Techpert IT Solutions Private Limited</organization>
 			<organizationUrl>http://techpertitsolutions.com/</organizationUrl>
+			<timezone>+5:30</timezone>
 		</contributor>
 		<contributor>
 			<name>Vrinda</name>
-			<email>vrinda@techpertitsolutions.com/</email>
+			<email>vrinda@techpertitsolutions.com</email>
 			<roles>
 				<role>Developer</role>
 			</roles>
 			<url>https://github.com/TechpertVrinda</url>
 			<organization>Techpert IT Solutions Private Limited</organization>
 			<organizationUrl>http://techpertitsolutions.com/</organizationUrl>
+			<timezone>+5:30</timezone>
 		</contributor>
 		<contributor>
 			<name>Neeraj Jain</name>
@@ -73,6 +81,7 @@
 			<url>https://github.com/7483neeraj</url>
 			<organization>Techpert IT Solutions Private Limited</organization>
 			<organizationUrl>http://techpertitsolutions.com/</organizationUrl>
+			<timezone>+5:30</timezone>
 		</contributor>
 		<contributor>
 			<name>Akanksha Kesari</name>
@@ -83,6 +92,18 @@
 			<url>https://github.com/AkankshaKesari</url>
 			<organization>Techpert IT Solutions Private Limited</organization>
 			<organizationUrl>http://techpertitsolutions.com/</organizationUrl>
+			<timezone>+5:30</timezone>
+		</contributor>
+		<contributor>
+			<name>Namit Jain</name>
+			<email>namit.jain@techpertitsolutions.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<url>https://github.com/namitTech</url>
+			<organization>Techpert IT Solutions Private Limited</organization>
+			<organizationUrl>http://techpertitsolutions.com/</organizationUrl>
+			<timezone>+5:30</timezone>
 		</contributor>
 	</contributors>
 
@@ -162,6 +183,7 @@
 		<!-- <sonar.tests>src/test/java</sonar.tests> -->
 		<!-- === END of Sonar/Reporting settings === -->
 		<sonar.host.url>http://localhost:8585/sonar</sonar.host.url>
+		<project.reporting.outputDirectory>${basedir}\src\site\</project.reporting.outputDirectory>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -231,42 +253,6 @@
 			<artifactId>gson</artifactId>
 			<version>${gson-version}</version>
 		</dependency>
-
-
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit-jupiter.version}</version><!--$NO-MVN-MAN-VER$ -->
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit-jupiter.version}</version><!--$NO-MVN-MAN-VER$ -->
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>${asertj-version}</version><!--$NO-MVN-MAN-VER$ -->
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>${mockito-version}</version><!--$NO-MVN-MAN-VER$ -->
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-junit-jupiter</artifactId>
-			<version>${mockito-version}</version><!--$NO-MVN-MAN-VER$ -->
-			<scope>test</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -324,6 +310,44 @@
 			<version>5.1.4.RELEASE</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>nl.jqno.equalsverifier</groupId>
+			<artifactId>equalsverifier</artifactId>
+			<version>3.1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.meanbean</groupId>
+			<artifactId>meanbean</artifactId>
+			<version>2.0.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>5.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${asertj-version}</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+
 
 	</dependencies>
 
@@ -360,6 +384,11 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${Maven-surefire-plugin-version}</version><!--$NO-MVN-MAN-VER$ -->
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>${Maven-surefire-plugin-version}</version><!--$NO-MVN-MAN-VER$ -->
 				<executions>
@@ -375,7 +404,25 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>${maven-site-plugin-version}</version><!--$NO-MVN-MAN-VER$ -->
+				<version>3.7.1</version>
+				<configuration>
+					<customBundle>${project.basedir}/src/site/custom/project-info-reports.properties</customBundle>
+					<outputDirectory>${project.reporting.outputDirectory}</outputDirectory>
+					<reportsDirectory>${project.reporting.outputDirectory}</reportsDirectory>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>nl.demon.shadowland.freedumbytes.patch.lt.velykis.maven.skins</groupId>
+						<artifactId>reflow-velocity-tools</artifactId>
+						<version>1.3.3</version>
+					</dependency>
+
+					<dependency>
+						<groupId>org.apache.velocity</groupId>
+						<artifactId>velocity</artifactId>
+						<version>1.7</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -402,7 +449,6 @@
 						</goals>
 						<configuration>
 							<!-- Sets the path to the file which contains the execution data. -->
-
 							<dataFile>target/jacoco.exec</dataFile>
 							<!-- Sets the output directory for the code coverage report. -->
 							<outputDirectory>target/jacoco-ut</outputDirectory>
@@ -414,6 +460,37 @@
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.6.0.1398</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-integration-test-source-as-test-sources</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.basedir}/src/it/java</source>
+							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>add-test-resource</id>
+						<goals>
+							<goal>add-test-resource</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/src/it/resources</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 
@@ -427,8 +504,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>${Maven-surefire-plugin-version}</version>
+				<configuration>
+					<linkXRef>false</linkXRef>
+				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -436,6 +515,9 @@
 				<configuration>
 					<dependencyDetailsEnabled>false</dependencyDetailsEnabled>
 					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+					<customBundle>${project.basedir}/src/site/custom/project-info-reports.properties</customBundle>
+					<outputDirectory>${project.reporting.outputDirectory}</outputDirectory>
+					<reportsDirectory>${project.reporting.outputDirectory}</reportsDirectory>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -445,6 +527,8 @@
 				<configuration>
 					<!--Default configuration for all reports -->
 					<doclint>none</doclint>
+					<outputDirectory>${project.reporting.outputDirectory}</outputDirectory>
+					<reportsDirectory>${project.reporting.outputDirectory}</reportsDirectory>
 				</configuration>
 				<reportSets>
 					<reportSet>
@@ -467,24 +551,30 @@
 						</reports>
 					</reportSet>
 				</reportSets>
+
 			</plugin>
-
 		</plugins>
-
+		<outputDirectory>${project.reporting.outputDirectory}</outputDirectory>
 	</reporting>
-
 	<repositories>
-
 		<repository>
 			<id>jitpack.io</id>
 			<url>https://jitpack.io</url>
 		</repository>
-
 	</repositories>
-
 	<ciManagement>
-		<url>https://circleci.com/gh/techpert/BahiKhataUtilities</url>
 		<system>circleci</system>
+		<url>https://circleci.com/gh/techpert/BahiKhataUtilities</url>
+		<notifiers>
+			<notifier>
+				<type>mail</type>
+				<address>support@techpertitsolutions.com</address>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>true</sendOnSuccess>
+				<sendOnWarning>true</sendOnWarning>
+			</notifier>
+		</notifiers>
 	</ciManagement>
-
 </project>
+
