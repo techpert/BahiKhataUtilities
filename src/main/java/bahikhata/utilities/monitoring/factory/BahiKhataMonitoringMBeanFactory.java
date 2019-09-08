@@ -25,7 +25,7 @@ final public class BahiKhataMonitoringMBeanFactory
     @Autowired
     CacheManager cacheManager;
     public static final String JAVA_MEMORY_MXBEAN_OBJECT_NAME = "java.lang:type=Memory";
-    public static final String CACHE_MXBEAN_OBJECT_NAME = "*:type=CacheStatistics,*,Cache=";
+    public static final String CACHE_MXBEAN_OBJECT_NAME = "javax.cache:type=CacheStatistics,*,Cache=";
     public static final String OPERATING_SYSTEM_MXBEAN_OBJECT_NAME = "java.lang:type=OperatingSystem";
     public static final String GARBAGE_COLLECTION_AGGREGATOR_MXBEAN_OBJECT_NAME = "com.sun.management:type=GarbageCollectionAggregator";
     final static MBeanServer mbeanServer = ManagementFactory.getPlatformMBeanServer();
