@@ -8,6 +8,7 @@ import javax.cache.management.CacheStatisticsMXBean;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.message.Message;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,14 +20,26 @@ import bahikhata.utilities.monitoring.factory.BahiKhataMonitoringMBeanFactory;
 @Service
 public class BahiKhataMonitoringService
 {
-    Logger logger = LogManager.getLogger(BahiKhataMonitoringService.class);
-
+    private  final BahiKhataMonitoringMBeanFactory bahiKhataMonitoringMBeanFactory;
+    /*
+     * Techpert:Bahikhata : 0.0.1 :Logger instance for
+     * BahiKhataMonitoringService
+     */
+    private static final Logger logger= LogManager.getLogger(BahiKhataMonitoringService.class);
+   
+    @Autowired
+    public BahiKhataMonitoringService(
+            BahiKhataMonitoringMBeanFactory bahiKhataMonitoringMBeanFactory)
+    {
+        this.bahiKhataMonitoringMBeanFactory = bahiKhataMonitoringMBeanFactory;
+    }
+    
     public ResponseEntity<List<BahiKhataCacheStatisticsDTO>> getCacheStatstics()
             throws BahiKhataStatsticsBeanException
     {
         Message m = logger.traceEntry("getCacheStatstics");
         List<BahiKhataCacheStatisticsDTO> bahiKhataCacheStatisticsDTOList = new ArrayList<>();
-        List<CacheStatisticsMXBean> cacheStatisticsBeans = BahiKhataMonitoringMBeanFactory
+        List<CacheStatisticsMXBean> cacheStatisticsBeans = bahiKhataMonitoringMBeanFactory
                 .getCacheStatisticsMXBeans();
         for (CacheStatisticsMXBean cacheStatisticsMXBean : cacheStatisticsBeans)
         {
@@ -53,4 +66,6 @@ public class BahiKhataMonitoringService
         return logger.traceExit(m,
                 ResponseEntity.status(HttpStatus.OK).body(bahiKhataCacheStatisticsDTOList));
     }
+
+    
 }

@@ -16,20 +16,21 @@ import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import bahikhata.utilities.monitoring.exception.BahiKhataStatsticsBeanException;
-
+@Component
 final public class BahiKhataMonitoringMBeanFactory
 {
     @Autowired
-    static CacheManager cacheManager;
+    CacheManager cacheManager;
     public static final String JAVA_MEMORY_MXBEAN_OBJECT_NAME = "java.lang:type=Memory";
     public static final String CACHE_MXBEAN_OBJECT_NAME = "*:type=CacheStatistics,*,Cache=";
     public static final String OPERATING_SYSTEM_MXBEAN_OBJECT_NAME = "java.lang:type=OperatingSystem";
     public static final String GARBAGE_COLLECTION_AGGREGATOR_MXBEAN_OBJECT_NAME = "com.sun.management:type=GarbageCollectionAggregator";
     final static MBeanServer mbeanServer = ManagementFactory.getPlatformMBeanServer();
 
-    public final static List<CacheStatisticsMXBean> getCacheStatisticsMXBeans()
+    public final  List<CacheStatisticsMXBean> getCacheStatisticsMXBeans()
             throws BahiKhataStatsticsBeanException
     {
         List<CacheStatisticsMXBean> cacheStatisticsMXBeansList = new ArrayList<>();
@@ -42,13 +43,13 @@ final public class BahiKhataMonitoringMBeanFactory
         return cacheStatisticsMXBeansList;
     }
 
-    public final static CacheStatisticsMXBean getCacheStatisticsMXBean(String cacheName)
+    public final  CacheStatisticsMXBean getCacheStatisticsMXBean(String cacheName)
             throws BahiKhataStatsticsBeanException
     {
         return getMonitoringBean(CACHE_MXBEAN_OBJECT_NAME + cacheName, CacheStatisticsMXBean.class);
     }
 
-    public final static GarbageCollectorMXBean getGarbageCollectorMXBean()
+    public final  GarbageCollectorMXBean getGarbageCollectorMXBean()
             throws BahiKhataStatsticsBeanException
     {
 
@@ -56,13 +57,13 @@ final public class BahiKhataMonitoringMBeanFactory
                 GarbageCollectorMXBean.class);
     }
 
-    public final static MemoryMXBean getMemoryMXBean() throws BahiKhataStatsticsBeanException
+    public final  MemoryMXBean getMemoryMXBean() throws BahiKhataStatsticsBeanException
     {
         return getMonitoringBean(JAVA_MEMORY_MXBEAN_OBJECT_NAME, MemoryMXBean.class);
 
     }
 
-    public final static OperatingSystemMXBean getOperatingSystemMXBean()
+    public final  OperatingSystemMXBean getOperatingSystemMXBean()
             throws BahiKhataStatsticsBeanException
     {
 
@@ -70,7 +71,7 @@ final public class BahiKhataMonitoringMBeanFactory
 
     }
 
-    private final static <T> T getMonitoringBean(String objectName, Class<T> monitoringBean)
+    private final  <T> T getMonitoringBean(String objectName, Class<T> monitoringBean)
             throws BahiKhataStatsticsBeanException
     {
         ObjectName mBeanName = null;
