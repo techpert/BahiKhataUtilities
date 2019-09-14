@@ -3,6 +3,7 @@ package bahikhata.utilities.monitoring.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.cache.CacheManager;
 import javax.cache.management.CacheStatisticsMXBean;
 
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +22,7 @@ import bahikhata.utilities.monitoring.factory.BahiKhataMonitoringMBeanFactory;
 public class BahiKhataMonitoringService
 {
     private  final BahiKhataMonitoringMBeanFactory bahiKhataMonitoringMBeanFactory;
+	private final CacheManager cacheManager;
     /*
      * Techpert:Bahikhata : 0.0.1 :Logger instance for
      * BahiKhataMonitoringService
@@ -29,9 +31,10 @@ public class BahiKhataMonitoringService
    
     @Autowired
     public BahiKhataMonitoringService(
-            BahiKhataMonitoringMBeanFactory bahiKhataMonitoringMBeanFactory)
+            BahiKhataMonitoringMBeanFactory bahiKhataMonitoringMBeanFactory,CacheManager cacheManager)
     {
         this.bahiKhataMonitoringMBeanFactory = bahiKhataMonitoringMBeanFactory;
+        this.cacheManager=cacheManager;
     }
     
     public ResponseEntity<List<BahiKhataCacheStatisticsDTO>> getCacheStatstics()
@@ -39,8 +42,7 @@ public class BahiKhataMonitoringService
     {
         Message m = logger.traceEntry("getCacheStatstics");
         List<BahiKhataCacheStatisticsDTO> bahiKhataCacheStatisticsDTOList = new ArrayList<>();
-        List<CacheStatisticsMXBean> cacheStatisticsBeans = bahiKhataMonitoringMBeanFactory
-                .getCacheStatisticsMXBeans();
+        List<CacheStatisticsMXBean> cacheStatisticsBeans = getCacheStatisticsMXBeans();
         for (CacheStatisticsMXBean cacheStatisticsMXBean : cacheStatisticsBeans)
         {
             BahiKhataCacheStatisticsDTO bahiKhataCacheStatisticsDTO = new BahiKhataCacheStatisticsDTO();
@@ -67,5 +69,18 @@ public class BahiKhataMonitoringService
                 ResponseEntity.status(HttpStatus.OK).body(bahiKhataCacheStatisticsDTOList));
     }
 
-    
+	/**
+	 * @return
+	 * @throws BahiKhataStatsticsBeanException
+	 */
+	public List<CacheStatisticsMXBean> getCacheStatisticsMXBeans() throws BahiKhataStatsticsBeanException {
+		return bahiKhataMonitoringMBeanFactory
+                .getCacheStatisticsMXBeans();
+	}
+
+	public void evictAllCaches() {
+		for (String name : cacheManager.getCacheNames()) {
+			cacheManager.getCache(name).clear();
+		}
+	}
 }
