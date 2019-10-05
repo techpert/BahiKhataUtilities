@@ -1,6 +1,10 @@
+/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
 package bahikhata.utilities.monitoring.service;
 
 import java.lang.management.MemoryMXBean;
+import java.lang.management.RuntimeMXBean;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -22,13 +26,31 @@ import com.sun.management.OperatingSystemMXBean;
 import bahikhata.utilities.monitoring.dto.BahiKhataCacheStatisticsDTO;
 import bahikhata.utilities.monitoring.dto.BahiKhataMemoryStatsticsDTO;
 import bahikhata.utilities.monitoring.dto.BahiKhataOperatingSystemStatisticsDTO;
+import bahikhata.utilities.monitoring.dto.BahiKhataRuntimeStatisticsDTO;
 import bahikhata.utilities.monitoring.exception.BahiKhataStatsticsBeanException;
 import bahikhata.utilities.monitoring.factory.BahiKhataMonitoringMBeanFactory;
 
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class will handle all functional operations for
+ * {@link BahiKhataCacheStatisticsDTO}, {@link BahiKhataOperatingSystemStatisticsDTO},
+ * {@link BahiKhataMemoryStatsticsDTO}, {@link BahiKhataRuntimeStatisticsDTO} 
+ * 
+ * @author Neeraj Jain
+ * @see BahiKhataMonitoringMBeanFactory
+ * @since Oct 05,2019
+ * @version 0.0.1
+ */
 @Service
 public class BahiKhataMonitoringService
 {
+    /*
+     * Techpert:Bahikhata : 0.0.1 :Autowired instance of BahiKhataMonitoringMBeanFactory
+     * Bean
+     */
     private final BahiKhataMonitoringMBeanFactory bahiKhataMonitoringMBeanFactory;
+    /*
+     * Techpert:Bahikhata : 0.0.1 :Autowired instance of CacheManager Bean
+     */
     private CacheManager cacheManager;
     /*
      * Techpert:Bahikhata : 0.0.1 :Logger instance for BahiKhataMonitoringService
@@ -42,6 +64,12 @@ public class BahiKhataMonitoringService
         this.bahiKhataMonitoringMBeanFactory = bahiKhataMonitoringMBeanFactory;
     }
 
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetches Cache Statistics from Cache MXBean
+     * 
+     * @since 05 Oct 2019
+     * @return ResponseEntity<Object>
+     */
     public ResponseEntity<Object> getCacheStatstics() throws BahiKhataStatsticsBeanException
     {
         Message m = logger.traceEntry("getCacheStatstics");
@@ -84,6 +112,13 @@ public class BahiKhataMonitoringService
         }
     }
 
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetches Memory Statistics from Memory
+     * MXBean
+     * 
+     * @since 05 Oct 2019
+     * @return ResponseEntity<{ {@link BahiKhataMemoryStatsticsDTO}>
+     */
     public ResponseEntity<BahiKhataMemoryStatsticsDTO> getMemoryStatstics()
             throws BahiKhataStatsticsBeanException
     {
@@ -131,6 +166,13 @@ public class BahiKhataMonitoringService
                 ResponseEntity.status(HttpStatus.OK).body(bahiKhataMemoryStatsticsDTO));
     }
 
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetches Operating System Statistics from
+     * Operating System MXBean
+     * 
+     * @since 05 Oct 2019
+     * @return ResponseEntity<{ @link BahiKhataOperatingSystemStatisticsDTO}>
+     */
     public ResponseEntity<BahiKhataOperatingSystemStatisticsDTO> getOperatingSystemStatstics()
             throws BahiKhataStatsticsBeanException
     {
@@ -149,11 +191,32 @@ public class BahiKhataMonitoringService
         cpuUsedByJVM.append(decimalFormat.format(operatingSystemMXBean.getProcessCpuLoad() * 100));
         cpuUsedByJVM.append("%");
         bahiKhataOperatingSystemStatisticsDTO.setJvmCPUUsage(cpuUsedByJVM.toString());
-        cpuUsedBySystem.append(decimalFormat.format(operatingSystemMXBean.getSystemCpuLoad() * 100));
+        cpuUsedBySystem
+                .append(decimalFormat.format(operatingSystemMXBean.getSystemCpuLoad() * 100));
         cpuUsedBySystem.append("%");
         bahiKhataOperatingSystemStatisticsDTO.setSystemCPUUsage(cpuUsedBySystem.toString());
         return logger.traceExit(m,
                 ResponseEntity.status(HttpStatus.OK).body(bahiKhataOperatingSystemStatisticsDTO));
+    }
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetches Runtime Statistics from Operating
+     * System MXBean
+     * 
+     * @since 05 Oct 2019
+     * @return ResponseEntity<{@link BahiKhataRuntimeStatisticsDTO}>
+     */
+    public ResponseEntity<BahiKhataRuntimeStatisticsDTO> getRuntimeStatstics()
+            throws BahiKhataStatsticsBeanException
+    {
+        Message m = logger.traceEntry("getOperatingSystemStatstics");
+        RuntimeMXBean runtimeMXBean = bahiKhataMonitoringMBeanFactory.getGarbageRuntimeMXBean();
+        BahiKhataRuntimeStatisticsDTO bahiKhataRuntimeStatisticsDTO = new BahiKhataRuntimeStatisticsDTO();
+        bahiKhataRuntimeStatisticsDTO.setBootClassPath(runtimeMXBean.getBootClassPath());
+        bahiKhataRuntimeStatisticsDTO.setClassPath(runtimeMXBean.getClassPath());
+        bahiKhataRuntimeStatisticsDTO.setLibraryPath(runtimeMXBean.getLibraryPath());
+        return logger.traceExit(m,
+                ResponseEntity.status(HttpStatus.OK).body(bahiKhataRuntimeStatisticsDTO));
     }
 
     public CacheManager getCacheManager()
@@ -167,6 +230,12 @@ public class BahiKhataMonitoringService
         this.cacheManager = cacheManager;
     }
 
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method evict all caches
+     * 
+     * @since 05 Oct 2019
+     * @return ResponseEntity<Object>
+     */
     public void evictAllCaches()
     {
         for (String name : cacheManager.getCacheNames())

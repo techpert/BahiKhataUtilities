@@ -19,6 +19,7 @@ import bahikhata.utilities.monitoring.constants.BahiKhataMonitoringConstants;
 import bahikhata.utilities.monitoring.dto.BahiKhataCacheStatisticsDTO;
 import bahikhata.utilities.monitoring.dto.BahiKhataMemoryStatsticsDTO;
 import bahikhata.utilities.monitoring.dto.BahiKhataOperatingSystemStatisticsDTO;
+import bahikhata.utilities.monitoring.dto.BahiKhataRuntimeStatisticsDTO;
 import bahikhata.utilities.monitoring.exception.BahiKhataStatsticsBeanException;
 import bahikhata.utilities.monitoring.service.BahiKhataMonitoringService;
 import io.swagger.annotations.Api;
@@ -92,11 +93,29 @@ public class BahiKhataMonitoringController
     @GetMapping(value = BahiKhataMonitoringConstants.MONITORING_ENDPOINT_OPERATING_SYSTEM_STATISTICS, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "getOperatingSystemStatstics", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, notes = "The method fetches cache statistics", response = BahiKhataCacheStatisticsDTO.class, protocols = "https")
     @PreAuthorize(BahiKhataMonitoringConstants.ADMIN_WITH_WRITE_PERMISSION)
-    @ApiResponses({ @ApiResponse(code = 200, message = "Successfully fetched memory statistics") })
+    @ApiResponses({ @ApiResponse(code = 200, message = "Successfully fetched Operating System statistics") })
     public ResponseEntity<BahiKhataOperatingSystemStatisticsDTO> getOperatingSystemStatstics()
             throws BahiKhataStatsticsBeanException
     {
         Message m = logger.traceEntry("getOperatingSystemStatstics");
         return logger.traceExit(m, bahiKhataMonitoringService.getOperatingSystemStatstics());
+    }
+    
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetches the Runtime statstics
+     * 
+     * @since 5 Oct 2019
+     * @return JSON representation of {@link BahiKhataRuntimeStatisticsDTO}
+     * @throws BahiKhataStatsticsBeanException
+     */
+    @GetMapping(value = BahiKhataMonitoringConstants.MONITORING_ENDPOINT_RUNTIIME_STATISTICS, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "getRuntimeStatstics", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, notes = "The method fetches cache statistics", response = BahiKhataCacheStatisticsDTO.class, protocols = "https")
+    @PreAuthorize(BahiKhataMonitoringConstants.ADMIN_WITH_WRITE_PERMISSION)
+    @ApiResponses({ @ApiResponse(code = 200, message = "Successfully fetched runtime statistics") })
+    public ResponseEntity<BahiKhataRuntimeStatisticsDTO> getRuntimeStatstics()
+            throws BahiKhataStatsticsBeanException
+    {
+        Message m = logger.traceEntry("getRuntimeStatstics");
+        return logger.traceExit(m, bahiKhataMonitoringService.getRuntimeStatstics());
     }
 }

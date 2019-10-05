@@ -1,3 +1,6 @@
+/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
 package bahikhata.utilities.monitoring.exception.handler;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
@@ -15,11 +18,28 @@ import bahikhata.utilities.monitoring.controller.BahiKhataMonitoringController;
 import bahikhata.utilities.monitoring.exception.BahiKhataStatsticsBeanException;
 import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
 
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is used as an exceptionHandler class
+ * for Bahikhata Monitoring Exceptions
+ * 
+ * @author Neeraj Jain
+ * @since 05-Oct-2019
+ * @version 0.0.1
+ */
 @ControllerAdvice(basePackageClasses = BahiKhataMonitoringController.class)
 public class BahiKhatMonitoringExceptionHandler
 {
     Logger logger = LogManager.getLogger(BahiKhatMonitoringExceptionHandler.class);
 
+    
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This Method acts as an Exception handler response
+     * generator for {@link BahiKhataStatsticsBeanException}
+     * 
+     * @since 05-Oct-2019
+     * @param ex {@link BahiKhataStatsticsBeanException}
+     * @return ResponseEntity Error response
+     */
     @ExceptionHandler(BahiKhataStatsticsBeanException.class)
     public ResponseEntity<String> handleBahiKhataStatsticsBeanException(
             BahiKhataStatsticsBeanException bahiKhataStatsticsBeanException)

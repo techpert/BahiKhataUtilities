@@ -1,11 +1,19 @@
+/**
+ *  copyright © 2019 Techpert It Solutions Private Limited
+ */
 package bahikhata.utilities.monitoring.dto;
-
-import java.util.Objects;
 
 import bahikhata.utilities.monitoring.constants.BahiKhataMonitoringConstants;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is model class for Cache Statistics
+ * 
+ * @author Neeraj.Jain
+ * @since 5-Oct-2019
+ * @version 1.0
+ */
 @ApiModel(description = BahiKhataMonitoringConstants.BAHIKHATA_CACHE_STATISTICS_CLASS_DESCRIPTION, reference = "BahiKhataCacheStatisticsDTO")
 public class BahiKhataCacheStatisticsDTO
 {
@@ -174,38 +182,4 @@ public class BahiKhataCacheStatisticsDTO
                 + ", averageGetTime=" + averageGetTime + ", averagePutTime=" + averagePutTime
                 + ", averageRemoveTime=" + averageRemoveTime + "]";
     }
-
-    @Override
-    public int hashCode()
-    {
-        return Objects.hash(averageGetTime, averagePutTime, averageRemoveTime, cacheEvictions,
-                cacheGets, cacheHits, cacheHitsPercencantage, cacheMissPercentage, cacheMisses,
-                cachePuts, cacheRemovals);
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        BahiKhataCacheStatisticsDTO other = (BahiKhataCacheStatisticsDTO) obj;
-        return Float.floatToIntBits(averageGetTime) == Float.floatToIntBits(other.averageGetTime)
-                && Float.floatToIntBits(averagePutTime) == Float
-                        .floatToIntBits(other.averagePutTime)
-                && Float.floatToIntBits(averageRemoveTime) == Float
-                        .floatToIntBits(other.averageRemoveTime)
-                && cacheEvictions == other.cacheEvictions && cacheGets == other.cacheGets
-                && cacheHits == other.cacheHits
-                && Float.floatToIntBits(cacheHitsPercencantage) == Float
-                        .floatToIntBits(other.cacheHitsPercencantage)
-                && Float.floatToIntBits(cacheMissPercentage) == Float
-                        .floatToIntBits(other.cacheMissPercentage)
-                && cacheMisses == other.cacheMisses && cachePuts == other.cachePuts
-                && cacheRemovals == other.cacheRemovals;
-    }
-
 }

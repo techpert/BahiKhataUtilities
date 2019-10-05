@@ -1,9 +1,19 @@
+/**
+ *  copyright © 2019 Techpert It Solutions Private Limited
+ */
 package bahikhata.utilities.monitoring.dto;
 
 import bahikhata.utilities.monitoring.constants.BahiKhataMonitoringConstants;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is model class for Operating System Statistics
+ * 
+ * @author Neeraj.Jain
+ * @since 5-Oct-2019
+ * @version 1.0
+ */
 @ApiModel(description = BahiKhataMonitoringConstants.BAHIKHATA_OPERATING_SYSTEM_STATISTICS_CLASS_DESCRIPTION, reference = "BahiKhataOperatingSystemStatisticsDTO")
 public class BahiKhataOperatingSystemStatisticsDTO
 {

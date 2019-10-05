@@ -1,8 +1,11 @@
+/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
 package bahikhata.utilities.monitoring.factory;
 
-import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
+import java.lang.management.RuntimeMXBean;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,17 +24,30 @@ import com.sun.management.OperatingSystemMXBean;
 
 import bahikhata.utilities.monitoring.exception.BahiKhataStatsticsBeanException;
 
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class will act as factory of MXbeans and fetch MXbeans from Mbean manager and
+ * 
+ * @author Neeraj Jain
+ * @see MBeanServer
+ * @since Oct 05,2019
+ * @version 0.0.1
+ */
 @Component
 final public class BahiKhataMonitoringMBeanFactory
 {
 
     CacheManager cacheManager;
-    public static final String JAVA_MEMORY_MXBEAN_OBJECT_NAME = "java.lang:type=Memory";
     public static final String CACHE_MXBEAN_OBJECT_NAME = "javax.cache:type=CacheStatistics,CacheManager=urn.X-ehcache.jsr107-default-config,Cache=";
-    public static final String OPERATING_SYSTEM_MXBEAN_OBJECT_NAME = "java.lang:type=OperatingSystem";
-    public static final String GARBAGE_COLLECTION_AGGREGATOR_MXBEAN_OBJECT_NAME = "com.sun.management:type=GarbageCollectionAggregator";
     final static MBeanServer mbeanServer = ManagementFactory.getPlatformMBeanServer();
 
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method evict all caches
+     * 
+     * @since 05 Oct 2019
+     * @return List<CacheStatisticsMXBean>
+     * @see CacheStatisticsMXBean
+     * @throws BahiKhataStatsticsBeanException
+     */
     public final List<CacheStatisticsMXBean> getCacheStatisticsMXBeans()
             throws BahiKhataStatsticsBeanException
     {
@@ -45,31 +61,66 @@ final public class BahiKhataMonitoringMBeanFactory
         return cacheStatisticsMXBeansList;
     }
 
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetch CacheStatisticsMXBean
+     * 
+     * @since 05 Oct 2019
+     * @return {@link CacheStatisticsMXBean}
+     * @throws BahiKhataStatsticsBeanException
+     */
     public final CacheStatisticsMXBean getCacheStatisticsMXBean(String cacheName)
             throws BahiKhataStatsticsBeanException
     {
         return getMonitoringBean(CACHE_MXBEAN_OBJECT_NAME + cacheName, CacheStatisticsMXBean.class);
     }
-
-    public final GarbageCollectorMXBean getGarbageCollectorMXBean()
-            throws BahiKhataStatsticsBeanException
+    
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetch MemoryMXBean RuntimeMXBean
+     * 
+     * @since 05 Oct 2019
+     * @return {@link RuntimeMXBean}
+     * @throws BahiKhataStatsticsBeanException
+     */
+    public final RuntimeMXBean getGarbageRuntimeMXBean() throws BahiKhataStatsticsBeanException
     {
-
-        return getMonitoringBean(GARBAGE_COLLECTION_AGGREGATOR_MXBEAN_OBJECT_NAME,
-                GarbageCollectorMXBean.class);
+        return ManagementFactory.getRuntimeMXBean();
     }
 
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetch MemoryMXBean
+     * 
+     * @since 05 Oct 2019
+     * @return {@link MemoryMXBean}
+     * @throws BahiKhataStatsticsBeanException
+     */
     public final MemoryMXBean getMemoryMXBean() throws BahiKhataStatsticsBeanException
     {
+        
         return ManagementFactory.getMemoryMXBean();
     }
 
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetch OperatingSystemMXBean
+     * 
+     * @since 05 Oct 2019
+     * @return {@link OperatingSystemMXBean
+     * @throws BahiKhataStatsticsBeanException
+     */
     public final OperatingSystemMXBean getOperatingSystemMXBean()
             throws BahiKhataStatsticsBeanException
     {
         return ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
     }
 
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetch Monitoring bean (MXBean) from MBean manager
+     * 
+     * @since 05 Oct 2019
+     * @param objectName
+     * @param monitoringBean
+     * @return monitoringBean of Type T 
+     * @throws BahiKhataStatsticsBeanException
+     */
     private final <T> T getMonitoringBean(String objectName, Class<T> monitoringBean)
             throws BahiKhataStatsticsBeanException
     {

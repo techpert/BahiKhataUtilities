@@ -24,6 +24,7 @@ public final class BahiKhataMonitoringConstants
     public static final String MONITORING_ENDPOINT_CACHE_STATISTICS = "/cache-stats";
     public static final String MONITORING_ENDPOINT_MEMORY_STATISTICS = "/memory-stats";
     public static final String MONITORING_ENDPOINT_OPERATING_SYSTEM_STATISTICS = "/operating-system-stats";
+    public static final String MONITORING_ENDPOINT_RUNTIIME_STATISTICS = "/runtime-stats";
 
     public static final String MONITORING_SERVICE_CLASS_TAG = "Bahikhata-Monitoring";
     public static final String MONITORING_SERVICE_CLASS_VALUE = "BahikhataMonitoring";
@@ -65,7 +66,7 @@ public final class BahiKhataMonitoringConstants
     public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_AVERAGE_REMOVAL_TIME_VALUE = "1.2";
 
     /**
-     * Techpert:Bahikhata : 0.0.1 :BahiKhata CacheStatistics Class Constants
+     * Techpert:Bahikhata : 0.0.1 :BahiKhata MemoryStatistics Class Constants
      */
     public static final String BAHIKHATA_MEMORY_STATISTICS_CLASS_DESCRIPTION = "Model class for BahiKhataMemoryStatistics";
     public static final String BAHIKHATA_MEMORY_STATISTICS_INITIAL_NON_HEAPMEMORY_DESCRIPTION = "Non heap memory available initially in mega bytes";
@@ -77,14 +78,14 @@ public final class BahiKhataMonitoringConstants
     public static final String BAHIKHATA_MEMORY_STATISTICS_COMMITTED_HEAP_MEMORY_DESCRIPTION = "Heap memory commited to JVM in mega bytes";
     public static final String BAHIKHATA_MEMORY_STATISTICS_MAX_HEAP_MEMORY_DESCRIPTION = "Maximum heap memory available in mega bytes";
 
-    public static final String BAHIKHATA_MEMORY_STATISTICS_INITIAL_NON_HEAPMEMORY_VALUE = "";
-    public static final String BAHIKHATA_MEMORY_STATISTICS_USED_NON_HEAPMEMORY_VALUE = "";
-    public static final String BAHIKHATA_MEMORY_STATISTICS_COMMITTED_NON_HEAPMEMORY_VALUE = "";
-    public static final String BAHIKHATA_MEMORY_STATISTICS_MAX_NON_HEAP_MEMORY_VALUE = "";
-    public static final String BAHIKHATA_MEMORY_STATISTICS_INITIAL_HEAP_MEMORY_VALUE = "";
-    public static final String BAHIKHATA_MEMORY_STATISTICS_USED_HEAP_MEMORY_VALUE = "";
-    public static final String BAHIKHATA_MEMORY_STATISTICS_COMMITTED_HEAP_MEMORY_VALUE = "";
-    public static final String BAHIKHATA_MEMORY_STATISTICS_MAX_HEAP_MEMORY_VALUE = "";
+    public static final String BAHIKHATA_MEMORY_STATISTICS_INITIAL_NON_HEAPMEMORY_VALUE = "2 MB";
+    public static final String BAHIKHATA_MEMORY_STATISTICS_USED_NON_HEAPMEMORY_VALUE = "-1 MB";
+    public static final String BAHIKHATA_MEMORY_STATISTICS_COMMITTED_NON_HEAPMEMORY_VALUE = "123 MB";
+    public static final String BAHIKHATA_MEMORY_STATISTICS_MAX_NON_HEAP_MEMORY_VALUE = "1 MB";
+    public static final String BAHIKHATA_MEMORY_STATISTICS_INITIAL_HEAP_MEMORY_VALUE = "278 MB";
+    public static final String BAHIKHATA_MEMORY_STATISTICS_USED_HEAP_MEMORY_VALUE = "5 MB";
+    public static final String BAHIKHATA_MEMORY_STATISTICS_COMMITTED_HEAP_MEMORY_VALUE = "45 MB";
+    public static final String BAHIKHATA_MEMORY_STATISTICS_MAX_HEAP_MEMORY_VALUE = "25 MB";
 
     /**
      * Techpert:Bahikhata : 0.0.1 :BahiKhata OperatingSystem Class Constants
@@ -95,10 +96,22 @@ public final class BahiKhataMonitoringConstants
     public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_JVM_CPU_USAGE_DESCRIPTION = "CPU used by JVM in percentage";
     public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_SYSTEM_CPU_USAGE_DESCRIPTION = "CPU used by System in percentage";
 
-    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_OPERATING_SYSTEM_NAME_VALUE = "";
-    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_AVAILABLE_PROCESSORS_VALUE = "";
-    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_JVM_CPU_USAGE_VALUE = "";
-    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_SYSTEM_CPU_USAGE_VALUE = "";
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_OPERATING_SYSTEM_NAME_VALUE = "Windows 10";
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_AVAILABLE_PROCESSORS_VALUE = "8";
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_JVM_CPU_USAGE_VALUE = "33.13%";
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_SYSTEM_CPU_USAGE_VALUE = "31.44%";
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :BahiKhata RuntimeStatistics Class Constants
+     */
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_CLASS_DESCRIPTION = "Model class for BahiKhataOperatingSystemStatistics";
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_BOOT_CLASSPATH_DESCRIPTION = "Boot class path for the application";
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_CLASSPATH_DESCRIPTION = "Class path for the application";
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_LIBRARY_PATH_DESCRIPTION = "Library path for the application";
+
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_BOOT_CLASSPATH_VALUE = "C:\\Program Files\\Java\\jdk1.8.0_201\\jre\\lib\\rt.jar";
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_CLASSPATH_VALUE = "D:\\BahiKhataUsers\\target\\classes;";
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_LIBRARY_PATH_VALUE = "C:\\WINDOWS;C:\\WINDOWS\\system32;";
 
     public static final String ERROR_KEY = "errors";
     public static final String INTERNAL_SERVER_ERROR_KEY = "Internal Server Error";

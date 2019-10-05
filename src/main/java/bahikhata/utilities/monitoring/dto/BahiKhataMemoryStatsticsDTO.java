@@ -1,13 +1,23 @@
+/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
 package bahikhata.utilities.monitoring.dto;
 
 import bahikhata.utilities.monitoring.constants.BahiKhataMonitoringConstants;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is model class for Memory Statistics
+ * 
+ * @author Neeraj.Jain
+ * @since 5-Oct-2019
+ * @version 1.0
+ */
 @ApiModel(description = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_CLASS_DESCRIPTION, reference = "BahiKhataMemoryStatsticsDTO")
 public class BahiKhataMemoryStatsticsDTO
 {
-    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_CLASS_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_INITIAL_NON_HEAPMEMORY_VALUE)
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_INITIAL_NON_HEAPMEMORY_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_INITIAL_NON_HEAPMEMORY_VALUE)
     private String initialNonHeapMemory;
     @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_USED_NON_HEAPMEMORY_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_USED_NON_HEAPMEMORY_VALUE)
     private String usedNonHeapMemory;
@@ -120,6 +130,17 @@ public class BahiKhataMemoryStatsticsDTO
     public void setMaxHeapMemory(String maxHeapMemory)
     {
         this.maxHeapMemory = maxHeapMemory;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "BahiKhataMemoryStatsticsDTO [initialNonHeapMemory=" + initialNonHeapMemory
+                + ", usedNonHeapMemory=" + usedNonHeapMemory + ", committedNonHeapMemory="
+                + committedNonHeapMemory + ", maxNonHeapMemory=" + maxNonHeapMemory
+                + ", initialHeapMemory=" + initialHeapMemory + ", usedHeapMemory=" + usedHeapMemory
+                + ", committedHeapMemory=" + committedHeapMemory + ", maxHeapMemory="
+                + maxHeapMemory + "]";
     }
 
 }
