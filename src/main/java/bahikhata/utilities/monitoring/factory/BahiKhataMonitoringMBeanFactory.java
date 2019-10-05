@@ -3,7 +3,6 @@ package bahikhata.utilities.monitoring.factory;
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
-import java.lang.management.OperatingSystemMXBean;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,11 +17,14 @@ import javax.management.ObjectName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.sun.management.OperatingSystemMXBean;
+
 import bahikhata.utilities.monitoring.exception.BahiKhataStatsticsBeanException;
+
 @Component
 final public class BahiKhataMonitoringMBeanFactory
 {
-    @Autowired
+
     CacheManager cacheManager;
     public static final String JAVA_MEMORY_MXBEAN_OBJECT_NAME = "java.lang:type=Memory";
     public static final String CACHE_MXBEAN_OBJECT_NAME = "javax.cache:type=CacheStatistics,CacheManager=urn.X-ehcache.jsr107-default-config,Cache=";
@@ -30,7 +32,7 @@ final public class BahiKhataMonitoringMBeanFactory
     public static final String GARBAGE_COLLECTION_AGGREGATOR_MXBEAN_OBJECT_NAME = "com.sun.management:type=GarbageCollectionAggregator";
     final static MBeanServer mbeanServer = ManagementFactory.getPlatformMBeanServer();
 
-    public final  List<CacheStatisticsMXBean> getCacheStatisticsMXBeans()
+    public final List<CacheStatisticsMXBean> getCacheStatisticsMXBeans()
             throws BahiKhataStatsticsBeanException
     {
         List<CacheStatisticsMXBean> cacheStatisticsMXBeansList = new ArrayList<>();
@@ -43,13 +45,13 @@ final public class BahiKhataMonitoringMBeanFactory
         return cacheStatisticsMXBeansList;
     }
 
-    public final  CacheStatisticsMXBean getCacheStatisticsMXBean(String cacheName)
+    public final CacheStatisticsMXBean getCacheStatisticsMXBean(String cacheName)
             throws BahiKhataStatsticsBeanException
     {
         return getMonitoringBean(CACHE_MXBEAN_OBJECT_NAME + cacheName, CacheStatisticsMXBean.class);
     }
 
-    public final  GarbageCollectorMXBean getGarbageCollectorMXBean()
+    public final GarbageCollectorMXBean getGarbageCollectorMXBean()
             throws BahiKhataStatsticsBeanException
     {
 
@@ -57,21 +59,18 @@ final public class BahiKhataMonitoringMBeanFactory
                 GarbageCollectorMXBean.class);
     }
 
-    public final  MemoryMXBean getMemoryMXBean() throws BahiKhataStatsticsBeanException
+    public final MemoryMXBean getMemoryMXBean() throws BahiKhataStatsticsBeanException
     {
-        return getMonitoringBean(JAVA_MEMORY_MXBEAN_OBJECT_NAME, MemoryMXBean.class);
-
+        return ManagementFactory.getMemoryMXBean();
     }
 
-    public final  OperatingSystemMXBean getOperatingSystemMXBean()
+    public final OperatingSystemMXBean getOperatingSystemMXBean()
             throws BahiKhataStatsticsBeanException
     {
-
-        return getMonitoringBean(OPERATING_SYSTEM_MXBEAN_OBJECT_NAME, OperatingSystemMXBean.class);
-
+        return ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
     }
 
-    private final  <T> T getMonitoringBean(String objectName, Class<T> monitoringBean)
+    private final <T> T getMonitoringBean(String objectName, Class<T> monitoringBean)
             throws BahiKhataStatsticsBeanException
     {
         ObjectName mBeanName = null;
@@ -81,14 +80,25 @@ final public class BahiKhataMonitoringMBeanFactory
             if (!mbeanServer.isRegistered(mBeanName))
             {
                 throw new BahiKhataStatsticsBeanException(
-                        "The Object is not registered with MBean Server: "+objectName);
+                        "The Object is not registered with MBean Server: " + objectName);
             }
         }
         catch (MalformedObjectNameException e)
         {
             throw new BahiKhataStatsticsBeanException(
-                    "Object Name used to query MBean is incorrect or malformed: "+objectName, e);
+                    "Object Name used to query MBean is incorrect or malformed: " + objectName, e);
         }
         return JMX.newMBeanProxy(mbeanServer, mBeanName, monitoringBean);
+    }
+
+    public CacheManager getCacheManager()
+    {
+        return cacheManager;
+    }
+
+    @Autowired
+    public void setCacheManager(CacheManager cacheManager)
+    {
+        this.cacheManager = cacheManager;
     }
 }

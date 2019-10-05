@@ -1,70 +1,125 @@
 package bahikhata.utilities.monitoring.dto;
 
-import java.lang.management.MemoryUsage;
-import java.util.Objects;
+import bahikhata.utilities.monitoring.constants.BahiKhataMonitoringConstants;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(description = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_CLASS_DESCRIPTION, reference = "BahiKhataMemoryStatsticsDTO")
 public class BahiKhataMemoryStatsticsDTO
 {
-    private MemoryUsage nonHeapMemoryUsage;
-    private MemoryUsage heapMemoryUsage;
-
-    public BahiKhataMemoryStatsticsDTO(MemoryUsage nonHeapMemoryUsage, MemoryUsage heapMemoryUsage)
-    {
-        super();
-        this.nonHeapMemoryUsage = nonHeapMemoryUsage;
-        this.heapMemoryUsage = heapMemoryUsage;
-    }
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_CLASS_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_INITIAL_NON_HEAPMEMORY_VALUE)
+    private String initialNonHeapMemory;
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_USED_NON_HEAPMEMORY_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_USED_NON_HEAPMEMORY_VALUE)
+    private String usedNonHeapMemory;
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_COMMITTED_NON_HEAPMEMORY_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_COMMITTED_NON_HEAPMEMORY_VALUE)
+    private String committedNonHeapMemory;
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_MAX_NON_HEAP_MEMORY_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_MAX_NON_HEAP_MEMORY_VALUE)
+    private String maxNonHeapMemory;
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_INITIAL_HEAP_MEMORY_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_INITIAL_HEAP_MEMORY_VALUE)
+    private String initialHeapMemory;
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_USED_HEAP_MEMORY_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_USED_HEAP_MEMORY_VALUE)
+    private String usedHeapMemory;
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_COMMITTED_HEAP_MEMORY_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_COMMITTED_HEAP_MEMORY_VALUE)
+    private String committedHeapMemory;
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_MAX_HEAP_MEMORY_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_MAX_HEAP_MEMORY_VALUE)
+    private String maxHeapMemory;
 
     public BahiKhataMemoryStatsticsDTO()
     {
-        super();
     }
 
-    public MemoryUsage getNonHeapMemoryUsage()
+    public BahiKhataMemoryStatsticsDTO(String initialNonHeapMemory, String usedNonHeapMemory,
+            String committedNonHeapMemory, String maxNonHeapMemory, String initialHeapMemory,
+            String usedHeapMemory, String committedHeapMemory, String maxHeapMemory)
     {
-        return nonHeapMemoryUsage;
+        this.initialNonHeapMemory = initialNonHeapMemory;
+        this.usedNonHeapMemory = usedNonHeapMemory;
+        this.committedNonHeapMemory = committedNonHeapMemory;
+        this.maxNonHeapMemory = maxNonHeapMemory;
+        this.initialHeapMemory = initialHeapMemory;
+        this.usedHeapMemory = usedHeapMemory;
+        this.committedHeapMemory = committedHeapMemory;
+        this.maxHeapMemory = maxHeapMemory;
     }
 
-    public void setNonHeapMemoryUsage(MemoryUsage nonHeapMemoryUsage)
+    public String getInitialNonHeapMemory()
     {
-        this.nonHeapMemoryUsage = nonHeapMemoryUsage;
+        return initialNonHeapMemory;
     }
 
-    public MemoryUsage getHeapMemoryUsage()
+    public void setInitialNonHeapMemory(String initialNonHeapMemory)
     {
-        return heapMemoryUsage;
+        this.initialNonHeapMemory = initialNonHeapMemory;
     }
 
-    public void setHeapMemoryUsage(MemoryUsage heapMemoryUsage)
+    public String getUsedNonHeapMemory()
     {
-        this.heapMemoryUsage = heapMemoryUsage;
+        return usedNonHeapMemory;
     }
 
-    @Override
-    public String toString()
+    public void setUsedNonHeapMemory(String usedNonHeapMemory)
     {
-        return "BahiKhataMemoryStatsticsDTO [nonHeapMemoryUsage=" + nonHeapMemoryUsage
-                + ", heapMemoryUsage=" + heapMemoryUsage + "]";
+        this.usedNonHeapMemory = usedNonHeapMemory;
     }
 
-    @Override
-    public int hashCode()
+    public String getCommittedNonHeapMemory()
     {
-        return Objects.hash(heapMemoryUsage, nonHeapMemoryUsage);
+        return committedNonHeapMemory;
     }
 
-    @Override
-    public boolean equals(Object obj)
+    public void setCommittedNonHeapMemory(String committedNonHeapMemory)
     {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        BahiKhataMemoryStatsticsDTO other = (BahiKhataMemoryStatsticsDTO) obj;
-        return Objects.equals(heapMemoryUsage, other.heapMemoryUsage)
-                && Objects.equals(nonHeapMemoryUsage, other.nonHeapMemoryUsage);
+        this.committedNonHeapMemory = committedNonHeapMemory;
+    }
+
+    public String getMaxNonHeapMemory()
+    {
+        return maxNonHeapMemory;
+    }
+
+    public void setMaxNonHeapMemory(String maxNonHeapMemory)
+    {
+        this.maxNonHeapMemory = maxNonHeapMemory;
+    }
+
+    public String getInitialHeapMemory()
+    {
+        return initialHeapMemory;
+    }
+
+    public void setInitialHeapMemory(String initialHeapMemory)
+    {
+        this.initialHeapMemory = initialHeapMemory;
+    }
+
+    public String getUsedHeapMemory()
+    {
+        return usedHeapMemory;
+    }
+
+    public void setUsedHeapMemory(String usedHeapMemory)
+    {
+        this.usedHeapMemory = usedHeapMemory;
+    }
+
+    public String getCommittedHeapMemory()
+    {
+        return committedHeapMemory;
+    }
+
+    public void setCommittedHeapMemory(String committedHeapMemory)
+    {
+        this.committedHeapMemory = committedHeapMemory;
+    }
+
+    public String getMaxHeapMemory()
+    {
+        return maxHeapMemory;
+    }
+
+    public void setMaxHeapMemory(String maxHeapMemory)
+    {
+        this.maxHeapMemory = maxHeapMemory;
     }
 
 }
