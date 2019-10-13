@@ -37,6 +37,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.OAuth2Request;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.test.context.TestSecurityContextHolder;
 import org.springframework.security.test.context.support.WithSecurityContextFactory;
 
 /**
@@ -219,12 +220,12 @@ public class BahiKhataTestAuthorizationServerConfig extends AuthorizationServerC
 			token = tokenservice.createAccessToken(auth);
 			bahiKhataTestToken.setToken(token.getValue());
 			context.setAuthentication(auth);
-
+			TestSecurityContextHolder.setContext(context);
 			return context;
 		} catch (NoSuchClientException e) {
 			bahiKhataTestToken.setToken(null);
 			return context;
 		}
 	}
-
+	
 }
