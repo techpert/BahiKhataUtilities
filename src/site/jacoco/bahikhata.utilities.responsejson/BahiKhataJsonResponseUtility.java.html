@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataJsonResponseUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.responsejson</a> &gt; <span class="el_source">BahiKhataJsonResponseUtility.java</span></div><h1>BahiKhataJsonResponseUtility.java</h1><pre class="source lang-java linenums">/**
+ *  copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.responsejson;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class contains helper methods for generating
+ * response JSONs
+ * 
+ * @author Rudhra Koul
+ *
+ */
+public class BahiKhataJsonResponseUtility {
+
+	/**
+	 * 
+	 */
+<span class="nc" id="L28">	public BahiKhataJsonResponseUtility() {</span>
+<span class="nc" id="L29">	}</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
+	 * response JSONs for the supplied POJO class. This method also adds some
+	 * additional keys to the JSON like , isSuccess etc.
+	 * 
+	 * @author Rudhra Koul
+	 * @param      &lt;T&gt;
+	 * @param pojo
+	 * @return jsonstring String
+	 */
+	@Deprecated
+	public static &lt;T&gt; String generateSuccessResponseJson(T pojo) {
+
+<span class="nc" id="L44">		ObjectMapper mapper = new ObjectMapper();</span>
+
+<span class="nc" id="L46">		ObjectNode pojoObjectNode = mapper.createObjectNode();</span>
+<span class="nc" id="L47">		pojoObjectNode.putPOJO(pojo.getClass().getSimpleName(), pojo);</span>
+<span class="nc" id="L48">		pojoObjectNode.put(&quot;isSuccess&quot;, true);</span>
+		try {
+<span class="nc" id="L50">			return mapper.writeValueAsString(pojoObjectNode);</span>
+<span class="nc" id="L51">		} catch (JsonProcessingException e) {</span>
+<span class="nc" id="L52">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L54">		return null;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
+	 * response JSONs for the supplied POJO class. This method also adds some
+	 * additional keys to the JSON like , isSuccess etc.
+	 * 
+	 * @author Namit Jain
+	 * @param pojo
+	 * @return jsonstring String
+	 */
+	public static &lt;T&gt; String generateSuccessResponseJson(T pojo, String pojoName) {
+
+<span class="nc" id="L68">		ObjectMapper mapper = new ObjectMapper();</span>
+
+<span class="nc" id="L70">		ObjectNode pojoObjectNode = mapper.createObjectNode();</span>
+<span class="nc" id="L71">		pojoObjectNode.putPOJO(pojoName, pojo);</span>
+<span class="nc" id="L72">		pojoObjectNode.put(&quot;isSuccess&quot;, true);</span>
+		try {
+<span class="nc" id="L74">			return mapper.writeValueAsString(pojoObjectNode);</span>
+<span class="nc" id="L75">		} catch (JsonProcessingException e) {</span>
+<span class="nc" id="L76">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L78">		return null;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
+	 * response JSON for a collection of objects supplied as a HashMap&lt;Identifier,
+	 * POJO&gt;.This method also adds some additional keys to the JSON like isSuccess
+	 * etc.
+	 * 
+	 * @author Rudhra Koul
+	 * @param pojoMap        HashMap&lt;P, T&gt;
+	 * @param collectionName String
+	 * @return responseJson String
+	 */
+	public static &lt;P, T&gt; String generateSuccessResponseJsonForMap(HashMap&lt;P, T&gt; pojoMap, String collectionName) {
+
+<span class="nc" id="L94">		ObjectMapper mapper = new ObjectMapper();</span>
+
+<span class="nc" id="L96">		ObjectNode pojoObjectNode = mapper.createObjectNode();</span>
+<span class="nc" id="L97">		Set&lt;P&gt; keyset = pojoMap.keySet();</span>
+<span class="nc" id="L98">		List&lt;T&gt; values = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">		for (P p : keyset) {</span>
+<span class="nc" id="L100">			values.add(pojoMap.get(p));</span>
+<span class="nc" id="L101">		}</span>
+<span class="nc" id="L102">		pojoObjectNode.putPOJO(collectionName, values);</span>
+<span class="nc" id="L103">		pojoObjectNode.put(&quot;isSuccess&quot;, true);</span>
+		try {
+<span class="nc" id="L105">			return mapper.writeValueAsString(pojoObjectNode);</span>
+<span class="nc" id="L106">		} catch (JsonProcessingException e) {</span>
+<span class="nc" id="L107">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L109">		return null;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
+	 * response JSON for a collection of objects supplied as a List&lt;T&gt;. This method
+	 * also adds some additional keys to the JSON like isSuccess etc.
+	 * 
+	 * @author Rudhra Koul
+	 * @param pojoList       List&lt;T&gt;
+	 * @param collectionName String
+	 * @return responseJson String
+	 */
+	public static &lt;T&gt; String generateSuccessResponseJsonForList(List&lt;T&gt; pojoList, String collectionName) {
+
+<span class="nc" id="L124">		ObjectMapper mapper = new ObjectMapper();</span>
+
+<span class="nc" id="L126">		ObjectNode pojoObjectNode = mapper.createObjectNode();</span>
+<span class="nc" id="L127">		pojoObjectNode.putPOJO(collectionName, pojoList);</span>
+<span class="nc" id="L128">		pojoObjectNode.put(&quot;isSuccess&quot;, true);</span>
+		try {
+<span class="nc" id="L130">			return mapper.writeValueAsString(pojoObjectNode);</span>
+<span class="nc" id="L131">		} catch (JsonProcessingException e) {</span>
+<span class="nc" id="L132">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L134">		return null;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating error response
+	 * JSONs for the supplied POJO class. This method also adds some additional keys
+	 * to the JSON like isSuccess etc.
+	 * 
+	 * @author Rudhra Koul
+	 * @param pojo
+	 * @return jsonstring String
+	 */
+	@Deprecated
+	public static &lt;T&gt; String generateErrorResponseJson(T pojo) {
+
+<span class="nc" id="L149">		ObjectMapper mapper = new ObjectMapper();</span>
+
+<span class="nc" id="L151">		ObjectNode pojoObjectNode = mapper.createObjectNode();</span>
+<span class="nc" id="L152">		pojoObjectNode.putPOJO(pojo.getClass().getSimpleName(), pojo);</span>
+<span class="nc" id="L153">		pojoObjectNode.put(&quot;isSuccess&quot;, false);</span>
+		try {
+<span class="nc" id="L155">			return mapper.writeValueAsString(pojoObjectNode);</span>
+<span class="nc" id="L156">		} catch (JsonProcessingException e) {</span>
+<span class="nc" id="L157">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L159">		return null;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating error response
+	 * JSONs for the supplied POJO class. This method also adds some additional keys
+	 * to the JSON like isSuccess etc.
+	 * 
+	 * @author Namit Jain
+	 * @param pojo
+	 * @return jsonstring String
+	 */
+	public static &lt;T&gt; String generateErrorResponseJson(T pojo, String pojoName) {
+
+<span class="nc" id="L173">		ObjectMapper mapper = new ObjectMapper();</span>
+
+<span class="nc" id="L175">		ObjectNode pojoObjectNode = mapper.createObjectNode();</span>
+<span class="nc" id="L176">		pojoObjectNode.putPOJO(pojoName, pojo);</span>
+<span class="nc" id="L177">		pojoObjectNode.put(&quot;isSuccess&quot;, false);</span>
+		try {
+<span class="nc" id="L179">			return mapper.writeValueAsString(pojoObjectNode);</span>
+<span class="nc" id="L180">		} catch (JsonProcessingException e) {</span>
+<span class="nc" id="L181">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L183">		return null;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating error response
+	 * JSONs for the supplied errorMap. This method also adds some additional keys
+	 * to the JSON like isSuccess etc.
+	 * 
+	 * @author Rudhra Koul
+	 * @param errorMap HashMap&lt;String, Object&gt;
+	 * @return jsonErrorString String
+	 */
+	public static String generateErrorResponseJson(HashMap&lt;String, Object&gt; errorMap) {
+
+<span class="nc" id="L197">		errorMap.put(&quot;isSuccess&quot;, false);</span>
+<span class="nc" id="L198">		ObjectMapper mapper = new ObjectMapper();</span>
+
+		try {
+<span class="nc" id="L201">			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(errorMap);</span>
+<span class="nc" id="L202">		} catch (JsonProcessingException e) {</span>
+<span class="nc" id="L203">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L205">		return null;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
+	 * response JSON for a collection of objects supplied as a List&lt;T&gt;. This method
+	 * also adds some additional keys to the JSON like isSuccess etc.
+	 * 
+	 * @author Namit Jain
+	 * @param errorList      List&lt;T&gt;
+	 * @param collectionName String
+	 * @return responseJson String
+	 */
+	public static &lt;T&gt; String generateErrorResponseJson(List&lt;T&gt; errorList, String listName) {
+
+<span class="nc" id="L220">		ObjectMapper mapper = new ObjectMapper();</span>
+
+<span class="nc" id="L222">		ObjectNode pojoObjectNode = mapper.createObjectNode();</span>
+<span class="nc" id="L223">		pojoObjectNode.putPOJO(listName, errorList);</span>
+<span class="nc" id="L224">		pojoObjectNode.put(&quot;isSuccess&quot;, false);</span>
+		try {
+<span class="nc" id="L226">			return mapper.writeValueAsString(pojoObjectNode);</span>
+<span class="nc" id="L227">		} catch (JsonProcessingException e) {</span>
+<span class="nc" id="L228">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L230">		return null;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating successful
+	 * response JSON for a collection of objects supplied as a List&lt;T&gt;. This method
+	 * also adds some additional keys to the JSON like isSuccess etc.
+	 * 
+	 * @author Namit Jain
+	 * @param errorList      List&lt;T&gt;
+	 * @param collectionName String
+	 * @return responseJson String
+	 */
+	public static &lt;K, V&gt; String generateErrorResponseJson1(List&lt;HashMap&lt;K, V&gt;&gt; errorList, String listName) {
+
+<span class="nc" id="L245">		ObjectMapper mapper = new ObjectMapper();</span>
+
+<span class="nc" id="L247">		ObjectNode pojoObjectNode = mapper.createObjectNode();</span>
+<span class="nc" id="L248">		pojoObjectNode.putPOJO(listName, errorList);</span>
+<span class="nc" id="L249">		pojoObjectNode.put(&quot;isSuccess&quot;, false);</span>
+		try {
+<span class="nc" id="L251">			return mapper.writeValueAsString(pojoObjectNode);</span>
+<span class="nc" id="L252">		} catch (JsonProcessingException e) {</span>
+<span class="nc" id="L253">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L255">		return null;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method is used for generating POJO from
+	 * supplied JSON.
+	 * 
+	 * @author Rudhra Koul
+	 * @param json String
+	 * @param type Class&lt;T&gt;
+	 * @return pojo
+	 */
+	public static &lt;T&gt; T generatePojoFromJson(String json, Class&lt;T&gt; type) {
+
+		// create ObjectMapper instance
+
+<span class="nc bnc" id="L271" title="All 2 branches missed.">		if (json != null) {</span>
+<span class="nc" id="L272">			byte[] jsonData = json.toString().getBytes();</span>
+<span class="nc bnc" id="L273" title="All 4 branches missed.">			if (jsonData != null &amp;&amp; jsonData.length &gt; 0) {</span>
+
+<span class="nc" id="L275">				ObjectMapper mapper = new ObjectMapper();</span>
+				try {
+<span class="nc" id="L277">					return mapper.readValue(jsonData, type);</span>
+<span class="nc" id="L278">				} catch (IOException e) {</span>
+<span class="nc" id="L279">					e.printStackTrace();</span>
+				}
+			}
+		}
+<span class="nc" id="L283">		return null;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

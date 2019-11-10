@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataMonitoringMBeanFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.monitoring.factory</a> &gt; <span class="el_source">BahiKhataMonitoringMBeanFactory.java</span></div><h1>BahiKhataMonitoringMBeanFactory.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.monitoring.factory;
+
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
+import java.lang.management.RuntimeMXBean;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.cache.CacheManager;
+import javax.cache.management.CacheStatisticsMXBean;
+import javax.management.JMX;
+import javax.management.MBeanServer;
+import javax.management.MalformedObjectNameException;
+import javax.management.ObjectName;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.sun.management.OperatingSystemMXBean;
+
+import bahikhata.utilities.monitoring.exception.BahiKhataStatsticsBeanException;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class will act as factory of MXbeans and fetch MXbeans from Mbean manager and
+ * 
+ * @author Neeraj Jain
+ * @see MBeanServer
+ * @since Oct 05,2019
+ * @version 0.0.1
+ */
+@Component
+<span class="nc" id="L36">final public class BahiKhataMonitoringMBeanFactory</span>
+{
+
+    CacheManager cacheManager;
+    public static final String CACHE_MXBEAN_OBJECT_NAME = &quot;javax.cache:type=CacheStatistics,CacheManager=urn.X-ehcache.jsr107-default-config,Cache=&quot;;
+<span class="nc" id="L41">    final static MBeanServer mbeanServer = ManagementFactory.getPlatformMBeanServer();</span>
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method evict all caches
+     * 
+     * @since 05 Oct 2019
+     * @return List&lt;CacheStatisticsMXBean&gt;
+     * @see CacheStatisticsMXBean
+     * @throws BahiKhataStatsticsBeanException
+     */
+    public final List&lt;CacheStatisticsMXBean&gt; getCacheStatisticsMXBeans()
+            throws BahiKhataStatsticsBeanException
+    {
+<span class="nc" id="L54">        List&lt;CacheStatisticsMXBean&gt; cacheStatisticsMXBeansList = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L55">        Iterable&lt;String&gt; cacheNames = cacheManager.getCacheNames();</span>
+<span class="nc" id="L56">        Iterator&lt;String&gt; cacheNamesIterator = cacheNames.iterator();</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        while (cacheNamesIterator.hasNext())</span>
+        {
+<span class="nc" id="L59">            cacheStatisticsMXBeansList.add(getCacheStatisticsMXBean(cacheNamesIterator.next()));</span>
+        }
+<span class="nc" id="L61">        return cacheStatisticsMXBeansList;</span>
+    }
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetch CacheStatisticsMXBean
+     * 
+     * @since 05 Oct 2019
+     * @return {@link CacheStatisticsMXBean}
+     * @throws BahiKhataStatsticsBeanException
+     */
+    public final CacheStatisticsMXBean getCacheStatisticsMXBean(String cacheName)
+            throws BahiKhataStatsticsBeanException
+    {
+<span class="nc" id="L74">        return getMonitoringBean(CACHE_MXBEAN_OBJECT_NAME + cacheName, CacheStatisticsMXBean.class);</span>
+    }
+    
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetch MemoryMXBean RuntimeMXBean
+     * 
+     * @since 05 Oct 2019
+     * @return {@link RuntimeMXBean}
+     * @throws BahiKhataStatsticsBeanException
+     */
+    public final RuntimeMXBean getGarbageRuntimeMXBean() throws BahiKhataStatsticsBeanException
+    {
+<span class="nc" id="L86">        return ManagementFactory.getRuntimeMXBean();</span>
+    }
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetch MemoryMXBean
+     * 
+     * @since 05 Oct 2019
+     * @return {@link MemoryMXBean}
+     * @throws BahiKhataStatsticsBeanException
+     */
+    public final MemoryMXBean getMemoryMXBean() throws BahiKhataStatsticsBeanException
+    {
+        
+<span class="nc" id="L99">        return ManagementFactory.getMemoryMXBean();</span>
+    }
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetch OperatingSystemMXBean
+     * 
+     * @since 05 Oct 2019
+     * @return {@link OperatingSystemMXBean
+     * @throws BahiKhataStatsticsBeanException
+     */
+    public final OperatingSystemMXBean getOperatingSystemMXBean()
+            throws BahiKhataStatsticsBeanException
+    {
+<span class="nc" id="L112">        return ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);</span>
+    }
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetch Monitoring bean (MXBean) from MBean manager
+     * 
+     * @since 05 Oct 2019
+     * @param objectName
+     * @param monitoringBean
+     * @return monitoringBean of Type T 
+     * @throws BahiKhataStatsticsBeanException
+     */
+    private final &lt;T&gt; T getMonitoringBean(String objectName, Class&lt;T&gt; monitoringBean)
+            throws BahiKhataStatsticsBeanException
+    {
+<span class="nc" id="L127">        ObjectName mBeanName = null;</span>
+        try
+        {
+<span class="nc" id="L130">            mBeanName = new ObjectName(objectName);</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">            if (!mbeanServer.isRegistered(mBeanName))</span>
+            {
+<span class="nc" id="L133">                throw new BahiKhataStatsticsBeanException(</span>
+                        &quot;The Object is not registered with MBean Server: &quot; + objectName);
+            }
+        }
+<span class="nc" id="L137">        catch (MalformedObjectNameException e)</span>
+        {
+<span class="nc" id="L139">            throw new BahiKhataStatsticsBeanException(</span>
+                    &quot;Object Name used to query MBean is incorrect or malformed: &quot; + objectName, e);
+<span class="nc" id="L141">        }</span>
+<span class="nc" id="L142">        return JMX.newMBeanProxy(mbeanServer, mBeanName, monitoringBean);</span>
+    }
+
+    public CacheManager getCacheManager()
+    {
+<span class="nc" id="L147">        return cacheManager;</span>
+    }
+
+    @Autowired
+    public void setCacheManager(CacheManager cacheManager)
+    {
+<span class="nc" id="L153">        this.cacheManager = cacheManager;</span>
+<span class="nc" id="L154">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

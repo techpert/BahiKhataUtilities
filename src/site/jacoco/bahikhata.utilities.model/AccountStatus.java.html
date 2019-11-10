@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountStatus.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.model</a> &gt; <span class="el_source">AccountStatus.java</span></div><h1>AccountStatus.java</h1><pre class="source lang-java linenums">/**
+ *  copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.model;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+/**
+ * @author Vrinda This is a model class for the ACCOUNT database table.
+ * 
+ */
+public class AccountStatus implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private AccountStatusPK id;
+
+	private BigDecimal closingBalance;
+
+	private BigDecimal openingBalance;
+
+	// bi-directional many-to-one association to Account
+	// @MapsId(FIELD_ACCOUNT_NAME)
+	private Account account;
+
+<span class="nc" id="L26">	public AccountStatus() {</span>
+<span class="nc" id="L27">	}</span>
+
+	/**
+	 * @param id
+	 * @param closingBalance
+	 * @param openingBalance
+	 * @param account
+	 */
+<span class="nc" id="L35">	public AccountStatus(AccountStatusPK id, BigDecimal closingBalance, BigDecimal openingBalance, Account account) {</span>
+<span class="nc" id="L36">		this.id = id;</span>
+<span class="nc" id="L37">		this.closingBalance = closingBalance;</span>
+<span class="nc" id="L38">		this.openingBalance = openingBalance;</span>
+<span class="nc" id="L39">		this.account = account;</span>
+<span class="nc" id="L40">	}</span>
+
+	/**
+	 * @return the id
+	 */
+	public AccountStatusPK getId() {
+<span class="nc" id="L46">		return id;</span>
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(AccountStatusPK id) {
+<span class="nc" id="L53">		this.id = id;</span>
+<span class="nc" id="L54">	}</span>
+
+	/**
+	 * @return the closingBalance
+	 */
+	public BigDecimal getClosingBalance() {
+<span class="nc" id="L60">		return closingBalance;</span>
+	}
+
+	/**
+	 * @param closingBalance the closingBalance to set
+	 */
+	public void setClosingBalance(BigDecimal closingBalance) {
+<span class="nc" id="L67">		this.closingBalance = closingBalance;</span>
+<span class="nc" id="L68">	}</span>
+
+	/**
+	 * @return the openingBalance
+	 */
+	public BigDecimal getOpeningBalance() {
+<span class="nc" id="L74">		return openingBalance;</span>
+	}
+
+	/**
+	 * @param openingBalance the openingBalance to set
+	 */
+	public void setOpeningBalance(BigDecimal openingBalance) {
+<span class="nc" id="L81">		this.openingBalance = openingBalance;</span>
+<span class="nc" id="L82">	}</span>
+
+	/**
+	 * @return the account
+	 */
+	public Account getAccount() {
+<span class="nc" id="L88">		return account;</span>
+	}
+
+	/**
+	 * @param account the account to set
+	 */
+	public void setAccount(Account account) {
+<span class="nc" id="L95">		this.account = account;</span>
+<span class="nc" id="L96">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc" id="L105">		final int prime = 31;</span>
+<span class="nc" id="L106">		int result = 1;</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">		result = prime * result + ((account == null) ? 0 : account.hashCode());</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">		result = prime * result + ((closingBalance == null) ? 0 : closingBalance.hashCode());</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">		result = prime * result + ((id == null) ? 0 : id.hashCode());</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">		result = prime * result + ((openingBalance == null) ? 0 : openingBalance.hashCode());</span>
+<span class="nc" id="L111">		return result;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L121" title="All 2 branches missed.">		if (this == obj) {</span>
+<span class="nc" id="L122">			return true;</span>
+		}
+<span class="nc bnc" id="L124" title="All 2 branches missed.">		if (obj == null) {</span>
+<span class="nc" id="L125">			return false;</span>
+		}
+<span class="nc bnc" id="L127" title="All 2 branches missed.">		if (!(obj instanceof AccountStatus)) {</span>
+<span class="nc" id="L128">			return false;</span>
+		}
+<span class="nc" id="L130">		AccountStatus other = (AccountStatus) obj;</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">		if (account == null) {</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">			if (other.account != null) {</span>
+<span class="nc" id="L133">				return false;</span>
+			}
+<span class="nc bnc" id="L135" title="All 2 branches missed.">		} else if (!account.equals(other.account)) {</span>
+<span class="nc" id="L136">			return false;</span>
+		}
+<span class="nc bnc" id="L138" title="All 2 branches missed.">		if (closingBalance == null) {</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">			if (other.closingBalance != null) {</span>
+<span class="nc" id="L140">				return false;</span>
+			}
+<span class="nc bnc" id="L142" title="All 2 branches missed.">		} else if (!closingBalance.equals(other.closingBalance)) {</span>
+<span class="nc" id="L143">			return false;</span>
+		}
+<span class="nc bnc" id="L145" title="All 2 branches missed.">		if (id == null) {</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">			if (other.id != null) {</span>
+<span class="nc" id="L147">				return false;</span>
+			}
+<span class="nc bnc" id="L149" title="All 2 branches missed.">		} else if (!id.equals(other.id)) {</span>
+<span class="nc" id="L150">			return false;</span>
+		}
+<span class="nc bnc" id="L152" title="All 2 branches missed.">		if (openingBalance == null) {</span>
+<span class="nc bnc" id="L153" title="All 2 branches missed.">			if (other.openingBalance != null) {</span>
+<span class="nc" id="L154">				return false;</span>
+			}
+<span class="nc bnc" id="L156" title="All 2 branches missed.">		} else if (!openingBalance.equals(other.openingBalance)) {</span>
+<span class="nc" id="L157">			return false;</span>
+		}
+<span class="nc" id="L159">		return true;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+<span class="nc" id="L169">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L170">		builder.append(&quot;AccountStatus [&quot;);</span>
+<span class="nc bnc" id="L171" title="All 2 branches missed.">		if (id != null)</span>
+<span class="nc" id="L172">			builder.append(&quot;id=&quot;).append(id).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L173" title="All 2 branches missed.">		if (closingBalance != null)</span>
+<span class="nc" id="L174">			builder.append(&quot;closingBalance=&quot;).append(closingBalance).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">		if (openingBalance != null)</span>
+<span class="nc" id="L176">			builder.append(&quot;openingBalance=&quot;).append(openingBalance).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">		if (account != null)</span>
+<span class="nc" id="L178">			builder.append(&quot;account=&quot;).append(account);</span>
+<span class="nc" id="L179">		builder.append(&quot;]&quot;);</span>
+<span class="nc" id="L180">		return builder.toString();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

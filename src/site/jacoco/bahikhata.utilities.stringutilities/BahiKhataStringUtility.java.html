@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataStringUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.stringutilities</a> &gt; <span class="el_source">BahiKhataStringUtility.java</span></div><h1>BahiKhataStringUtility.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.stringutilities;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class has string related utilities
+ * 
+ * @author Rudhra Koul
+ * 
+ *
+ */
+<span class="nc" id="L13">public class BahiKhataStringUtility {</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method compares the string with the regex
+	 * 
+	 * @param s     String to match
+	 * @param regex regex to match with
+	 * @return true if the string s matches the regex exactly
+	 * 
+	 *
+	 */
+	public static boolean isMatchingPattern(String s, String regex) {
+<span class="fc" id="L25">		return s.matches(regex);</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :Matches two strings safely
+	 * 
+	 * @param s1
+	 * @param s2
+	 * 
+	 * @return true if 1:-either s1 and s2 are not null and not empty and s1 equals
+	 *         s2. 2:-s1 equals s2 equals null. 3:-s1 and s2 are both blank. 4.In
+	 *         all other cases it returns false
+	 */
+	public static boolean matchStringsSafely(String s1, String s2) {
+<span class="fc" id="L39">		boolean matches = false;</span>
+<span class="fc bfc" id="L40" title="All 4 branches covered.">		if (isNotNullAndNotEmpty(s1) &amp;&amp; isNotNullAndNotEmpty(s2)) {</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">			if (s1.equalsIgnoreCase(s2)) {</span>
+<span class="fc" id="L42">				matches = true;</span>
+			}
+<span class="fc bfc" id="L44" title="All 4 branches covered.">		} else if (s1 == null &amp;&amp; s2 == null) {</span>
+<span class="fc" id="L45">			matches = true;</span>
+<span class="pc bpc" id="L46" title="1 of 4 branches missed.">		} else if (s2 == null &amp;&amp; s1 == null) {</span>
+<span class="nc" id="L47">			matches = true;</span>
+<span class="pc bpc" id="L48" title="1 of 4 branches missed.">		} else if (s1 == null &amp;&amp; s2 != null) {</span>
+<span class="fc" id="L49">			matches = false;</span>
+<span class="pc bpc" id="L50" title="1 of 4 branches missed.">		} else if (s2 == null &amp;&amp; s1 != null) {</span>
+<span class="fc" id="L51">			matches = false;</span>
+<span class="fc bfc" id="L52" title="All 4 branches covered.">		} else if (s1.equalsIgnoreCase(&quot;&quot;) &amp;&amp; s1.equalsIgnoreCase(s2)) {</span>
+<span class="fc" id="L53">			matches = true;</span>
+		}
+<span class="fc" id="L55">		return matches;</span>
+
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :Checks if string is neither null nor empty
+	 * 
+	 * @param s1
+	 * 
+	 * @return true if string is neither null nor empty else returns false
+	 */
+	public static boolean isNotNullAndNotEmpty(String s1) {
+<span class="fc" id="L67">		boolean notNullAndEmpty = false;</span>
+<span class="fc bfc" id="L68" title="All 4 branches covered.">		if (((s1 != null) &amp;&amp; (!s1.equalsIgnoreCase(&quot;&quot;)))) {</span>
+<span class="fc" id="L69">			notNullAndEmpty = true;</span>
+		}
+
+<span class="fc" id="L72">		return notNullAndEmpty;</span>
+
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

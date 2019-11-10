@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataMonitoringService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.monitoring.service</a> &gt; <span class="el_source">BahiKhataMonitoringService.java</span></div><h1>BahiKhataMonitoringService.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.monitoring.service;
+
+import java.lang.management.MemoryMXBean;
+import java.lang.management.RuntimeMXBean;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.cache.CacheManager;
+import javax.cache.management.CacheStatisticsMXBean;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.message.Message;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.sun.management.OperatingSystemMXBean;
+
+import bahikhata.utilities.monitoring.dto.BahiKhataCacheStatisticsDTO;
+import bahikhata.utilities.monitoring.dto.BahiKhataMemoryStatsticsDTO;
+import bahikhata.utilities.monitoring.dto.BahiKhataOperatingSystemStatisticsDTO;
+import bahikhata.utilities.monitoring.dto.BahiKhataRuntimeStatisticsDTO;
+import bahikhata.utilities.monitoring.exception.BahiKhataStatsticsBeanException;
+import bahikhata.utilities.monitoring.factory.BahiKhataMonitoringMBeanFactory;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class will handle all functional operations for
+ * {@link BahiKhataCacheStatisticsDTO}, {@link BahiKhataOperatingSystemStatisticsDTO},
+ * {@link BahiKhataMemoryStatsticsDTO}, {@link BahiKhataRuntimeStatisticsDTO} 
+ * 
+ * @author Neeraj Jain
+ * @see BahiKhataMonitoringMBeanFactory
+ * @since Oct 05,2019
+ * @version 0.0.1
+ */
+@Service
+public class BahiKhataMonitoringService
+{
+    /*
+     * Techpert:Bahikhata : 0.0.1 :Autowired instance of BahiKhataMonitoringMBeanFactory
+     * Bean
+     */
+    private final BahiKhataMonitoringMBeanFactory bahiKhataMonitoringMBeanFactory;
+    /*
+     * Techpert:Bahikhata : 0.0.1 :Autowired instance of CacheManager Bean
+     */
+    private CacheManager cacheManager;
+    /*
+     * Techpert:Bahikhata : 0.0.1 :Logger instance for BahiKhataMonitoringService
+     */
+<span class="nc" id="L58">    private static final Logger logger = LogManager.getLogger(BahiKhataMonitoringService.class);</span>
+
+    @Autowired
+    public BahiKhataMonitoringService(
+            BahiKhataMonitoringMBeanFactory bahiKhataMonitoringMBeanFactory)
+<span class="nc" id="L63">    {</span>
+<span class="nc" id="L64">        this.bahiKhataMonitoringMBeanFactory = bahiKhataMonitoringMBeanFactory;</span>
+<span class="nc" id="L65">    }</span>
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetches Cache Statistics from Cache MXBean
+     * 
+     * @since 05 Oct 2019
+     * @return ResponseEntity&lt;Object&gt;
+     */
+    public ResponseEntity&lt;Object&gt; getCacheStatstics() throws BahiKhataStatsticsBeanException
+    {
+<span class="nc" id="L75">        Message m = logger.traceEntry(&quot;getCacheStatstics&quot;);</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        if (null != cacheManager)</span>
+        {
+<span class="nc" id="L78">            List&lt;BahiKhataCacheStatisticsDTO&gt; bahiKhataCacheStatisticsDTOList = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L79">            List&lt;CacheStatisticsMXBean&gt; cacheStatisticsBeans = bahiKhataMonitoringMBeanFactory</span>
+<span class="nc" id="L80">                    .getCacheStatisticsMXBeans();</span>
+            ;
+<span class="nc bnc" id="L82" title="All 2 branches missed.">            for (CacheStatisticsMXBean cacheStatisticsMXBean : cacheStatisticsBeans)</span>
+            {
+<span class="nc" id="L84">                BahiKhataCacheStatisticsDTO bahiKhataCacheStatisticsDTO = new BahiKhataCacheStatisticsDTO();</span>
+<span class="nc" id="L85">                bahiKhataCacheStatisticsDTO</span>
+<span class="nc" id="L86">                        .setAverageGetTime(cacheStatisticsMXBean.getAverageGetTime());</span>
+<span class="nc" id="L87">                bahiKhataCacheStatisticsDTO</span>
+<span class="nc" id="L88">                        .setAveragePutTime(cacheStatisticsMXBean.getAveragePutTime());</span>
+<span class="nc" id="L89">                bahiKhataCacheStatisticsDTO</span>
+<span class="nc" id="L90">                        .setAverageRemoveTime(cacheStatisticsMXBean.getAverageRemoveTime());</span>
+<span class="nc" id="L91">                bahiKhataCacheStatisticsDTO</span>
+<span class="nc" id="L92">                        .setCacheEvictions(cacheStatisticsMXBean.getCacheEvictions());</span>
+<span class="nc" id="L93">                bahiKhataCacheStatisticsDTO.setCacheGets(cacheStatisticsMXBean.getCacheGets());</span>
+<span class="nc" id="L94">                bahiKhataCacheStatisticsDTO.setCacheHits(cacheStatisticsMXBean.getCacheHits());</span>
+<span class="nc" id="L95">                bahiKhataCacheStatisticsDTO</span>
+<span class="nc" id="L96">                        .setCacheHitsPercencantage(cacheStatisticsMXBean.getCacheHitPercentage());</span>
+<span class="nc" id="L97">                bahiKhataCacheStatisticsDTO.setCacheMisses(cacheStatisticsMXBean.getCacheMisses());</span>
+<span class="nc" id="L98">                bahiKhataCacheStatisticsDTO</span>
+<span class="nc" id="L99">                        .setCacheMissPercentage(cacheStatisticsMXBean.getCacheMissPercentage());</span>
+<span class="nc" id="L100">                bahiKhataCacheStatisticsDTO.setCachePuts(cacheStatisticsMXBean.getCachePuts());</span>
+<span class="nc" id="L101">                bahiKhataCacheStatisticsDTO</span>
+<span class="nc" id="L102">                        .setCacheRemovals(cacheStatisticsMXBean.getCacheRemovals());</span>
+<span class="nc" id="L103">                bahiKhataCacheStatisticsDTOList.add(bahiKhataCacheStatisticsDTO);</span>
+<span class="nc" id="L104">            }</span>
+<span class="nc" id="L105">            return logger.traceExit(m,</span>
+<span class="nc" id="L106">                    ResponseEntity.status(HttpStatus.OK).body(bahiKhataCacheStatisticsDTOList));</span>
+        }
+        else
+        {
+<span class="nc" id="L110">            return logger.traceExit(m, ResponseEntity.status(HttpStatus.NOT_FOUND)</span>
+<span class="nc" id="L111">                    .body(new String(&quot;Cache is not configured in application&quot;)));</span>
+        }
+    }
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetches Memory Statistics from Memory
+     * MXBean
+     * 
+     * @since 05 Oct 2019
+     * @return ResponseEntity&lt;{ {@link BahiKhataMemoryStatsticsDTO}&gt;
+     */
+    public ResponseEntity&lt;BahiKhataMemoryStatsticsDTO&gt; getMemoryStatstics()
+            throws BahiKhataStatsticsBeanException
+    {
+<span class="nc" id="L125">        Message m = logger.traceEntry(&quot;getMemoryStatstics&quot;);</span>
+<span class="nc" id="L126">        MemoryMXBean memoryMXBean = bahiKhataMonitoringMBeanFactory.getMemoryMXBean();</span>
+<span class="nc" id="L127">        BahiKhataMemoryStatsticsDTO bahiKhataMemoryStatsticsDTO = new BahiKhataMemoryStatsticsDTO();</span>
+<span class="nc" id="L128">        StringBuilder committedNonHeapMemory = new StringBuilder();</span>
+<span class="nc" id="L129">        StringBuilder initialNonHeapMemory = new StringBuilder();</span>
+<span class="nc" id="L130">        StringBuilder usedNonHeapMemory = new StringBuilder();</span>
+<span class="nc" id="L131">        StringBuilder maxNonHeapMemory = new StringBuilder();</span>
+<span class="nc" id="L132">        StringBuilder initialHeapMemory = new StringBuilder();</span>
+<span class="nc" id="L133">        StringBuilder usedHeapMemory = new StringBuilder();</span>
+<span class="nc" id="L134">        StringBuilder committedHeapMemory = new StringBuilder();</span>
+<span class="nc" id="L135">        StringBuilder maxHeapMemory = new StringBuilder();</span>
+<span class="nc" id="L136">        committedNonHeapMemory</span>
+<span class="nc" id="L137">                .append(((memoryMXBean.getNonHeapMemoryUsage().getCommitted()) / (1024 * 1024)));</span>
+<span class="nc" id="L138">        committedNonHeapMemory.append(&quot; MB&quot;);</span>
+<span class="nc" id="L139">        initialNonHeapMemory</span>
+<span class="nc" id="L140">                .append(((memoryMXBean.getNonHeapMemoryUsage().getInit()) / (1024 * 1024)));</span>
+<span class="nc" id="L141">        initialNonHeapMemory.append(&quot; MB&quot;);</span>
+<span class="nc" id="L142">        usedNonHeapMemory</span>
+<span class="nc" id="L143">                .append(((memoryMXBean.getNonHeapMemoryUsage().getUsed()) / (1024 * 1024)));</span>
+<span class="nc" id="L144">        usedNonHeapMemory.append(&quot; MB&quot;);</span>
+<span class="nc" id="L145">        maxNonHeapMemory.append(((memoryMXBean.getNonHeapMemoryUsage().getMax()) / (1024 * 1024)));</span>
+<span class="nc" id="L146">        maxNonHeapMemory.append(&quot; MB&quot;);</span>
+<span class="nc" id="L147">        initialHeapMemory</span>
+<span class="nc" id="L148">                .append(((memoryMXBean.getNonHeapMemoryUsage().getInit()) / (1024 * 1024)));</span>
+<span class="nc" id="L149">        initialHeapMemory.append(&quot; MB&quot;);</span>
+<span class="nc" id="L150">        usedHeapMemory.append(((memoryMXBean.getNonHeapMemoryUsage().getUsed()) / (1024 * 1024)));</span>
+<span class="nc" id="L151">        usedHeapMemory.append(&quot; MB&quot;);</span>
+<span class="nc" id="L152">        committedHeapMemory</span>
+<span class="nc" id="L153">                .append(((memoryMXBean.getNonHeapMemoryUsage().getCommitted()) / (1024 * 1024)));</span>
+<span class="nc" id="L154">        committedHeapMemory.append(&quot; MB&quot;);</span>
+<span class="nc" id="L155">        maxHeapMemory.append(((memoryMXBean.getNonHeapMemoryUsage().getMax()) / (1024 * 1024)));</span>
+<span class="nc" id="L156">        maxHeapMemory.append(&quot; MB&quot;);</span>
+<span class="nc" id="L157">        bahiKhataMemoryStatsticsDTO.setCommittedHeapMemory(committedHeapMemory.toString());</span>
+<span class="nc" id="L158">        bahiKhataMemoryStatsticsDTO.setCommittedNonHeapMemory(committedNonHeapMemory.toString());</span>
+<span class="nc" id="L159">        bahiKhataMemoryStatsticsDTO.setInitialHeapMemory(initialHeapMemory.toString());</span>
+<span class="nc" id="L160">        bahiKhataMemoryStatsticsDTO.setInitialNonHeapMemory(initialNonHeapMemory.toString());</span>
+<span class="nc" id="L161">        bahiKhataMemoryStatsticsDTO.setMaxHeapMemory(maxHeapMemory.toString());</span>
+<span class="nc" id="L162">        bahiKhataMemoryStatsticsDTO.setMaxNonHeapMemory(maxNonHeapMemory.toString());</span>
+<span class="nc" id="L163">        bahiKhataMemoryStatsticsDTO.setUsedHeapMemory(usedHeapMemory.toString());</span>
+<span class="nc" id="L164">        bahiKhataMemoryStatsticsDTO.setUsedNonHeapMemory(usedNonHeapMemory.toString());</span>
+<span class="nc" id="L165">        return logger.traceExit(m,</span>
+<span class="nc" id="L166">                ResponseEntity.status(HttpStatus.OK).body(bahiKhataMemoryStatsticsDTO));</span>
+    }
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetches Operating System Statistics from
+     * Operating System MXBean
+     * 
+     * @since 05 Oct 2019
+     * @return ResponseEntity&lt;{ @link BahiKhataOperatingSystemStatisticsDTO}&gt;
+     */
+    public ResponseEntity&lt;BahiKhataOperatingSystemStatisticsDTO&gt; getOperatingSystemStatstics()
+            throws BahiKhataStatsticsBeanException
+    {
+<span class="nc" id="L179">        Message m = logger.traceEntry(&quot;getOperatingSystemStatstics&quot;);</span>
+<span class="nc" id="L180">        BahiKhataOperatingSystemStatisticsDTO bahiKhataOperatingSystemStatisticsDTO = new BahiKhataOperatingSystemStatisticsDTO();</span>
+<span class="nc" id="L181">        StringBuilder cpuUsedByJVM = new StringBuilder();</span>
+<span class="nc" id="L182">        StringBuilder cpuUsedBySystem = new StringBuilder();</span>
+<span class="nc" id="L183">        OperatingSystemMXBean operatingSystemMXBean = bahiKhataMonitoringMBeanFactory</span>
+<span class="nc" id="L184">                .getOperatingSystemMXBean();</span>
+<span class="nc" id="L185">        bahiKhataOperatingSystemStatisticsDTO</span>
+<span class="nc" id="L186">                .setOperatingSystemName(operatingSystemMXBean.getName());</span>
+<span class="nc" id="L187">        bahiKhataOperatingSystemStatisticsDTO</span>
+<span class="nc" id="L188">                .setAvailableProcessors(operatingSystemMXBean.getAvailableProcessors());</span>
+<span class="nc" id="L189">        DecimalFormat decimalFormat = new DecimalFormat(&quot;#.##&quot;);</span>
+<span class="nc" id="L190">        decimalFormat.setRoundingMode(RoundingMode.CEILING);</span>
+<span class="nc" id="L191">        cpuUsedByJVM.append(decimalFormat.format(operatingSystemMXBean.getProcessCpuLoad() * 100));</span>
+<span class="nc" id="L192">        cpuUsedByJVM.append(&quot;%&quot;);</span>
+<span class="nc" id="L193">        bahiKhataOperatingSystemStatisticsDTO.setJvmCPUUsage(cpuUsedByJVM.toString());</span>
+<span class="nc" id="L194">        cpuUsedBySystem</span>
+<span class="nc" id="L195">                .append(decimalFormat.format(operatingSystemMXBean.getSystemCpuLoad() * 100));</span>
+<span class="nc" id="L196">        cpuUsedBySystem.append(&quot;%&quot;);</span>
+<span class="nc" id="L197">        bahiKhataOperatingSystemStatisticsDTO.setSystemCPUUsage(cpuUsedBySystem.toString());</span>
+<span class="nc" id="L198">        return logger.traceExit(m,</span>
+<span class="nc" id="L199">                ResponseEntity.status(HttpStatus.OK).body(bahiKhataOperatingSystemStatisticsDTO));</span>
+    }
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method fetches Runtime Statistics from Operating
+     * System MXBean
+     * 
+     * @since 05 Oct 2019
+     * @return ResponseEntity&lt;{@link BahiKhataRuntimeStatisticsDTO}&gt;
+     */
+    public ResponseEntity&lt;BahiKhataRuntimeStatisticsDTO&gt; getRuntimeStatstics()
+            throws BahiKhataStatsticsBeanException
+    {
+<span class="nc" id="L212">        Message m = logger.traceEntry(&quot;getOperatingSystemStatstics&quot;);</span>
+<span class="nc" id="L213">        RuntimeMXBean runtimeMXBean = bahiKhataMonitoringMBeanFactory.getGarbageRuntimeMXBean();</span>
+<span class="nc" id="L214">        BahiKhataRuntimeStatisticsDTO bahiKhataRuntimeStatisticsDTO = new BahiKhataRuntimeStatisticsDTO();</span>
+<span class="nc" id="L215">        bahiKhataRuntimeStatisticsDTO.setBootClassPath(runtimeMXBean.getBootClassPath());</span>
+<span class="nc" id="L216">        bahiKhataRuntimeStatisticsDTO.setClassPath(runtimeMXBean.getClassPath());</span>
+<span class="nc" id="L217">        bahiKhataRuntimeStatisticsDTO.setLibraryPath(runtimeMXBean.getLibraryPath());</span>
+<span class="nc" id="L218">        return logger.traceExit(m,</span>
+<span class="nc" id="L219">                ResponseEntity.status(HttpStatus.OK).body(bahiKhataRuntimeStatisticsDTO));</span>
+    }
+
+    public CacheManager getCacheManager()
+    {
+<span class="nc" id="L224">        return cacheManager;</span>
+    }
+
+    @Autowired
+    public void setCacheManager(CacheManager cacheManager)
+    {
+<span class="nc" id="L230">        this.cacheManager = cacheManager;</span>
+<span class="nc" id="L231">    }</span>
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :This method evict all caches
+     * 
+     * @since 05 Oct 2019
+     * @return ResponseEntity&lt;Object&gt;
+     */
+    public void evictAllCaches()
+    {
+<span class="nc bnc" id="L241" title="All 2 branches missed.">        for (String name : cacheManager.getCacheNames())</span>
+        {
+<span class="nc" id="L243">            cacheManager.getCache(name).clear();</span>
+<span class="nc" id="L244">        }</span>
+<span class="nc" id="L245">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

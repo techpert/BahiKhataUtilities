@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataTestToken.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.testingutilities</a> &gt; <span class="el_source">BahiKhataTestToken.java</span></div><h1>BahiKhataTestToken.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.testingutilities;
+
+import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Component;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is used as a Token Provider and
+ * HttpHeader provider for Integration tests.
+ * &lt;p&gt;
+ * The token can be obtained from {@link #getToken()} method.It needs to be used
+ * in combination with {@link BahiKhataMockUser} annotation,as the token is set
+ * based on values provided in @BahiKhataMockUser annotation.
+ * &lt;/p&gt;
+ * 
+ * &lt;P&gt;
+ * To write an integration test this class needs to be autowired and Each test
+ * case needs to be annotated with @BahiKhataMockUser.The headers to be sent in
+ * mock mvc request needs to be obtained from {@link #getHeaders()} and
+ * {@link #getNoAuthHeaders()} methods. This method sets the Authorization
+ * header and Content-Type header.ContentType By default is Application/json
+ * &lt;/p&gt;
+ * 
+ * @author Rudhra Koul
+ * @since 28 Jul 2019
+ * @version 1.0
+ */
+@Component
+@Profile(&quot;test&quot;)
+public class BahiKhataTestToken {
+	String token;
+
+	/**
+	 * @return the token
+	 */
+	public String getToken() {
+<span class="nc" id="L40">		return token;</span>
+	}
+
+	/**
+	 * @param token the token to set
+	 */
+	public void setToken(String token) {
+<span class="nc" id="L47">		this.token = token;</span>
+<span class="nc" id="L48">	}</span>
+
+<span class="nc" id="L50">	public BahiKhataTestToken(String token) {</span>
+<span class="nc" id="L51">		this.token = token;</span>
+<span class="nc" id="L52">	}</span>
+
+<span class="nc" id="L54">	public BahiKhataTestToken() {</span>
+<span class="nc" id="L55">	}</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method returns HttpHeaders with secure auth
+	 * token
+	 * 
+	 * @author Rudhra Koul
+	 * @since 28 Jul 2019
+	 * @version 1.0
+	 * @return
+	 */
+	public HttpHeaders getHeaders() {
+
+<span class="nc" id="L68">		HttpHeaders headers = new HttpHeaders();</span>
+<span class="nc" id="L69">		headers.set(&quot;Content-Type&quot;, &quot;application/json&quot;);</span>
+<span class="nc" id="L70">		headers.set(&quot;Authorization&quot;, &quot;Bearer &quot; + this.getToken());</span>
+<span class="nc" id="L71">		return headers;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method returns HttpHeaders without secure
+	 * auth token
+	 * 
+	 * @author Rudhra Koul
+	 * @since 28 Jul 2019
+	 * @version 1.0
+	 * @return
+	 */
+	public HttpHeaders getNoAuthHeaders() {
+
+<span class="nc" id="L85">		HttpHeaders headers = new HttpHeaders();</span>
+<span class="nc" id="L86">		headers.set(&quot;Content-Type&quot;, &quot;application/json&quot;);</span>
+<span class="nc" id="L87">		return headers;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

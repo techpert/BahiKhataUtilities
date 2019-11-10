@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataMockUserImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.testingutilities</a> &gt; <span class="el_source">BahiKhataMockUserImpl.java</span></div><h1>BahiKhataMockUserImpl.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.testingutilities;
+
+import java.lang.annotation.Annotation;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is used to mock a BahiKhataUser to
+ * reset security context at runtime during test execution
+ * 
+ * @author Rudhra Koul
+ * @since 13 Oct 2019
+ * @version 1.0
+ */
+public class BahiKhataMockUserImpl {
+	String username;
+
+	String[] authorities;
+
+	String password;
+
+	String[] scopes;
+
+	String clientId;
+
+	String clientSecret;
+	private static BahiKhataMockUser bahiKhataMockUser;
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This constructor creates a Object of
+	 * BahiKhataMockUser with no defaults
+	 * 
+	 * @param username
+	 * @param authorities
+	 * @param password
+	 * @param scopes
+	 * @param clientId
+	 * @param clientSecret
+	 */
+	public BahiKhataMockUserImpl(String username,
+
+			String authorities,
+
+			String password,
+
+			String scopes,
+
+			String clientId,
+
+<span class="nc" id="L51">			String clientSecret) {</span>
+<span class="nc" id="L52">		this.authorities = new String[] { authorities };</span>
+<span class="nc" id="L53">		this.password = password;</span>
+<span class="nc" id="L54">		this.scopes = new String[] { scopes };</span>
+<span class="nc" id="L55">		this.clientId = clientId;</span>
+<span class="nc" id="L56">		this.clientSecret = clientSecret;</span>
+<span class="nc" id="L57">		this.username = username;</span>
+<span class="nc" id="L58">		BahiKhataMockUserImpl.bahiKhataMockUser = createMockUser(username, authorities, password, scopes, clientId,</span>
+				clientSecret);
+<span class="nc" id="L60">	}</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This constructor creates a Object of
+	 * BahiKhataMockUser with all defaults except scopes and authorities
+	 * 
+	 * @param scopes
+	 * @param authorities
+	 */
+	public BahiKhataMockUserImpl(
+
+			String scopes,
+
+			String authorities
+
+<span class="nc" id="L75">	) {</span>
+<span class="nc" id="L76">		this.authorities = new String[] { authorities };</span>
+<span class="nc" id="L77">		this.password = &quot;bahiKhataTestPassword&quot;;</span>
+<span class="nc" id="L78">		this.scopes = new String[] { scopes };</span>
+<span class="nc" id="L79">		this.clientId = &quot;BahiKhataManagerReadTestClientId&quot;;</span>
+<span class="nc" id="L80">		this.clientSecret = &quot;BahiKhataManagerReadTestClientSecret&quot;;</span>
+<span class="nc" id="L81">		this.username = &quot;bahiKhataTestUser&quot;;</span>
+<span class="nc" id="L82">		BahiKhataMockUserImpl.bahiKhataMockUser = createMockUser(username, authorities, password, scopes, clientId,</span>
+				clientSecret);
+<span class="nc" id="L84">	}</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method is used to create a defult
+	 * BahiKhataMockUser
+	 * &lt;p&gt;
+	 * The username attribute will get default value as
+	 * &lt;i&gt;&lt;B&gt;bahiKhataTestUser&lt;/i&gt;&lt;/B&gt;
+	 * &lt;/p&gt;
+	 * 
+	 * &lt;p&gt;
+	 * The password attribute with default value as
+	 * &lt;i&gt;&lt;B&gt;bahiKhataTestPassword&lt;/i&gt;&lt;/B&gt;
+	 * &lt;/p&gt;
+	 * 
+	 * &lt;p&gt;
+	 * The authorities attribute with default value as &lt;i&gt;&lt;B&gt;SecureService&lt;/i&gt;&lt;/B&gt;
+	 * &lt;/p&gt;
+	 * 
+	 * 
+	 * &lt;p&gt;
+	 * The scopes attribute with default value as &lt;i&gt;&lt;B&gt;read&lt;/i&gt;&lt;/B&gt;
+	 * &lt;/p&gt;
+	 * 
+	 * 
+	 * &lt;p&gt;
+	 * The clientId attribute with default value as
+	 * &lt;i&gt;&lt;B&gt;BahiKhataManagerReadTestClientId&lt;/i&gt;&lt;/B&gt;
+	 * &lt;/p&gt;
+	 * 
+	 * &lt;p&gt;
+	 * The clientSecret attribute with default value as
+	 * &lt;i&gt;&lt;B&gt;BahiKhataManagerReadTestClientSecret&lt;/i&gt;&lt;/B&gt;
+	 * &lt;/p&gt;
+	 * 
+	 * @author Rudhra Koul
+	 * @since 14 Oct 2019
+	 * @version 1.0
+	 */
+	public static void createDefaultBahiKhataMockUser() {
+<span class="nc" id="L124">		BahiKhataMockUserImpl.bahiKhataMockUser = createMockUser(&quot;bahiKhataTestUser&quot;, &quot;SecureService&quot;,</span>
+				&quot;bahiKhataTestPassword&quot;, &quot;read&quot;, &quot;BahiKhataManagerReadTestClientId&quot;,
+				&quot;BahiKhataManagerReadTestClientSecret&quot;);
+<span class="nc" id="L127">	}</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This constructor creates a null valued
+	 * {@link BahiKhataMockUser } which results in clearing out the security context
+	 */
+<span class="nc" id="L133">	public BahiKhataMockUserImpl() {</span>
+<span class="nc" id="L134">		BahiKhataMockUserImpl.bahiKhataMockUser = null;</span>
+<span class="nc" id="L135">	}</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :his Method is used to create an Object of
+	 * BahiKhataMockUser
+	 * 
+	 * @author Rudhra Koul
+	 * @since 14 Oct 2019
+	 * @version 1.0
+	 * @param username
+	 * @param authorities
+	 * @param password
+	 * @param scopes
+	 * @param clientId
+	 * @param clientSecret
+	 * @return BahiKhataMockUser
+	 */
+	private static BahiKhataMockUser createMockUser(String username,
+
+			String authorities,
+
+			String password,
+
+			String scopes,
+
+			String clientId,
+
+			String clientSecret) {
+
+<span class="nc" id="L164">		return new BahiKhataMockUser() {</span>
+
+			@Override
+			public Class&lt;? extends Annotation&gt; annotationType() {
+
+<span class="nc" id="L169">				return null;</span>
+			}
+
+			@Override
+			public String username() {
+
+<span class="nc" id="L175">				return username;</span>
+			}
+
+			@Override
+			public String[] scopes() {
+
+<span class="nc" id="L181">				return new String[] { scopes };</span>
+			}
+
+			@Override
+			public String password() {
+
+<span class="nc" id="L187">				return password;</span>
+			}
+
+			@Override
+			public String clientSecret() {
+
+<span class="nc" id="L193">				return clientSecret;</span>
+			}
+
+			@Override
+			public String clientId() {
+
+<span class="nc" id="L199">				return clientId;</span>
+			}
+
+			@Override
+			public String[] authorities() {
+
+<span class="nc" id="L205">				return new String[] { authorities };</span>
+			}
+		};
+
+	}
+
+	/**
+	 * @return the bahiKhataMockUser
+	 */
+	public BahiKhataMockUser getBahiKhataMockUser() {
+<span class="nc" id="L215">		return bahiKhataMockUser;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

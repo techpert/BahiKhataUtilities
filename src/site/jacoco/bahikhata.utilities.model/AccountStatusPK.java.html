@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountStatusPK.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.model</a> &gt; <span class="el_source">AccountStatusPK.java</span></div><h1>AccountStatusPK.java</h1><pre class="source lang-java linenums">/**
+ *  copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.model;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+
+/**
+ * @author Vrinda This is the primary key class for the ACCOUNT_STATUS database
+ *         table.
+ * 
+ */
+public class AccountStatusPK implements Serializable {
+	// default serial version id, required for serializable classes.
+	private static final long serialVersionUID = 1L;
+
+	private String accountName;
+
+	private LocalDate businessDay;
+
+<span class="nc" id="L22">	public AccountStatusPK() {</span>
+<span class="nc" id="L23">	}</span>
+
+	/**
+	 * @param accountName
+	 * @param businessDay
+	 */
+<span class="nc" id="L29">	public AccountStatusPK(String accountName, LocalDate businessDay) {</span>
+<span class="nc" id="L30">		this.accountName = accountName;</span>
+<span class="nc" id="L31">		this.businessDay = businessDay;</span>
+<span class="nc" id="L32">	}</span>
+
+	/**
+	 * @return the accountName
+	 */
+	public String getAccountName() {
+<span class="nc" id="L38">		return accountName;</span>
+	}
+
+	/**
+	 * @param accountName the accountName to set
+	 */
+	public void setAccountName(String accountName) {
+<span class="nc" id="L45">		this.accountName = accountName;</span>
+<span class="nc" id="L46">	}</span>
+
+	/**
+	 * @return the businessDay
+	 */
+	public LocalDate getBusinessDay() {
+<span class="nc" id="L52">		return businessDay;</span>
+	}
+
+	/**
+	 * @param businessDay the businessDay to set
+	 */
+	public void setBusinessDay(LocalDate businessDay) {
+<span class="nc" id="L59">		this.businessDay = businessDay;</span>
+<span class="nc" id="L60">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc" id="L69">		final int prime = 31;</span>
+<span class="nc" id="L70">		int result = 1;</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">		result = prime * result + ((accountName == null) ? 0 : accountName.hashCode());</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">		result = prime * result + ((businessDay == null) ? 0 : businessDay.hashCode());</span>
+<span class="nc" id="L73">		return result;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L83" title="All 2 branches missed.">		if (this == obj) {</span>
+<span class="nc" id="L84">			return true;</span>
+		}
+<span class="nc bnc" id="L86" title="All 2 branches missed.">		if (obj == null) {</span>
+<span class="nc" id="L87">			return false;</span>
+		}
+<span class="nc bnc" id="L89" title="All 2 branches missed.">		if (!(obj instanceof AccountStatusPK)) {</span>
+<span class="nc" id="L90">			return false;</span>
+		}
+<span class="nc" id="L92">		AccountStatusPK other = (AccountStatusPK) obj;</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">		if (accountName == null) {</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">			if (other.accountName != null) {</span>
+<span class="nc" id="L95">				return false;</span>
+			}
+<span class="nc bnc" id="L97" title="All 2 branches missed.">		} else if (!accountName.equals(other.accountName)) {</span>
+<span class="nc" id="L98">			return false;</span>
+		}
+<span class="nc bnc" id="L100" title="All 2 branches missed.">		if (businessDay == null) {</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">			if (other.businessDay != null) {</span>
+<span class="nc" id="L102">				return false;</span>
+			}
+<span class="nc bnc" id="L104" title="All 2 branches missed.">		} else if (!businessDay.equals(other.businessDay)) {</span>
+<span class="nc" id="L105">			return false;</span>
+		}
+<span class="nc" id="L107">		return true;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+<span class="nc" id="L117">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L118">		builder.append(&quot;AccountStatusPK [&quot;);</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">		if (accountName != null)</span>
+<span class="nc" id="L120">			builder.append(&quot;accountName=&quot;).append(accountName).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">		if (businessDay != null)</span>
+<span class="nc" id="L122">			builder.append(&quot;businessDay=&quot;).append(businessDay);</span>
+<span class="nc" id="L123">		builder.append(&quot;]&quot;);</span>
+<span class="nc" id="L124">		return builder.toString();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

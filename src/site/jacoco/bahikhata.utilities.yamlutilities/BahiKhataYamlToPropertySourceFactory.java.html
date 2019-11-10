@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataYamlToPropertySourceFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.yamlutilities</a> &gt; <span class="el_source">BahiKhataYamlToPropertySourceFactory.java</span></div><h1>BahiKhataYamlToPropertySourceFactory.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.yamlutilities;
+
+import java.io.IOException;
+import java.util.Properties;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
+import org.springframework.core.env.PropertiesPropertySource;
+import org.springframework.core.env.PropertySource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.EncodedResource;
+import org.springframework.core.io.support.PropertySourceFactory;
+import org.springframework.lang.Nullable;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is used to convert Yaml to properties
+ * form so that it can be used in {@link PropertySource } annotation
+ * 
+ * @author Rudhra Koul
+ * @since 22 Jul 2019
+ * @version 1.0
+ */
+<span class="nc" id="L26">public class BahiKhataYamlToPropertySourceFactory implements PropertySourceFactory {</span>
+	@Override
+	public PropertySource&lt;?&gt; createPropertySource(@Nullable String name, EncodedResource resource) throws IOException {
+<span class="nc" id="L29">		Properties loadedProperties = this.loadYamlIntoProperties(resource.getResource());</span>
+
+<span class="nc" id="L31">		return new PropertiesPropertySource(</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">				(StringUtils.isNotBlank(name)) ? name : resource.getResource().getFilename(), loadedProperties);</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method loads yml into {@link Properties}
+	 * 
+	 * @since 22 Jul 2019
+	 * @param resource
+	 * @return
+	 */
+	private Properties loadYamlIntoProperties(Resource resource) {
+<span class="nc" id="L43">		YamlPropertiesFactoryBean factory = new YamlPropertiesFactoryBean();</span>
+<span class="nc" id="L44">		factory.setResources(resource);</span>
+<span class="nc" id="L45">		factory.afterPropertiesSet();</span>
+
+<span class="nc" id="L47">		return factory.getObject();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

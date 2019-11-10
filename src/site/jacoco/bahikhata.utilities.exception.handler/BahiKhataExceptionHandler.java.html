@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.exception.handler</a> &gt; <span class="el_source">BahiKhataExceptionHandler.java</span></div><h1>BahiKhataExceptionHandler.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.exception.handler;
+
+import java.util.List;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+
+import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.message.Message;
+import org.hibernate.validator.internal.engine.path.PathImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonMappingException.Reference;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+
+import bahikhata.utilities.dto.BahiKhataErrorResponseDTO;
+import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is used as an exceptionHandler class
+ * for all common exceptions
+ * 
+ * @author Namit.Jain
+ * @since 14-Sep-2019
+ * @version 0.0.1
+ */
+@ControllerAdvice
+<span class="nc" id="L46">public class BahiKhataExceptionHandler {</span>
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :Logger instance for
+	 * BahiKhataExceptionHandler
+	 */
+<span class="nc" id="L51">	private static final Logger logger = LogManager.getLogger(BahiKhataExceptionHandler.class);</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method acts as an Exception handler response
+	 * generator for {@link MethodArgumentTypeMismatchException}
+	 * 
+	 * @since 25-Aug-2019
+	 * @param ex {@link MethodArgumentTypeMismatchException}
+	 * @return ResponseEntity Error response
+	 */
+	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ResponseEntity&lt;String&gt; handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
+<span class="nc" id="L64">		Message m = logger.traceEntry(&quot;handleMethodArgumentTypeMismatchException&quot;);</span>
+<span class="nc" id="L65">		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();</span>
+<span class="nc" id="L66">		logger.debug(ExceptionUtils.getFullStackTrace(ex));</span>
+<span class="nc" id="L67">		bahiKhataErrorResponseDTO.putError(ex.getName(),</span>
+<span class="nc" id="L68">				ex.getName() + BahiKhataExceptionHandlerConstants.BAHIKHATA_NOT_SYNTACTICALLY_VALID_RESPONSE_MESSAGE);</span>
+<span class="nc" id="L69">		return logger.traceExit(m,</span>
+				new ResponseEntity&lt;&gt;(
+<span class="nc" id="L71">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method acts as an Exception handler response
+	 * generator for {@link ConstraintViolationException}
+	 * 
+	 * @since 25-Aug-2019
+	 * @param ex {@link ConstraintViolationException}
+	 * @return ResponseEntity Error response
+	 */
+	@ExceptionHandler(ConstraintViolationException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ResponseEntity&lt;Object&gt; handleConstraintViolationException(ConstraintViolationException ex) {
+<span class="nc" id="L87">		Message m = logger.traceEntry(&quot;handleConstraintViolationException&quot;);</span>
+<span class="nc" id="L88">		logger.debug(ExceptionUtils.getFullStackTrace(ex));</span>
+<span class="nc" id="L89">		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">		for (ConstraintViolation&lt;?&gt; violation : ex.getConstraintViolations()) {</span>
+<span class="nc" id="L91">			logger.error(violation.getMessage());</span>
+<span class="nc" id="L92">			bahiKhataErrorResponseDTO.putError(((PathImpl) violation.getPropertyPath()).getLeafNode().getName(),</span>
+<span class="nc" id="L93">					violation.getMessage());</span>
+<span class="nc" id="L94">		}</span>
+<span class="nc" id="L95">		return logger.traceExit(m,</span>
+				new ResponseEntity&lt;&gt;(
+<span class="nc" id="L97">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method acts as an Exception handler response
+	 * generator for {@link MissingServletRequestParameterException}
+	 * 
+	 * @since 25-Aug-2019
+	 * @param ex {@link MissingServletRequestParameterException}
+	 * @return ResponseEntity Error response
+	 */
+	@ExceptionHandler(MissingServletRequestParameterException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ResponseEntity&lt;Object&gt; handleMissingServletRequestParameterException(
+			MissingServletRequestParameterException ex) {
+<span class="nc" id="L114">		logger.debug(ExceptionUtils.getFullStackTrace(ex));</span>
+<span class="nc" id="L115">		Message m = logger.traceEntry(&quot;handleMissingServletRequestParameterException&quot;);</span>
+<span class="nc" id="L116">		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();</span>
+<span class="nc" id="L117">		bahiKhataErrorResponseDTO.putError(ex.getParameterName(), ex.getLocalizedMessage());</span>
+<span class="nc" id="L118">		return logger.traceExit(m,</span>
+				new ResponseEntity&lt;&gt;(
+<span class="nc" id="L120">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method acts as an Exception handler response
+	 * generator for {@link MethodArgumentNotValidException}
+	 * 
+	 * @since 25-Aug-2019
+	 * @param ex {@link MethodArgumentNotValidException}
+	 * @return ResponseEntity Error response
+	 */
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ResponseEntity&lt;Object&gt; handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+<span class="nc" id="L136">		Message m = logger.traceEntry(&quot;handleMethodArgumentNotValidException&quot;);</span>
+<span class="nc" id="L137">		logger.debug(ExceptionUtils.getFullStackTrace(ex));</span>
+<span class="nc" id="L138">		List&lt;FieldError&gt; fieldErrors = ex.getBindingResult().getFieldErrors();</span>
+<span class="nc" id="L139">		List&lt;ObjectError&gt; globalErrors = ex.getBindingResult().getGlobalErrors();</span>
+<span class="nc" id="L140">		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">		for (FieldError fieldError : fieldErrors) {</span>
+<span class="nc" id="L142">			bahiKhataErrorResponseDTO.putError(fieldError.getField(), fieldError.getDefaultMessage());</span>
+<span class="nc" id="L143">		}</span>
+<span class="nc bnc" id="L144" title="All 2 branches missed.">		for (ObjectError objectError : globalErrors) {</span>
+<span class="nc" id="L145">			bahiKhataErrorResponseDTO.putError(objectError.getObjectName(), objectError.getDefaultMessage());</span>
+<span class="nc" id="L146">		}</span>
+<span class="nc" id="L147">		return logger.traceExit(m,</span>
+				new ResponseEntity&lt;&gt;(
+<span class="nc" id="L149">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method acts as an Exception handler response
+	 * generator for {@link HttpMediaTypeNotSupportedException}
+	 * 
+	 * @since 25-Aug-2019
+	 * @param ex {@link HttpMediaTypeNotSupportedException}
+	 * @return ResponseEntity Error response
+	 */
+	@ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ResponseEntity&lt;Object&gt; handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException ex) {
+<span class="nc" id="L165">		Message m = logger.traceEntry(&quot;handleHttpMediaTypeNotSupportedException&quot;);</span>
+<span class="nc" id="L166">		logger.debug(ExceptionUtils.getFullStackTrace(ex));</span>
+<span class="nc" id="L167">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L168">		builder.append(&quot;Unsupported content type: &quot;).append(ex.getContentType()).append(&quot;.Supported content types: &quot;)</span>
+<span class="nc" id="L169">				.append(MediaType.toString(ex.getSupportedMediaTypes()));</span>
+<span class="nc" id="L170">		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();</span>
+<span class="nc" id="L171">		bahiKhataErrorResponseDTO.putError(</span>
+<span class="nc" id="L172">				BahiKhataExceptionHandlerConstants.BAHIKHATA_UNSUPPORTED_CONTENT_TYPE_RESPONSE_KEY, builder.toString());</span>
+<span class="nc" id="L173">		return logger.traceExit(m,</span>
+				new ResponseEntity&lt;&gt;(
+<span class="nc" id="L175">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method acts as an Exception handler response
+	 * generator for {@link HttpMessageNotReadableException},
+	 * {@link InvalidFormatException} and {@link JsonMappingException}
+	 * 
+	 * @since 25-Aug-2019
+	 * @param ex {@link HttpMessageNotReadableException}
+	 * @return ResponseEntity Error response
+	 */
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ResponseEntity&lt;Object&gt; handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+<span class="nc" id="L192">		Message m = logger.traceEntry(&quot;handleHttpMessageNotReadableException&quot;);</span>
+<span class="nc" id="L193">		Throwable throwable = ex.getCause();</span>
+<span class="nc" id="L194">		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();</span>
+<span class="nc bnc" id="L195" title="All 2 branches missed.">		if (throwable instanceof InvalidFormatException) {</span>
+<span class="nc" id="L196">			InvalidFormatException invalidFormatException = (InvalidFormatException) throwable;</span>
+<span class="nc" id="L197">			logger.debug(ExceptionUtils.getFullStackTrace(invalidFormatException));</span>
+<span class="nc" id="L198">			List&lt;Reference&gt; list = invalidFormatException.getPath();</span>
+<span class="nc bnc" id="L199" title="All 2 branches missed.">			if (!list.isEmpty()) {</span>
+<span class="nc" id="L200">				String errorFieldName = list.get(list.size() - 1).getFieldName();</span>
+<span class="nc" id="L201">				bahiKhataErrorResponseDTO.putError(errorFieldName, errorFieldName + BahiKhataExceptionHandlerConstants.BAHIKHATA_NOT_SYNTACTICALLY_VALID_RESPONSE_MESSAGE);</span>
+			}
+<span class="nc bnc" id="L203" title="All 2 branches missed.">		} else if (throwable instanceof JsonMappingException) {</span>
+<span class="nc" id="L204">			JsonMappingException jsonMappingException = (JsonMappingException) throwable;</span>
+<span class="nc" id="L205">			logger.debug(ExceptionUtils.getFullStackTrace(jsonMappingException));</span>
+<span class="nc" id="L206">			List&lt;Reference&gt; list = jsonMappingException.getPath();</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">			if (!list.isEmpty()) {</span>
+<span class="nc" id="L208">				String errorFieldName = list.get(list.size() - 1).getFieldName();</span>
+<span class="nc" id="L209">				bahiKhataErrorResponseDTO.putError(errorFieldName, jsonMappingException.getOriginalMessage());</span>
+			}
+		}
+
+<span class="nc bnc" id="L213" title="All 2 branches missed.">		if (bahiKhataErrorResponseDTO.getErrorList().isEmpty()) {</span>
+<span class="nc" id="L214">			logger.debug(ExceptionUtils.getFullStackTrace(ex));</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">			if (ex.getMessage().contains(&quot;Required request body is missing:&quot;)) {</span>
+<span class="nc" id="L216">				bahiKhataErrorResponseDTO.putError(</span>
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_REQUEST_BODY_RESPONSE_MESSAGE);
+			} else {
+<span class="nc" id="L220">				bahiKhataErrorResponseDTO.putError(</span>
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_INVALID_REQUEST_BODY_RESPONSE_KEY);
+			}
+		}
+<span class="nc" id="L225">		return logger.traceExit(m,</span>
+				new ResponseEntity&lt;&gt;(
+<span class="nc" id="L227">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

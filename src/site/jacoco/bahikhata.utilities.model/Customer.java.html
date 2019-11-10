@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Customer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.model</a> &gt; <span class="el_source">Customer.java</span></div><h1>Customer.java</h1><pre class="source lang-java linenums">/**
+ *  copyright © 2019 Techpert It Solutions Private Limited
+ */
+
+package bahikhata.utilities.model;
+
+import java.io.Serializable;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 : The persistent class for the CUSTOMER database
+ * table.
+ * 
+ * @author Surbhi.Gupta
+ */
+public class Customer implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private int customerId;
+
+	private String custCategory;
+
+	private String custComment;
+
+	private String custFirstName;
+
+	private String custLastName;
+
+	private String custType;
+
+	private String cityNme;
+
+	private String line1Text;
+
+	private String line2Text;
+
+	private String line3Text;
+
+	private String pincode;
+
+	private String stateNme;
+
+	private String custPhn;
+
+	private String custEmail;
+
+	private String panNbr;
+
+	private String gstin;
+
+	private boolean syntacticallyValid;
+
+	private boolean functionallyValid;
+
+<span class="nc" id="L54">	public Customer() {</span>
+<span class="nc" id="L55">	}</span>
+
+	/**
+	 * @param customerId
+	 * @param custCategory
+	 * @param custComment
+	 * @param custFirstName
+	 * @param custLastName
+	 * @param custType
+	 * @param cityNme
+	 * @param line1Text
+	 * @param line2Text
+	 * @param line3Text
+	 * @param pincode
+	 * @param stateNme
+	 * @param custPhn
+	 * @param custEmail
+	 * @param panNbr
+	 * @param gstin
+	 */
+	public Customer(int customerId, String custCategory, String custComment, String custFirstName, String custLastName,
+			String custType, String cityNme, String line1Text, String line2Text, String line3Text, String pincode,
+<span class="nc" id="L77">			String stateNme, String custPhn, String custEmail, String panNbr, String gstin) {</span>
+<span class="nc" id="L78">		this.customerId = customerId;</span>
+<span class="nc" id="L79">		this.custCategory = custCategory;</span>
+<span class="nc" id="L80">		this.custComment = custComment;</span>
+<span class="nc" id="L81">		this.custFirstName = custFirstName;</span>
+<span class="nc" id="L82">		this.custLastName = custLastName;</span>
+<span class="nc" id="L83">		this.custType = custType;</span>
+<span class="nc" id="L84">		this.cityNme = cityNme;</span>
+<span class="nc" id="L85">		this.line1Text = line1Text;</span>
+<span class="nc" id="L86">		this.line2Text = line2Text;</span>
+<span class="nc" id="L87">		this.line3Text = line3Text;</span>
+<span class="nc" id="L88">		this.pincode = pincode;</span>
+<span class="nc" id="L89">		this.stateNme = stateNme;</span>
+<span class="nc" id="L90">		this.custPhn = custPhn;</span>
+<span class="nc" id="L91">		this.custEmail = custEmail;</span>
+<span class="nc" id="L92">		this.panNbr = panNbr;</span>
+<span class="nc" id="L93">		this.gstin = gstin;</span>
+<span class="nc" id="L94">	}</span>
+
+	/**
+	 * @return the customerId
+	 */
+	public int getCustomerId() {
+<span class="nc" id="L100">		return customerId;</span>
+	}
+
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(int customerId) {
+<span class="nc" id="L107">		this.customerId = customerId;</span>
+<span class="nc" id="L108">	}</span>
+
+	/**
+	 * @return the custCategory
+	 */
+	public String getCustCategory() {
+<span class="nc" id="L114">		return custCategory;</span>
+	}
+
+	/**
+	 * @param custCategory the custCategory to set
+	 */
+	public void setCustCategory(String custCategory) {
+<span class="nc" id="L121">		this.custCategory = custCategory;</span>
+<span class="nc" id="L122">	}</span>
+
+	/**
+	 * @return the custComment
+	 */
+	public String getCustComment() {
+<span class="nc" id="L128">		return custComment;</span>
+	}
+
+	/**
+	 * @param custComment the custComment to set
+	 */
+	public void setCustComment(String custComment) {
+<span class="nc" id="L135">		this.custComment = custComment;</span>
+<span class="nc" id="L136">	}</span>
+
+	/**
+	 * @return the custFirstName
+	 */
+	public String getCustFirstName() {
+<span class="nc" id="L142">		return custFirstName;</span>
+	}
+
+	/**
+	 * @param custFirstName the custFirstName to set
+	 */
+	public void setCustFirstName(String custFirstName) {
+<span class="nc" id="L149">		this.custFirstName = custFirstName;</span>
+<span class="nc" id="L150">	}</span>
+
+	/**
+	 * @return the custLastName
+	 */
+	public String getCustLastName() {
+<span class="nc" id="L156">		return custLastName;</span>
+	}
+
+	/**
+	 * @param custLastName the custLastName to set
+	 */
+	public void setCustLastName(String custLastName) {
+<span class="nc" id="L163">		this.custLastName = custLastName;</span>
+<span class="nc" id="L164">	}</span>
+
+	/**
+	 * @return the custType
+	 */
+	public String getCustType() {
+<span class="nc" id="L170">		return custType;</span>
+	}
+
+	/**
+	 * @param custType the custType to set
+	 */
+	public void setCustType(String custType) {
+<span class="nc" id="L177">		this.custType = custType;</span>
+<span class="nc" id="L178">	}</span>
+
+	/**
+	 * @return the cityNme
+	 */
+	public String getCityNme() {
+<span class="nc" id="L184">		return cityNme;</span>
+	}
+
+	/**
+	 * @param cityNme the cityNme to set
+	 */
+	public void setCityNme(String cityNme) {
+<span class="nc" id="L191">		this.cityNme = cityNme;</span>
+<span class="nc" id="L192">	}</span>
+
+	/**
+	 * @return the line1Text
+	 */
+	public String getLine1Text() {
+<span class="nc" id="L198">		return line1Text;</span>
+	}
+
+	/**
+	 * @param line1Text the line1Text to set
+	 */
+	public void setLine1Text(String line1Text) {
+<span class="nc" id="L205">		this.line1Text = line1Text;</span>
+<span class="nc" id="L206">	}</span>
+
+	/**
+	 * @return the line2Text
+	 */
+	public String getLine2Text() {
+<span class="nc" id="L212">		return line2Text;</span>
+	}
+
+	/**
+	 * @param line2Text the line2Text to set
+	 */
+	public void setLine2Text(String line2Text) {
+<span class="nc" id="L219">		this.line2Text = line2Text;</span>
+<span class="nc" id="L220">	}</span>
+
+	/**
+	 * @return the line3Text
+	 */
+	public String getLine3Text() {
+<span class="nc" id="L226">		return line3Text;</span>
+	}
+
+	/**
+	 * @param line3Text the line3Text to set
+	 */
+	public void setLine3Text(String line3Text) {
+<span class="nc" id="L233">		this.line3Text = line3Text;</span>
+<span class="nc" id="L234">	}</span>
+
+	/**
+	 * @return the pincode
+	 */
+	public String getPincode() {
+<span class="nc" id="L240">		return pincode;</span>
+	}
+
+	/**
+	 * @param pincode the pincode to set
+	 */
+	public void setPincode(String pincode) {
+<span class="nc" id="L247">		this.pincode = pincode;</span>
+<span class="nc" id="L248">	}</span>
+
+	/**
+	 * @return the stateNme
+	 */
+	public String getStateNme() {
+<span class="nc" id="L254">		return stateNme;</span>
+	}
+
+	/**
+	 * @param stateNme the stateNme to set
+	 */
+	public void setStateNme(String stateNme) {
+<span class="nc" id="L261">		this.stateNme = stateNme;</span>
+<span class="nc" id="L262">	}</span>
+
+	/**
+	 * @return the custPhn
+	 */
+	public String getCustPhn() {
+<span class="nc" id="L268">		return custPhn;</span>
+	}
+
+	/**
+	 * @param custPhn the custPhn to set
+	 */
+	public void setCustPhn(String custPhn) {
+<span class="nc" id="L275">		this.custPhn = custPhn;</span>
+<span class="nc" id="L276">	}</span>
+
+	/**
+	 * @return the custEmail
+	 */
+	public String getCustEmail() {
+<span class="nc" id="L282">		return custEmail;</span>
+	}
+
+	/**
+	 * @param custEmail the custEmail to set
+	 */
+	public void setCustEmail(String custEmail) {
+<span class="nc" id="L289">		this.custEmail = custEmail;</span>
+<span class="nc" id="L290">	}</span>
+
+	/**
+	 * @return the panNbr
+	 */
+	public String getPanNbr() {
+<span class="nc" id="L296">		return panNbr;</span>
+	}
+
+	/**
+	 * @param panNbr the panNbr to set
+	 */
+	public void setPanNbr(String panNbr) {
+<span class="nc" id="L303">		this.panNbr = panNbr;</span>
+<span class="nc" id="L304">	}</span>
+
+	/**
+	 * @return the gstin
+	 */
+	public String getGstin() {
+<span class="nc" id="L310">		return gstin;</span>
+	}
+
+	/**
+	 * @param gstin the gstin to set
+	 */
+	public void setGstin(String gstin) {
+<span class="nc" id="L317">		this.gstin = gstin;</span>
+<span class="nc" id="L318">	}</span>
+
+	/**
+	 * @return the syntacticallyValid
+	 */
+	public boolean isSyntacticallyValid() {
+<span class="nc" id="L324">		return syntacticallyValid;</span>
+	}
+
+	/**
+	 * @param syntacticallyValid the syntacticallyValid to set
+	 */
+	public void setSyntacticallyValid(boolean syntacticallyValid) {
+<span class="nc" id="L331">		this.syntacticallyValid = syntacticallyValid;</span>
+<span class="nc" id="L332">	}</span>
+
+	/**
+	 * @return the functionallyValid
+	 */
+	public boolean isFunctionallyValid() {
+<span class="nc" id="L338">		return functionallyValid;</span>
+	}
+
+	/**
+	 * @param functionallyValid the functionallyValid to set
+	 */
+	public void setFunctionallyValid(boolean functionallyValid) {
+<span class="nc" id="L345">		this.functionallyValid = functionallyValid;</span>
+<span class="nc" id="L346">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc" id="L355">		final int prime = 31;</span>
+<span class="nc" id="L356">		int result = 1;</span>
+<span class="nc bnc" id="L357" title="All 2 branches missed.">		result = prime * result + ((cityNme == null) ? 0 : cityNme.hashCode());</span>
+<span class="nc bnc" id="L358" title="All 2 branches missed.">		result = prime * result + ((custCategory == null) ? 0 : custCategory.hashCode());</span>
+<span class="nc bnc" id="L359" title="All 2 branches missed.">		result = prime * result + ((custComment == null) ? 0 : custComment.hashCode());</span>
+<span class="nc bnc" id="L360" title="All 2 branches missed.">		result = prime * result + ((custEmail == null) ? 0 : custEmail.hashCode());</span>
+<span class="nc bnc" id="L361" title="All 2 branches missed.">		result = prime * result + ((custFirstName == null) ? 0 : custFirstName.hashCode());</span>
+<span class="nc bnc" id="L362" title="All 2 branches missed.">		result = prime * result + ((custLastName == null) ? 0 : custLastName.hashCode());</span>
+<span class="nc bnc" id="L363" title="All 2 branches missed.">		result = prime * result + ((custPhn == null) ? 0 : custPhn.hashCode());</span>
+<span class="nc bnc" id="L364" title="All 2 branches missed.">		result = prime * result + ((custType == null) ? 0 : custType.hashCode());</span>
+<span class="nc" id="L365">		result = prime * result + customerId;</span>
+<span class="nc bnc" id="L366" title="All 2 branches missed.">		result = prime * result + ((gstin == null) ? 0 : gstin.hashCode());</span>
+<span class="nc bnc" id="L367" title="All 2 branches missed.">		result = prime * result + ((line1Text == null) ? 0 : line1Text.hashCode());</span>
+<span class="nc bnc" id="L368" title="All 2 branches missed.">		result = prime * result + ((line2Text == null) ? 0 : line2Text.hashCode());</span>
+<span class="nc bnc" id="L369" title="All 2 branches missed.">		result = prime * result + ((line3Text == null) ? 0 : line3Text.hashCode());</span>
+<span class="nc bnc" id="L370" title="All 2 branches missed.">		result = prime * result + ((panNbr == null) ? 0 : panNbr.hashCode());</span>
+<span class="nc bnc" id="L371" title="All 2 branches missed.">		result = prime * result + ((pincode == null) ? 0 : pincode.hashCode());</span>
+<span class="nc bnc" id="L372" title="All 2 branches missed.">		result = prime * result + ((stateNme == null) ? 0 : stateNme.hashCode());</span>
+<span class="nc" id="L373">		return result;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L383" title="All 2 branches missed.">		if (this == obj) {</span>
+<span class="nc" id="L384">			return true;</span>
+		}
+<span class="nc bnc" id="L386" title="All 2 branches missed.">		if (obj == null) {</span>
+<span class="nc" id="L387">			return false;</span>
+		}
+<span class="nc bnc" id="L389" title="All 2 branches missed.">		if (!(obj instanceof Customer)) {</span>
+<span class="nc" id="L390">			return false;</span>
+		}
+<span class="nc" id="L392">		Customer other = (Customer) obj;</span>
+<span class="nc bnc" id="L393" title="All 2 branches missed.">		if (cityNme == null) {</span>
+<span class="nc bnc" id="L394" title="All 2 branches missed.">			if (other.cityNme != null) {</span>
+<span class="nc" id="L395">				return false;</span>
+			}
+<span class="nc bnc" id="L397" title="All 2 branches missed.">		} else if (!cityNme.equals(other.cityNme)) {</span>
+<span class="nc" id="L398">			return false;</span>
+		}
+<span class="nc bnc" id="L400" title="All 2 branches missed.">		if (custCategory == null) {</span>
+<span class="nc bnc" id="L401" title="All 2 branches missed.">			if (other.custCategory != null) {</span>
+<span class="nc" id="L402">				return false;</span>
+			}
+<span class="nc bnc" id="L404" title="All 2 branches missed.">		} else if (!custCategory.equals(other.custCategory)) {</span>
+<span class="nc" id="L405">			return false;</span>
+		}
+<span class="nc bnc" id="L407" title="All 2 branches missed.">		if (custComment == null) {</span>
+<span class="nc bnc" id="L408" title="All 2 branches missed.">			if (other.custComment != null) {</span>
+<span class="nc" id="L409">				return false;</span>
+			}
+<span class="nc bnc" id="L411" title="All 2 branches missed.">		} else if (!custComment.equals(other.custComment)) {</span>
+<span class="nc" id="L412">			return false;</span>
+		}
+<span class="nc bnc" id="L414" title="All 2 branches missed.">		if (custEmail == null) {</span>
+<span class="nc bnc" id="L415" title="All 2 branches missed.">			if (other.custEmail != null) {</span>
+<span class="nc" id="L416">				return false;</span>
+			}
+<span class="nc bnc" id="L418" title="All 2 branches missed.">		} else if (!custEmail.equals(other.custEmail)) {</span>
+<span class="nc" id="L419">			return false;</span>
+		}
+<span class="nc bnc" id="L421" title="All 2 branches missed.">		if (custFirstName == null) {</span>
+<span class="nc bnc" id="L422" title="All 2 branches missed.">			if (other.custFirstName != null) {</span>
+<span class="nc" id="L423">				return false;</span>
+			}
+<span class="nc bnc" id="L425" title="All 2 branches missed.">		} else if (!custFirstName.equals(other.custFirstName)) {</span>
+<span class="nc" id="L426">			return false;</span>
+		}
+<span class="nc bnc" id="L428" title="All 2 branches missed.">		if (custLastName == null) {</span>
+<span class="nc bnc" id="L429" title="All 2 branches missed.">			if (other.custLastName != null) {</span>
+<span class="nc" id="L430">				return false;</span>
+			}
+<span class="nc bnc" id="L432" title="All 2 branches missed.">		} else if (!custLastName.equals(other.custLastName)) {</span>
+<span class="nc" id="L433">			return false;</span>
+		}
+<span class="nc bnc" id="L435" title="All 2 branches missed.">		if (custPhn == null) {</span>
+<span class="nc bnc" id="L436" title="All 2 branches missed.">			if (other.custPhn != null) {</span>
+<span class="nc" id="L437">				return false;</span>
+			}
+<span class="nc bnc" id="L439" title="All 2 branches missed.">		} else if (!custPhn.equals(other.custPhn)) {</span>
+<span class="nc" id="L440">			return false;</span>
+		}
+<span class="nc bnc" id="L442" title="All 2 branches missed.">		if (custType == null) {</span>
+<span class="nc bnc" id="L443" title="All 2 branches missed.">			if (other.custType != null) {</span>
+<span class="nc" id="L444">				return false;</span>
+			}
+<span class="nc bnc" id="L446" title="All 2 branches missed.">		} else if (!custType.equals(other.custType)) {</span>
+<span class="nc" id="L447">			return false;</span>
+		}
+<span class="nc bnc" id="L449" title="All 2 branches missed.">		if (customerId != other.customerId) {</span>
+<span class="nc" id="L450">			return false;</span>
+		}
+<span class="nc bnc" id="L452" title="All 2 branches missed.">		if (gstin == null) {</span>
+<span class="nc bnc" id="L453" title="All 2 branches missed.">			if (other.gstin != null) {</span>
+<span class="nc" id="L454">				return false;</span>
+			}
+<span class="nc bnc" id="L456" title="All 2 branches missed.">		} else if (!gstin.equals(other.gstin)) {</span>
+<span class="nc" id="L457">			return false;</span>
+		}
+<span class="nc bnc" id="L459" title="All 2 branches missed.">		if (line1Text == null) {</span>
+<span class="nc bnc" id="L460" title="All 2 branches missed.">			if (other.line1Text != null) {</span>
+<span class="nc" id="L461">				return false;</span>
+			}
+<span class="nc bnc" id="L463" title="All 2 branches missed.">		} else if (!line1Text.equals(other.line1Text)) {</span>
+<span class="nc" id="L464">			return false;</span>
+		}
+<span class="nc bnc" id="L466" title="All 2 branches missed.">		if (line2Text == null) {</span>
+<span class="nc bnc" id="L467" title="All 2 branches missed.">			if (other.line2Text != null) {</span>
+<span class="nc" id="L468">				return false;</span>
+			}
+<span class="nc bnc" id="L470" title="All 2 branches missed.">		} else if (!line2Text.equals(other.line2Text)) {</span>
+<span class="nc" id="L471">			return false;</span>
+		}
+<span class="nc bnc" id="L473" title="All 2 branches missed.">		if (line3Text == null) {</span>
+<span class="nc bnc" id="L474" title="All 2 branches missed.">			if (other.line3Text != null) {</span>
+<span class="nc" id="L475">				return false;</span>
+			}
+<span class="nc bnc" id="L477" title="All 2 branches missed.">		} else if (!line3Text.equals(other.line3Text)) {</span>
+<span class="nc" id="L478">			return false;</span>
+		}
+<span class="nc bnc" id="L480" title="All 2 branches missed.">		if (panNbr == null) {</span>
+<span class="nc bnc" id="L481" title="All 2 branches missed.">			if (other.panNbr != null) {</span>
+<span class="nc" id="L482">				return false;</span>
+			}
+<span class="nc bnc" id="L484" title="All 2 branches missed.">		} else if (!panNbr.equals(other.panNbr)) {</span>
+<span class="nc" id="L485">			return false;</span>
+		}
+<span class="nc bnc" id="L487" title="All 2 branches missed.">		if (pincode == null) {</span>
+<span class="nc bnc" id="L488" title="All 2 branches missed.">			if (other.pincode != null) {</span>
+<span class="nc" id="L489">				return false;</span>
+			}
+<span class="nc bnc" id="L491" title="All 2 branches missed.">		} else if (!pincode.equals(other.pincode)) {</span>
+<span class="nc" id="L492">			return false;</span>
+		}
+<span class="nc bnc" id="L494" title="All 2 branches missed.">		if (stateNme == null) {</span>
+<span class="nc bnc" id="L495" title="All 2 branches missed.">			if (other.stateNme != null) {</span>
+<span class="nc" id="L496">				return false;</span>
+			}
+<span class="nc bnc" id="L498" title="All 2 branches missed.">		} else if (!stateNme.equals(other.stateNme)) {</span>
+<span class="nc" id="L499">			return false;</span>
+		}
+<span class="nc" id="L501">		return true;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+<span class="nc" id="L511">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L512">		builder.append(&quot;Customer [customerId=&quot;).append(customerId).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L513" title="All 2 branches missed.">		if (custCategory != null)</span>
+<span class="nc" id="L514">			builder.append(&quot;custCategory=&quot;).append(custCategory).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L515" title="All 2 branches missed.">		if (custComment != null)</span>
+<span class="nc" id="L516">			builder.append(&quot;custComment=&quot;).append(custComment).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L517" title="All 2 branches missed.">		if (custFirstName != null)</span>
+<span class="nc" id="L518">			builder.append(&quot;custFirstName=&quot;).append(custFirstName).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L519" title="All 2 branches missed.">		if (custLastName != null)</span>
+<span class="nc" id="L520">			builder.append(&quot;custLastName=&quot;).append(custLastName).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L521" title="All 2 branches missed.">		if (custType != null)</span>
+<span class="nc" id="L522">			builder.append(&quot;custType=&quot;).append(custType).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L523" title="All 2 branches missed.">		if (cityNme != null)</span>
+<span class="nc" id="L524">			builder.append(&quot;cityNme=&quot;).append(cityNme).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L525" title="All 2 branches missed.">		if (line1Text != null)</span>
+<span class="nc" id="L526">			builder.append(&quot;line1Text=&quot;).append(line1Text).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L527" title="All 2 branches missed.">		if (line2Text != null)</span>
+<span class="nc" id="L528">			builder.append(&quot;line2Text=&quot;).append(line2Text).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L529" title="All 2 branches missed.">		if (line3Text != null)</span>
+<span class="nc" id="L530">			builder.append(&quot;line3Text=&quot;).append(line3Text).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L531" title="All 2 branches missed.">		if (pincode != null)</span>
+<span class="nc" id="L532">			builder.append(&quot;pincode=&quot;).append(pincode).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L533" title="All 2 branches missed.">		if (stateNme != null)</span>
+<span class="nc" id="L534">			builder.append(&quot;stateNme=&quot;).append(stateNme).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L535" title="All 2 branches missed.">		if (custPhn != null)</span>
+<span class="nc" id="L536">			builder.append(&quot;custPhn=&quot;).append(custPhn).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L537" title="All 2 branches missed.">		if (custEmail != null)</span>
+<span class="nc" id="L538">			builder.append(&quot;custEmail=&quot;).append(custEmail).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L539" title="All 2 branches missed.">		if (panNbr != null)</span>
+<span class="nc" id="L540">			builder.append(&quot;panNbr=&quot;).append(panNbr).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L541" title="All 2 branches missed.">		if (gstin != null)</span>
+<span class="nc" id="L542">			builder.append(&quot;gstin=&quot;).append(gstin);</span>
+<span class="nc" id="L543">		builder.append(&quot;]&quot;);</span>
+<span class="nc" id="L544">		return builder.toString();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

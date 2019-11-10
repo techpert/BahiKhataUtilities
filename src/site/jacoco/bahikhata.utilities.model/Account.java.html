@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Account.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.model</a> &gt; <span class="el_source">Account.java</span></div><h1>Account.java</h1><pre class="source lang-java linenums">/**
+ *  copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.model;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
+
+/**
+ * @author Vrinda This is a model class for the ACCOUNT database table.
+ * 
+ */
+public class Account implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private int accountNumber;
+
+	private String accountName;
+
+	private String balanceSheetType;
+
+	private LocalDate dateAdded;
+
+	private String operator;
+
+	private String profitAndLossType;
+
+	// bi-directional many-to-one association to AccountStatus
+	private List&lt;AccountStatus&gt; accountStatuses;
+
+	// bi-directional many-to-one association to BalanceSheet
+	private List&lt;BalanceSheet&gt; balanceSheetAccount;
+
+	// bi-directional many-to-one association to Journal
+	private List&lt;Journal&gt; creditJournal;
+
+	// bi-directional many-to-one association to Journal
+	private List&lt;Journal&gt; debitJournal;
+
+	// bi-directional many-to-one association to Ledger
+	private List&lt;Ledger&gt; debitLedger;
+
+	// bi-directional many-to-one association to Ledger
+	private List&lt;Ledger&gt; creditLedger;
+
+	// bi-directional many-to-one association to Ledger
+	private List&lt;Ledger&gt; ledgerAccount;
+
+	// bi-directional many-to-one association to ProfitAndLoss
+	private List&lt;ProfitAndLoss&gt; profitAndLossAccount;
+
+<span class="nc" id="L53">	public Account() {</span>
+<span class="nc" id="L54">	}</span>
+
+	/**
+	 * @param accountNumber
+	 * @param accountName
+	 * @param balanceSheetType
+	 * @param dateAdded
+	 * @param operator
+	 * @param profitAndLossType
+	 * @param accountStatuses
+	 * @param balanceSheetAccount
+	 * @param creditJournal
+	 * @param debitJournal
+	 * @param debitLedger
+	 * @param creditLedger
+	 * @param ledgerAccount
+	 * @param profitAndLossAccount
+	 */
+	public Account(int accountNumber, String accountName, String balanceSheetType, LocalDate dateAdded, String operator,
+			String profitAndLossType, List&lt;AccountStatus&gt; accountStatuses, List&lt;BalanceSheet&gt; balanceSheetAccount,
+			List&lt;Journal&gt; creditJournal, List&lt;Journal&gt; debitJournal, List&lt;Ledger&gt; debitLedger,
+<span class="nc" id="L75">			List&lt;Ledger&gt; creditLedger, List&lt;Ledger&gt; ledgerAccount, List&lt;ProfitAndLoss&gt; profitAndLossAccount) {</span>
+<span class="nc" id="L76">		this.accountNumber = accountNumber;</span>
+<span class="nc" id="L77">		this.accountName = accountName;</span>
+<span class="nc" id="L78">		this.balanceSheetType = balanceSheetType;</span>
+<span class="nc" id="L79">		this.dateAdded = dateAdded;</span>
+<span class="nc" id="L80">		this.operator = operator;</span>
+<span class="nc" id="L81">		this.profitAndLossType = profitAndLossType;</span>
+<span class="nc" id="L82">		this.accountStatuses = accountStatuses;</span>
+<span class="nc" id="L83">		this.balanceSheetAccount = balanceSheetAccount;</span>
+<span class="nc" id="L84">		this.creditJournal = creditJournal;</span>
+<span class="nc" id="L85">		this.debitJournal = debitJournal;</span>
+<span class="nc" id="L86">		this.debitLedger = debitLedger;</span>
+<span class="nc" id="L87">		this.creditLedger = creditLedger;</span>
+<span class="nc" id="L88">		this.ledgerAccount = ledgerAccount;</span>
+<span class="nc" id="L89">		this.profitAndLossAccount = profitAndLossAccount;</span>
+<span class="nc" id="L90">	}</span>
+
+	/**
+	 * @return the accountNumber
+	 */
+	public int getAccountNumber() {
+<span class="nc" id="L96">		return accountNumber;</span>
+	}
+
+	/**
+	 * @param accountNumber the accountNumber to set
+	 */
+	public void setAccountNumber(int accountNumber) {
+<span class="nc" id="L103">		this.accountNumber = accountNumber;</span>
+<span class="nc" id="L104">	}</span>
+
+	/**
+	 * @return the accountName
+	 */
+	public String getAccountName() {
+<span class="nc" id="L110">		return accountName;</span>
+	}
+
+	/**
+	 * @param accountName the accountName to set
+	 */
+	public void setAccountName(String accountName) {
+<span class="nc" id="L117">		this.accountName = accountName;</span>
+<span class="nc" id="L118">	}</span>
+
+	/**
+	 * @return the balanceSheetType
+	 */
+	public String getBalanceSheetType() {
+<span class="nc" id="L124">		return balanceSheetType;</span>
+	}
+
+	/**
+	 * @param balanceSheetType the balanceSheetType to set
+	 */
+	public void setBalanceSheetType(String balanceSheetType) {
+<span class="nc" id="L131">		this.balanceSheetType = balanceSheetType;</span>
+<span class="nc" id="L132">	}</span>
+
+	/**
+	 * @return the dateAdded
+	 */
+	public LocalDate getDateAdded() {
+<span class="nc" id="L138">		return dateAdded;</span>
+	}
+
+	/**
+	 * @param dateAdded the dateAdded to set
+	 */
+	public void setDateAdded(LocalDate dateAdded) {
+<span class="nc" id="L145">		this.dateAdded = dateAdded;</span>
+<span class="nc" id="L146">	}</span>
+
+	/**
+	 * @return the operator
+	 */
+	public String getOperator() {
+<span class="nc" id="L152">		return operator;</span>
+	}
+
+	/**
+	 * @param operator the operator to set
+	 */
+	public void setOperator(String operator) {
+<span class="nc" id="L159">		this.operator = operator;</span>
+<span class="nc" id="L160">	}</span>
+
+	/**
+	 * @return the profitAndLossType
+	 */
+	public String getProfitAndLossType() {
+<span class="nc" id="L166">		return profitAndLossType;</span>
+	}
+
+	/**
+	 * @param profitAndLossType the profitAndLossType to set
+	 */
+	public void setProfitAndLossType(String profitAndLossType) {
+<span class="nc" id="L173">		this.profitAndLossType = profitAndLossType;</span>
+<span class="nc" id="L174">	}</span>
+
+	/**
+	 * @return the accountStatuses
+	 */
+	public List&lt;AccountStatus&gt; getAccountStatuses() {
+<span class="nc" id="L180">		return accountStatuses;</span>
+	}
+
+	/**
+	 * @param accountStatuses the accountStatuses to set
+	 */
+	public void setAccountStatuses(List&lt;AccountStatus&gt; accountStatuses) {
+<span class="nc" id="L187">		this.accountStatuses = accountStatuses;</span>
+<span class="nc" id="L188">	}</span>
+
+	/**
+	 * @return the balanceSheetAccount
+	 */
+	public List&lt;BalanceSheet&gt; getBalanceSheetAccount() {
+<span class="nc" id="L194">		return balanceSheetAccount;</span>
+	}
+
+	/**
+	 * @param balanceSheetAccount the balanceSheetAccount to set
+	 */
+	public void setBalanceSheetAccount(List&lt;BalanceSheet&gt; balanceSheetAccount) {
+<span class="nc" id="L201">		this.balanceSheetAccount = balanceSheetAccount;</span>
+<span class="nc" id="L202">	}</span>
+
+	/**
+	 * @return the creditJournal
+	 */
+	public List&lt;Journal&gt; getCreditJournal() {
+<span class="nc" id="L208">		return creditJournal;</span>
+	}
+
+	/**
+	 * @param creditJournal the creditJournal to set
+	 */
+	public void setCreditJournal(List&lt;Journal&gt; creditJournal) {
+<span class="nc" id="L215">		this.creditJournal = creditJournal;</span>
+<span class="nc" id="L216">	}</span>
+
+	/**
+	 * @return the debitJournal
+	 */
+	public List&lt;Journal&gt; getDebitJournal() {
+<span class="nc" id="L222">		return debitJournal;</span>
+	}
+
+	/**
+	 * @param debitJournal the debitJournal to set
+	 */
+	public void setDebitJournal(List&lt;Journal&gt; debitJournal) {
+<span class="nc" id="L229">		this.debitJournal = debitJournal;</span>
+<span class="nc" id="L230">	}</span>
+
+	/**
+	 * @return the debitLedger
+	 */
+	public List&lt;Ledger&gt; getDebitLedger() {
+<span class="nc" id="L236">		return debitLedger;</span>
+	}
+
+	/**
+	 * @param debitLedger the debitLedger to set
+	 */
+	public void setDebitLedger(List&lt;Ledger&gt; debitLedger) {
+<span class="nc" id="L243">		this.debitLedger = debitLedger;</span>
+<span class="nc" id="L244">	}</span>
+
+	/**
+	 * @return the creditLedger
+	 */
+	public List&lt;Ledger&gt; getCreditLedger() {
+<span class="nc" id="L250">		return creditLedger;</span>
+	}
+
+	/**
+	 * @param creditLedger the creditLedger to set
+	 */
+	public void setCreditLedger(List&lt;Ledger&gt; creditLedger) {
+<span class="nc" id="L257">		this.creditLedger = creditLedger;</span>
+<span class="nc" id="L258">	}</span>
+
+	/**
+	 * @return the ledgerAccount
+	 */
+	public List&lt;Ledger&gt; getLedgerAccount() {
+<span class="nc" id="L264">		return ledgerAccount;</span>
+	}
+
+	/**
+	 * @param ledgerAccount the ledgerAccount to set
+	 */
+	public void setLedgerAccount(List&lt;Ledger&gt; ledgerAccount) {
+<span class="nc" id="L271">		this.ledgerAccount = ledgerAccount;</span>
+<span class="nc" id="L272">	}</span>
+
+	/**
+	 * @return the profitAndLossAccount
+	 */
+	public List&lt;ProfitAndLoss&gt; getProfitAndLossAccount() {
+<span class="nc" id="L278">		return profitAndLossAccount;</span>
+	}
+
+	/**
+	 * @param profitAndLossAccount the profitAndLossAccount to set
+	 */
+	public void setProfitAndLossAccount(List&lt;ProfitAndLoss&gt; profitAndLossAccount) {
+<span class="nc" id="L285">		this.profitAndLossAccount = profitAndLossAccount;</span>
+<span class="nc" id="L286">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc" id="L295">		final int prime = 31;</span>
+<span class="nc" id="L296">		int result = 1;</span>
+<span class="nc bnc" id="L297" title="All 2 branches missed.">		result = prime * result + ((accountName == null) ? 0 : accountName.hashCode());</span>
+<span class="nc" id="L298">		result = prime * result + accountNumber;</span>
+<span class="nc bnc" id="L299" title="All 2 branches missed.">		result = prime * result + ((accountStatuses == null) ? 0 : accountStatuses.hashCode());</span>
+<span class="nc bnc" id="L300" title="All 2 branches missed.">		result = prime * result + ((balanceSheetAccount == null) ? 0 : balanceSheetAccount.hashCode());</span>
+<span class="nc bnc" id="L301" title="All 2 branches missed.">		result = prime * result + ((balanceSheetType == null) ? 0 : balanceSheetType.hashCode());</span>
+<span class="nc bnc" id="L302" title="All 2 branches missed.">		result = prime * result + ((creditJournal == null) ? 0 : creditJournal.hashCode());</span>
+<span class="nc bnc" id="L303" title="All 2 branches missed.">		result = prime * result + ((creditLedger == null) ? 0 : creditLedger.hashCode());</span>
+<span class="nc bnc" id="L304" title="All 2 branches missed.">		result = prime * result + ((dateAdded == null) ? 0 : dateAdded.hashCode());</span>
+<span class="nc bnc" id="L305" title="All 2 branches missed.">		result = prime * result + ((debitJournal == null) ? 0 : debitJournal.hashCode());</span>
+<span class="nc bnc" id="L306" title="All 2 branches missed.">		result = prime * result + ((debitLedger == null) ? 0 : debitLedger.hashCode());</span>
+<span class="nc bnc" id="L307" title="All 2 branches missed.">		result = prime * result + ((ledgerAccount == null) ? 0 : ledgerAccount.hashCode());</span>
+<span class="nc bnc" id="L308" title="All 2 branches missed.">		result = prime * result + ((operator == null) ? 0 : operator.hashCode());</span>
+<span class="nc bnc" id="L309" title="All 2 branches missed.">		result = prime * result + ((profitAndLossAccount == null) ? 0 : profitAndLossAccount.hashCode());</span>
+<span class="nc bnc" id="L310" title="All 2 branches missed.">		result = prime * result + ((profitAndLossType == null) ? 0 : profitAndLossType.hashCode());</span>
+<span class="nc" id="L311">		return result;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L321" title="All 2 branches missed.">		if (this == obj) {</span>
+<span class="nc" id="L322">			return true;</span>
+		}
+<span class="nc bnc" id="L324" title="All 2 branches missed.">		if (obj == null) {</span>
+<span class="nc" id="L325">			return false;</span>
+		}
+<span class="nc bnc" id="L327" title="All 2 branches missed.">		if (!(obj instanceof Account)) {</span>
+<span class="nc" id="L328">			return false;</span>
+		}
+<span class="nc" id="L330">		Account other = (Account) obj;</span>
+<span class="nc bnc" id="L331" title="All 2 branches missed.">		if (accountName == null) {</span>
+<span class="nc bnc" id="L332" title="All 2 branches missed.">			if (other.accountName != null) {</span>
+<span class="nc" id="L333">				return false;</span>
+			}
+<span class="nc bnc" id="L335" title="All 2 branches missed.">		} else if (!accountName.equals(other.accountName)) {</span>
+<span class="nc" id="L336">			return false;</span>
+		}
+<span class="nc bnc" id="L338" title="All 2 branches missed.">		if (accountNumber != other.accountNumber) {</span>
+<span class="nc" id="L339">			return false;</span>
+		}
+<span class="nc bnc" id="L341" title="All 2 branches missed.">		if (accountStatuses == null) {</span>
+<span class="nc bnc" id="L342" title="All 2 branches missed.">			if (other.accountStatuses != null) {</span>
+<span class="nc" id="L343">				return false;</span>
+			}
+<span class="nc bnc" id="L345" title="All 2 branches missed.">		} else if (!accountStatuses.equals(other.accountStatuses)) {</span>
+<span class="nc" id="L346">			return false;</span>
+		}
+<span class="nc bnc" id="L348" title="All 2 branches missed.">		if (balanceSheetAccount == null) {</span>
+<span class="nc bnc" id="L349" title="All 2 branches missed.">			if (other.balanceSheetAccount != null) {</span>
+<span class="nc" id="L350">				return false;</span>
+			}
+<span class="nc bnc" id="L352" title="All 2 branches missed.">		} else if (!balanceSheetAccount.equals(other.balanceSheetAccount)) {</span>
+<span class="nc" id="L353">			return false;</span>
+		}
+<span class="nc bnc" id="L355" title="All 2 branches missed.">		if (balanceSheetType == null) {</span>
+<span class="nc bnc" id="L356" title="All 2 branches missed.">			if (other.balanceSheetType != null) {</span>
+<span class="nc" id="L357">				return false;</span>
+			}
+<span class="nc bnc" id="L359" title="All 2 branches missed.">		} else if (!balanceSheetType.equals(other.balanceSheetType)) {</span>
+<span class="nc" id="L360">			return false;</span>
+		}
+<span class="nc bnc" id="L362" title="All 2 branches missed.">		if (creditJournal == null) {</span>
+<span class="nc bnc" id="L363" title="All 2 branches missed.">			if (other.creditJournal != null) {</span>
+<span class="nc" id="L364">				return false;</span>
+			}
+<span class="nc bnc" id="L366" title="All 2 branches missed.">		} else if (!creditJournal.equals(other.creditJournal)) {</span>
+<span class="nc" id="L367">			return false;</span>
+		}
+<span class="nc bnc" id="L369" title="All 2 branches missed.">		if (creditLedger == null) {</span>
+<span class="nc bnc" id="L370" title="All 2 branches missed.">			if (other.creditLedger != null) {</span>
+<span class="nc" id="L371">				return false;</span>
+			}
+<span class="nc bnc" id="L373" title="All 2 branches missed.">		} else if (!creditLedger.equals(other.creditLedger)) {</span>
+<span class="nc" id="L374">			return false;</span>
+		}
+<span class="nc bnc" id="L376" title="All 2 branches missed.">		if (dateAdded == null) {</span>
+<span class="nc bnc" id="L377" title="All 2 branches missed.">			if (other.dateAdded != null) {</span>
+<span class="nc" id="L378">				return false;</span>
+			}
+<span class="nc bnc" id="L380" title="All 2 branches missed.">		} else if (!dateAdded.equals(other.dateAdded)) {</span>
+<span class="nc" id="L381">			return false;</span>
+		}
+<span class="nc bnc" id="L383" title="All 2 branches missed.">		if (debitJournal == null) {</span>
+<span class="nc bnc" id="L384" title="All 2 branches missed.">			if (other.debitJournal != null) {</span>
+<span class="nc" id="L385">				return false;</span>
+			}
+<span class="nc bnc" id="L387" title="All 2 branches missed.">		} else if (!debitJournal.equals(other.debitJournal)) {</span>
+<span class="nc" id="L388">			return false;</span>
+		}
+<span class="nc bnc" id="L390" title="All 2 branches missed.">		if (debitLedger == null) {</span>
+<span class="nc bnc" id="L391" title="All 2 branches missed.">			if (other.debitLedger != null) {</span>
+<span class="nc" id="L392">				return false;</span>
+			}
+<span class="nc bnc" id="L394" title="All 2 branches missed.">		} else if (!debitLedger.equals(other.debitLedger)) {</span>
+<span class="nc" id="L395">			return false;</span>
+		}
+<span class="nc bnc" id="L397" title="All 2 branches missed.">		if (ledgerAccount == null) {</span>
+<span class="nc bnc" id="L398" title="All 2 branches missed.">			if (other.ledgerAccount != null) {</span>
+<span class="nc" id="L399">				return false;</span>
+			}
+<span class="nc bnc" id="L401" title="All 2 branches missed.">		} else if (!ledgerAccount.equals(other.ledgerAccount)) {</span>
+<span class="nc" id="L402">			return false;</span>
+		}
+<span class="nc bnc" id="L404" title="All 2 branches missed.">		if (operator == null) {</span>
+<span class="nc bnc" id="L405" title="All 2 branches missed.">			if (other.operator != null) {</span>
+<span class="nc" id="L406">				return false;</span>
+			}
+<span class="nc bnc" id="L408" title="All 2 branches missed.">		} else if (!operator.equals(other.operator)) {</span>
+<span class="nc" id="L409">			return false;</span>
+		}
+<span class="nc bnc" id="L411" title="All 2 branches missed.">		if (profitAndLossAccount == null) {</span>
+<span class="nc bnc" id="L412" title="All 2 branches missed.">			if (other.profitAndLossAccount != null) {</span>
+<span class="nc" id="L413">				return false;</span>
+			}
+<span class="nc bnc" id="L415" title="All 2 branches missed.">		} else if (!profitAndLossAccount.equals(other.profitAndLossAccount)) {</span>
+<span class="nc" id="L416">			return false;</span>
+		}
+<span class="nc bnc" id="L418" title="All 2 branches missed.">		if (profitAndLossType == null) {</span>
+<span class="nc bnc" id="L419" title="All 2 branches missed.">			if (other.profitAndLossType != null) {</span>
+<span class="nc" id="L420">				return false;</span>
+			}
+<span class="nc bnc" id="L422" title="All 2 branches missed.">		} else if (!profitAndLossType.equals(other.profitAndLossType)) {</span>
+<span class="nc" id="L423">			return false;</span>
+		}
+<span class="nc" id="L425">		return true;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+<span class="nc" id="L435">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L436">		builder.append(&quot;Account [accountNumber=&quot;).append(accountNumber).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L437" title="All 2 branches missed.">		if (accountName != null)</span>
+<span class="nc" id="L438">			builder.append(&quot;accountName=&quot;).append(accountName).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L439" title="All 2 branches missed.">		if (balanceSheetType != null)</span>
+<span class="nc" id="L440">			builder.append(&quot;balanceSheetType=&quot;).append(balanceSheetType).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L441" title="All 2 branches missed.">		if (dateAdded != null)</span>
+<span class="nc" id="L442">			builder.append(&quot;dateAdded=&quot;).append(dateAdded).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L443" title="All 2 branches missed.">		if (operator != null)</span>
+<span class="nc" id="L444">			builder.append(&quot;operator=&quot;).append(operator).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L445" title="All 2 branches missed.">		if (profitAndLossType != null)</span>
+<span class="nc" id="L446">			builder.append(&quot;profitAndLossType=&quot;).append(profitAndLossType).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L447" title="All 2 branches missed.">		if (accountStatuses != null)</span>
+<span class="nc" id="L448">			builder.append(&quot;accountStatuses=&quot;).append(accountStatuses).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L449" title="All 2 branches missed.">		if (balanceSheetAccount != null)</span>
+<span class="nc" id="L450">			builder.append(&quot;balanceSheetAccount=&quot;).append(balanceSheetAccount).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L451" title="All 2 branches missed.">		if (creditJournal != null)</span>
+<span class="nc" id="L452">			builder.append(&quot;creditJournal=&quot;).append(creditJournal).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L453" title="All 2 branches missed.">		if (debitJournal != null)</span>
+<span class="nc" id="L454">			builder.append(&quot;debitJournal=&quot;).append(debitJournal).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L455" title="All 2 branches missed.">		if (debitLedger != null)</span>
+<span class="nc" id="L456">			builder.append(&quot;debitLedger=&quot;).append(debitLedger).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L457" title="All 2 branches missed.">		if (creditLedger != null)</span>
+<span class="nc" id="L458">			builder.append(&quot;creditLedger=&quot;).append(creditLedger).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L459" title="All 2 branches missed.">		if (ledgerAccount != null)</span>
+<span class="nc" id="L460">			builder.append(&quot;ledgerAccount=&quot;).append(ledgerAccount).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L461" title="All 2 branches missed.">		if (profitAndLossAccount != null)</span>
+<span class="nc" id="L462">			builder.append(&quot;profitAndLossAccount=&quot;).append(profitAndLossAccount);</span>
+<span class="nc" id="L463">		builder.append(&quot;]&quot;);</span>
+<span class="nc" id="L464">		return builder.toString();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

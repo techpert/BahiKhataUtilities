@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataMonitoringConstants.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.monitoring.constants</a> &gt; <span class="el_source">BahiKhataMonitoringConstants.java</span></div><h1>BahiKhataMonitoringConstants.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.monitoring.constants;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class contains constants for BahiKhata Monitoring
+ * 
+ * @author Neeraj Jain
+ * @since 8 Sep 2019
+ * @version 1.0
+ */
+public final class BahiKhataMonitoringConstants
+{
+    private BahiKhataMonitoringConstants()
+<span class="nc" id="L16">    {</span>
+<span class="nc" id="L17">        throw new UnsupportedOperationException(BahiKhataMonitoringConstants.class.getName());</span>
+    }
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :API Path Constants
+     */
+    public static final String MONITORING_ENDPOINT_PRINCIPLE_PATH = &quot;monitoring&quot;;
+    public static final String MONITORING_ENDPOINT_CACHE_STATISTICS = &quot;/cache-stats&quot;;
+    public static final String MONITORING_ENDPOINT_MEMORY_STATISTICS = &quot;/memory-stats&quot;;
+    public static final String MONITORING_ENDPOINT_OPERATING_SYSTEM_STATISTICS = &quot;/operating-system-stats&quot;;
+    public static final String MONITORING_ENDPOINT_RUNTIIME_STATISTICS = &quot;/runtime-stats&quot;;
+
+    public static final String MONITORING_SERVICE_CLASS_TAG = &quot;Bahikhata-Monitoring&quot;;
+    public static final String MONITORING_SERVICE_CLASS_VALUE = &quot;BahikhataMonitoring&quot;;
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :URL Constants
+     */
+    public static final String BAHIKHATA_URL = &quot;https://www.bahikhata.com:4200&quot;;
+    public static final String ADMIN_WITH_WRITE_PERMISSION = &quot;(hasAuthority('Admin')) and #oauth2.hasScope('write')&quot;;
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :BahiKhata CacheStatistics Class Constants
+     */
+
+    public static final String BAHIKHATA_CACHE_STATISTICS_CLASS_DESCRIPTION = &quot;Model class for BahiKhataCacheStatistics&quot;;
+
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_HITS_DESCRIPTION = &quot;Number of hits in the cache&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_MISSES_DESCRIPTION = &quot;Number of misses in the cache&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_PUTS_DESCRIPTION = &quot;Number of puts in the cache&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_GETS_DESCRIPTION = &quot;Number of gets in the cache&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_REMOVALS_DESCRIPTION = &quot;Number of removals in the cache&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_EVICTS_DESCRIPTION = &quot;Number of evicts in the cache&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_HIT_PERCENTAGE_DESCRIPTION = &quot;Percentage of cache hits&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_MISS_PERCENTAGE_DESCRIPTION = &quot;Percentage of cache misses&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_AVERAGE_GET_TIME_DESCRIPTION = &quot;Average get time from cache&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_AVERAGE_PUT_TIME_DESCRIPTION = &quot;Average put time in cache&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_AVERAGE_REMOVAL_TIME_DESCRIPTION = &quot;Average removal time from cache&quot;;
+
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_HITS_VALUE = &quot;2&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_MISSES_VALUE = &quot;3&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_PUTS_VALUE = &quot;1&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_GETS_VALUE = &quot;67&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_REMOVALS_VALUE = &quot;4&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_EVICTS_VALUE = &quot;2&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_HIT_PERCENTAGE_VALUE = &quot;23.43&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_MISS_PERCENTAGE_VALUE = &quot;33.43&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_AVERAGE_GET_TIME_VALUE = &quot;2.3&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_AVERAGE_PUT_TIME_VALUE = &quot;3.2&quot;;
+    public static final String BAHIKHATA_CACHE_STATISTICS_CACHE_AVERAGE_REMOVAL_TIME_VALUE = &quot;1.2&quot;;
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :BahiKhata MemoryStatistics Class Constants
+     */
+    public static final String BAHIKHATA_MEMORY_STATISTICS_CLASS_DESCRIPTION = &quot;Model class for BahiKhataMemoryStatistics&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_INITIAL_NON_HEAPMEMORY_DESCRIPTION = &quot;Non heap memory available initially in mega bytes&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_USED_NON_HEAPMEMORY_DESCRIPTION = &quot;Non heap memory used in mega bytes&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_COMMITTED_NON_HEAPMEMORY_DESCRIPTION = &quot;Non heap memory commited to JVM in mega bytes&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_MAX_NON_HEAP_MEMORY_DESCRIPTION = &quot;Maximum non heap memory available in mega bytes&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_INITIAL_HEAP_MEMORY_DESCRIPTION = &quot;Heap memory available initially in mega bytes&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_USED_HEAP_MEMORY_DESCRIPTION = &quot;Heap memory used in mega bytes&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_COMMITTED_HEAP_MEMORY_DESCRIPTION = &quot;Heap memory commited to JVM in mega bytes&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_MAX_HEAP_MEMORY_DESCRIPTION = &quot;Maximum heap memory available in mega bytes&quot;;
+
+    public static final String BAHIKHATA_MEMORY_STATISTICS_INITIAL_NON_HEAPMEMORY_VALUE = &quot;2 MB&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_USED_NON_HEAPMEMORY_VALUE = &quot;-1 MB&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_COMMITTED_NON_HEAPMEMORY_VALUE = &quot;123 MB&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_MAX_NON_HEAP_MEMORY_VALUE = &quot;1 MB&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_INITIAL_HEAP_MEMORY_VALUE = &quot;278 MB&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_USED_HEAP_MEMORY_VALUE = &quot;5 MB&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_COMMITTED_HEAP_MEMORY_VALUE = &quot;45 MB&quot;;
+    public static final String BAHIKHATA_MEMORY_STATISTICS_MAX_HEAP_MEMORY_VALUE = &quot;25 MB&quot;;
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :BahiKhata OperatingSystem Class Constants
+     */
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_CLASS_DESCRIPTION = &quot;Model class for BahiKhataOperatingSystemStatistics&quot;;
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_OPERATING_SYSTEM_NAME_DESCRIPTION = &quot;Name of the underlying Operating system&quot;;
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_AVAILABLE_PROCESSORS_DESCRIPTION = &quot;Number of processors availbe&quot;;
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_JVM_CPU_USAGE_DESCRIPTION = &quot;CPU used by JVM in percentage&quot;;
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_SYSTEM_CPU_USAGE_DESCRIPTION = &quot;CPU used by System in percentage&quot;;
+
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_OPERATING_SYSTEM_NAME_VALUE = &quot;Windows 10&quot;;
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_AVAILABLE_PROCESSORS_VALUE = &quot;8&quot;;
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_JVM_CPU_USAGE_VALUE = &quot;33.13%&quot;;
+    public static final String BAHIKHATA_OPERATING_SYSTEM_STATISTICS_SYSTEM_CPU_USAGE_VALUE = &quot;31.44%&quot;;
+
+    /**
+     * Techpert:Bahikhata : 0.0.1 :BahiKhata RuntimeStatistics Class Constants
+     */
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_CLASS_DESCRIPTION = &quot;Model class for BahiKhataOperatingSystemStatistics&quot;;
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_BOOT_CLASSPATH_DESCRIPTION = &quot;Boot class path for the application&quot;;
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_CLASSPATH_DESCRIPTION = &quot;Class path for the application&quot;;
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_LIBRARY_PATH_DESCRIPTION = &quot;Library path for the application&quot;;
+
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_BOOT_CLASSPATH_VALUE = &quot;C:\\Program Files\\Java\\jdk1.8.0_201\\jre\\lib\\rt.jar&quot;;
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_CLASSPATH_VALUE = &quot;D:\\BahiKhataUsers\\target\\classes;&quot;;
+    public static final String BAHIKHATA_RUNTIME_STATISTICS_LIBRARY_PATH_VALUE = &quot;C:\\WINDOWS;C:\\WINDOWS\\system32;&quot;;
+
+    public static final String ERROR_KEY = &quot;errors&quot;;
+    public static final String INTERNAL_SERVER_ERROR_KEY = &quot;Internal Server Error&quot;;
+    public static final String INTERNAL_SERVER_ERROR_VALUE = &quot;Service Temporarily Down.Please Try Again In Some Time.&quot;;
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

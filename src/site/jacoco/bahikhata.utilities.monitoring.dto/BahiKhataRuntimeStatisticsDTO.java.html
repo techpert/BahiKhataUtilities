@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataRuntimeStatisticsDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.monitoring.dto</a> &gt; <span class="el_source">BahiKhataRuntimeStatisticsDTO.java</span></div><h1>BahiKhataRuntimeStatisticsDTO.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.monitoring.dto;
+
+import bahikhata.utilities.monitoring.constants.BahiKhataMonitoringConstants;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is model class for Runtime Statistics
+ * 
+ * @author Neeraj.Jain
+ * @since 5-Oct-2019
+ * @version 1.0
+ */
+@ApiModel(description = BahiKhataMonitoringConstants.BAHIKHATA_RUNTIME_STATISTICS_CLASS_DESCRIPTION, reference = &quot;BahiKhataMemoryStatsticsDTO&quot;)
+public class BahiKhataRuntimeStatisticsDTO
+{
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_RUNTIME_STATISTICS_BOOT_CLASSPATH_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_RUNTIME_STATISTICS_BOOT_CLASSPATH_VALUE)
+    private String bootClassPath;
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_RUNTIME_STATISTICS_CLASSPATH_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_RUNTIME_STATISTICS_CLASSPATH_VALUE)
+    private String classPath;
+    @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_RUNTIME_STATISTICS_LIBRARY_PATH_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_RUNTIME_STATISTICS_LIBRARY_PATH_VALUE)
+    private String libraryPath;
+
+    public BahiKhataRuntimeStatisticsDTO(String bootClassPath, String classPath, String libraryPath)
+<span class="nc" id="L28">    {</span>
+<span class="nc" id="L29">        this.bootClassPath = bootClassPath;</span>
+<span class="nc" id="L30">        this.classPath = classPath;</span>
+<span class="nc" id="L31">        this.libraryPath = libraryPath;</span>
+<span class="nc" id="L32">    }</span>
+
+    public BahiKhataRuntimeStatisticsDTO()
+<span class="nc" id="L35">    {</span>
+<span class="nc" id="L36">    }</span>
+
+    public String getBootClassPath()
+    {
+<span class="nc" id="L40">        return bootClassPath;</span>
+    }
+
+    public void setBootClassPath(String bootClassPath)
+    {
+<span class="nc" id="L45">        this.bootClassPath = bootClassPath;</span>
+<span class="nc" id="L46">    }</span>
+
+    public String getClassPath()
+    {
+<span class="nc" id="L50">        return classPath;</span>
+    }
+
+    public void setClassPath(String classPath)
+    {
+<span class="nc" id="L55">        this.classPath = classPath;</span>
+<span class="nc" id="L56">    }</span>
+
+    public String getLibraryPath()
+    {
+<span class="nc" id="L60">        return libraryPath;</span>
+    }
+
+    public void setLibraryPath(String libraryPath)
+    {
+<span class="nc" id="L65">        this.libraryPath = libraryPath;</span>
+<span class="nc" id="L66">    }</span>
+
+    @Override
+    public String toString()
+    {
+<span class="nc" id="L71">        return &quot;BahiKhataRuntimeStatisticsDTO [bootClassPath=&quot; + bootClassPath + &quot;, classPath=&quot;</span>
+                + classPath + &quot;, libraryPath=&quot; + libraryPath + &quot;]&quot;;
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

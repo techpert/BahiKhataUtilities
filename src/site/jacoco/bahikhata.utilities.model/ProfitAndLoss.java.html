@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProfitAndLoss.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.model</a> &gt; <span class="el_source">ProfitAndLoss.java</span></div><h1>ProfitAndLoss.java</h1><pre class="source lang-java linenums">/**
+ *  copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.model;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+/**
+ * @author Vrinda This is a model class for the PROFIT_AND_LOSS database table.
+ * 
+ */
+
+public class ProfitAndLoss implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private ProfitAndLossPK id;
+
+	private String profitAndLossType;
+
+	// bi-directional many-to-one association to Account
+	private Account profitAndLossAccount;
+
+	private BigDecimal Amount;
+
+	private LocalDate periodEndDay;
+
+<span class="nc" id="L29">	public ProfitAndLoss() {</span>
+<span class="nc" id="L30">	}</span>
+
+	/**
+	 * @param id
+	 * @param profitAndLossType
+	 * @param profitAndLossAccount
+	 * @param amount
+	 * @param periodEndDay
+	 */
+	public ProfitAndLoss(ProfitAndLossPK id, String profitAndLossType, Account profitAndLossAccount, BigDecimal amount,
+<span class="nc" id="L40">			LocalDate periodEndDay) {</span>
+<span class="nc" id="L41">		this.id = id;</span>
+<span class="nc" id="L42">		this.profitAndLossType = profitAndLossType;</span>
+<span class="nc" id="L43">		this.profitAndLossAccount = profitAndLossAccount;</span>
+<span class="nc" id="L44">		Amount = amount;</span>
+<span class="nc" id="L45">		this.periodEndDay = periodEndDay;</span>
+<span class="nc" id="L46">	}</span>
+
+	/**
+	 * @return the id
+	 */
+	public ProfitAndLossPK getId() {
+<span class="nc" id="L52">		return id;</span>
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(ProfitAndLossPK id) {
+<span class="nc" id="L59">		this.id = id;</span>
+<span class="nc" id="L60">	}</span>
+
+	/**
+	 * @return the profitAndLossType
+	 */
+	public String getProfitAndLossType() {
+<span class="nc" id="L66">		return profitAndLossType;</span>
+	}
+
+	/**
+	 * @param profitAndLossType the profitAndLossType to set
+	 */
+	public void setProfitAndLossType(String profitAndLossType) {
+<span class="nc" id="L73">		this.profitAndLossType = profitAndLossType;</span>
+<span class="nc" id="L74">	}</span>
+
+	/**
+	 * @return the profitAndLossAccount
+	 */
+	public Account getProfitAndLossAccount() {
+<span class="nc" id="L80">		return profitAndLossAccount;</span>
+	}
+
+	/**
+	 * @param profitAndLossAccount the profitAndLossAccount to set
+	 */
+	public void setProfitAndLossAccount(Account profitAndLossAccount) {
+<span class="nc" id="L87">		this.profitAndLossAccount = profitAndLossAccount;</span>
+<span class="nc" id="L88">	}</span>
+
+	/**
+	 * @return the amount
+	 */
+	public BigDecimal getAmount() {
+<span class="nc" id="L94">		return Amount;</span>
+	}
+
+	/**
+	 * @param amount the amount to set
+	 */
+	public void setAmount(BigDecimal amount) {
+<span class="nc" id="L101">		Amount = amount;</span>
+<span class="nc" id="L102">	}</span>
+
+	/**
+	 * @return the periodEndDay
+	 */
+	public LocalDate getPeriodEndDay() {
+<span class="nc" id="L108">		return periodEndDay;</span>
+	}
+
+	/**
+	 * @param periodEndDay the periodEndDay to set
+	 */
+	public void setPeriodEndDay(LocalDate periodEndDay) {
+<span class="nc" id="L115">		this.periodEndDay = periodEndDay;</span>
+<span class="nc" id="L116">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc" id="L125">		final int prime = 31;</span>
+<span class="nc" id="L126">		int result = 1;</span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">		result = prime * result + ((Amount == null) ? 0 : Amount.hashCode());</span>
+<span class="nc bnc" id="L128" title="All 2 branches missed.">		result = prime * result + ((id == null) ? 0 : id.hashCode());</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">		result = prime * result + ((periodEndDay == null) ? 0 : periodEndDay.hashCode());</span>
+<span class="nc bnc" id="L130" title="All 2 branches missed.">		result = prime * result + ((profitAndLossAccount == null) ? 0 : profitAndLossAccount.hashCode());</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">		result = prime * result + ((profitAndLossType == null) ? 0 : profitAndLossType.hashCode());</span>
+<span class="nc" id="L132">		return result;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L142" title="All 2 branches missed.">		if (this == obj) {</span>
+<span class="nc" id="L143">			return true;</span>
+		}
+<span class="nc bnc" id="L145" title="All 2 branches missed.">		if (obj == null) {</span>
+<span class="nc" id="L146">			return false;</span>
+		}
+<span class="nc bnc" id="L148" title="All 2 branches missed.">		if (!(obj instanceof ProfitAndLoss)) {</span>
+<span class="nc" id="L149">			return false;</span>
+		}
+<span class="nc" id="L151">		ProfitAndLoss other = (ProfitAndLoss) obj;</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">		if (Amount == null) {</span>
+<span class="nc bnc" id="L153" title="All 2 branches missed.">			if (other.Amount != null) {</span>
+<span class="nc" id="L154">				return false;</span>
+			}
+<span class="nc bnc" id="L156" title="All 2 branches missed.">		} else if (!Amount.equals(other.Amount)) {</span>
+<span class="nc" id="L157">			return false;</span>
+		}
+<span class="nc bnc" id="L159" title="All 2 branches missed.">		if (id == null) {</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">			if (other.id != null) {</span>
+<span class="nc" id="L161">				return false;</span>
+			}
+<span class="nc bnc" id="L163" title="All 2 branches missed.">		} else if (!id.equals(other.id)) {</span>
+<span class="nc" id="L164">			return false;</span>
+		}
+<span class="nc bnc" id="L166" title="All 2 branches missed.">		if (periodEndDay == null) {</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">			if (other.periodEndDay != null) {</span>
+<span class="nc" id="L168">				return false;</span>
+			}
+<span class="nc bnc" id="L170" title="All 2 branches missed.">		} else if (!periodEndDay.equals(other.periodEndDay)) {</span>
+<span class="nc" id="L171">			return false;</span>
+		}
+<span class="nc bnc" id="L173" title="All 2 branches missed.">		if (profitAndLossAccount == null) {</span>
+<span class="nc bnc" id="L174" title="All 2 branches missed.">			if (other.profitAndLossAccount != null) {</span>
+<span class="nc" id="L175">				return false;</span>
+			}
+<span class="nc bnc" id="L177" title="All 2 branches missed.">		} else if (!profitAndLossAccount.equals(other.profitAndLossAccount)) {</span>
+<span class="nc" id="L178">			return false;</span>
+		}
+<span class="nc bnc" id="L180" title="All 2 branches missed.">		if (profitAndLossType == null) {</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">			if (other.profitAndLossType != null) {</span>
+<span class="nc" id="L182">				return false;</span>
+			}
+<span class="nc bnc" id="L184" title="All 2 branches missed.">		} else if (!profitAndLossType.equals(other.profitAndLossType)) {</span>
+<span class="nc" id="L185">			return false;</span>
+		}
+<span class="nc" id="L187">		return true;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+<span class="nc" id="L197">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L198">		builder.append(&quot;ProfitAndLoss [&quot;);</span>
+<span class="nc bnc" id="L199" title="All 2 branches missed.">		if (id != null)</span>
+<span class="nc" id="L200">			builder.append(&quot;id=&quot;).append(id).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">		if (profitAndLossType != null)</span>
+<span class="nc" id="L202">			builder.append(&quot;profitAndLossType=&quot;).append(profitAndLossType).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L203" title="All 2 branches missed.">		if (profitAndLossAccount != null)</span>
+<span class="nc" id="L204">			builder.append(&quot;profitAndLossAccount=&quot;).append(profitAndLossAccount).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">		if (Amount != null)</span>
+<span class="nc" id="L206">			builder.append(&quot;Amount=&quot;).append(Amount).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">		if (periodEndDay != null)</span>
+<span class="nc" id="L208">			builder.append(&quot;periodEndDay=&quot;).append(periodEndDay);</span>
+<span class="nc" id="L209">		builder.append(&quot;]&quot;);</span>
+<span class="nc" id="L210">		return builder.toString();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

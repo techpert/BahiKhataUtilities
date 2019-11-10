@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomerDiscountPK.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.model</a> &gt; <span class="el_source">CustomerDiscountPK.java</span></div><h1>CustomerDiscountPK.java</h1><pre class="source lang-java linenums">/**
+ *  copyright © 2019 Techpert It Solutions Private Limited
+ */
+
+package bahikhata.utilities.model;
+
+import java.io.Serializable;
+
+/**
+ * This is a model class for CUSTOMER_DISCOUNT PK.
+ * 
+ * @author Surbhi Gupta
+ */
+public class CustomerDiscountPK implements Serializable {
+	// default serial version id, required for serializable classes.
+	private static final long serialVersionUID = 1L;
+
+	private int itemId;
+
+	private String custType;
+
+<span class="nc" id="L22">	public CustomerDiscountPK() {</span>
+<span class="nc" id="L23">	}</span>
+
+	/**
+	 * @param itemId
+	 * @param custType
+	 */
+<span class="nc" id="L29">	public CustomerDiscountPK(int itemId, String custType) {</span>
+<span class="nc" id="L30">		this.itemId = itemId;</span>
+<span class="nc" id="L31">		this.custType = custType;</span>
+<span class="nc" id="L32">	}</span>
+
+	/**
+	 * @return the itemId
+	 */
+	public int getItemId() {
+<span class="nc" id="L38">		return itemId;</span>
+	}
+
+	/**
+	 * @param itemId the itemId to set
+	 */
+	public void setItemId(int itemId) {
+<span class="nc" id="L45">		this.itemId = itemId;</span>
+<span class="nc" id="L46">	}</span>
+
+	/**
+	 * @return the custType
+	 */
+	public String getCustType() {
+<span class="nc" id="L52">		return custType;</span>
+	}
+
+	/**
+	 * @param custType the custType to set
+	 */
+	public void setCustType(String custType) {
+<span class="nc" id="L59">		this.custType = custType;</span>
+<span class="nc" id="L60">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc" id="L69">		final int prime = 31;</span>
+<span class="nc" id="L70">		int result = 1;</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">		result = prime * result + ((custType == null) ? 0 : custType.hashCode());</span>
+<span class="nc" id="L72">		result = prime * result + itemId;</span>
+<span class="nc" id="L73">		return result;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L83" title="All 2 branches missed.">		if (this == obj) {</span>
+<span class="nc" id="L84">			return true;</span>
+		}
+<span class="nc bnc" id="L86" title="All 2 branches missed.">		if (obj == null) {</span>
+<span class="nc" id="L87">			return false;</span>
+		}
+<span class="nc bnc" id="L89" title="All 2 branches missed.">		if (!(obj instanceof CustomerDiscountPK)) {</span>
+<span class="nc" id="L90">			return false;</span>
+		}
+<span class="nc" id="L92">		CustomerDiscountPK other = (CustomerDiscountPK) obj;</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">		if (custType == null) {</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">			if (other.custType != null) {</span>
+<span class="nc" id="L95">				return false;</span>
+			}
+<span class="nc bnc" id="L97" title="All 2 branches missed.">		} else if (!custType.equals(other.custType)) {</span>
+<span class="nc" id="L98">			return false;</span>
+		}
+<span class="nc bnc" id="L100" title="All 2 branches missed.">		if (itemId != other.itemId) {</span>
+<span class="nc" id="L101">			return false;</span>
+		}
+<span class="nc" id="L103">		return true;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+<span class="nc" id="L113">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L114">		builder.append(&quot;CustomerDiscountPK [itemId=&quot;).append(itemId).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">		if (custType != null)</span>
+<span class="nc" id="L116">			builder.append(&quot;custType=&quot;).append(custType);</span>
+<span class="nc" id="L117">		builder.append(&quot;]&quot;);</span>
+<span class="nc" id="L118">		return builder.toString();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

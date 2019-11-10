@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomerDiscount.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.model</a> &gt; <span class="el_source">CustomerDiscount.java</span></div><h1>CustomerDiscount.java</h1><pre class="source lang-java linenums">/**
+ *  copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.model;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+/**
+ * This is a model class for CUSTOMER_DISCOUNT database table.
+ * 
+ * @author Surbhi Gupta
+ */
+public class CustomerDiscount implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private CustomerDiscountPK id;
+
+	private BigDecimal discPrcnt;
+
+<span class="nc" id="L21">	public CustomerDiscount() {</span>
+<span class="nc" id="L22">	}</span>
+
+	/**
+	 * @param id
+	 * @param discPrcnt
+	 */
+<span class="nc" id="L28">	public CustomerDiscount(CustomerDiscountPK id, BigDecimal discPrcnt) {</span>
+<span class="nc" id="L29">		this.id = id;</span>
+<span class="nc" id="L30">		this.discPrcnt = discPrcnt;</span>
+<span class="nc" id="L31">	}</span>
+
+	/**
+	 * @return the id
+	 */
+	public CustomerDiscountPK getId() {
+<span class="nc" id="L37">		return id;</span>
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(CustomerDiscountPK id) {
+<span class="nc" id="L44">		this.id = id;</span>
+<span class="nc" id="L45">	}</span>
+
+	/**
+	 * @return the discPrcnt
+	 */
+	public BigDecimal getDiscPrcnt() {
+<span class="nc" id="L51">		return discPrcnt;</span>
+	}
+
+	/**
+	 * @param discPrcnt the discPrcnt to set
+	 */
+	public void setDiscPrcnt(BigDecimal discPrcnt) {
+<span class="nc" id="L58">		this.discPrcnt = discPrcnt;</span>
+<span class="nc" id="L59">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc" id="L68">		final int prime = 31;</span>
+<span class="nc" id="L69">		int result = 1;</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">		result = prime * result + ((discPrcnt == null) ? 0 : discPrcnt.hashCode());</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">		result = prime * result + ((id == null) ? 0 : id.hashCode());</span>
+<span class="nc" id="L72">		return result;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L82" title="All 2 branches missed.">		if (this == obj) {</span>
+<span class="nc" id="L83">			return true;</span>
+		}
+<span class="nc bnc" id="L85" title="All 2 branches missed.">		if (obj == null) {</span>
+<span class="nc" id="L86">			return false;</span>
+		}
+<span class="nc bnc" id="L88" title="All 2 branches missed.">		if (!(obj instanceof CustomerDiscount)) {</span>
+<span class="nc" id="L89">			return false;</span>
+		}
+<span class="nc" id="L91">		CustomerDiscount other = (CustomerDiscount) obj;</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">		if (discPrcnt == null) {</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">			if (other.discPrcnt != null) {</span>
+<span class="nc" id="L94">				return false;</span>
+			}
+<span class="nc bnc" id="L96" title="All 2 branches missed.">		} else if (!discPrcnt.equals(other.discPrcnt)) {</span>
+<span class="nc" id="L97">			return false;</span>
+		}
+<span class="nc bnc" id="L99" title="All 2 branches missed.">		if (id == null) {</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">			if (other.id != null) {</span>
+<span class="nc" id="L101">				return false;</span>
+			}
+<span class="nc bnc" id="L103" title="All 2 branches missed.">		} else if (!id.equals(other.id)) {</span>
+<span class="nc" id="L104">			return false;</span>
+		}
+<span class="nc" id="L106">		return true;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+<span class="nc" id="L116">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L117">		builder.append(&quot;CustomerDiscount [&quot;);</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">		if (id != null)</span>
+<span class="nc" id="L119">			builder.append(&quot;id=&quot;).append(id).append(&quot;, &quot;);</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">		if (discPrcnt != null)</span>
+<span class="nc" id="L121">			builder.append(&quot;discPrcnt=&quot;).append(discPrcnt);</span>
+<span class="nc" id="L122">		builder.append(&quot;]&quot;);</span>
+<span class="nc" id="L123">		return builder.toString();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

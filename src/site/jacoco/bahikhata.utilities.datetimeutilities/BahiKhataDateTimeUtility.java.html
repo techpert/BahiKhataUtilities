@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataDateTimeUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.datetimeutilities</a> &gt; <span class="el_source">BahiKhataDateTimeUtility.java</span></div><h1>BahiKhataDateTimeUtility.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.datetimeutilities;
+
+import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.message.Message;
+
+import bahikhata.utilities.stringutilities.BahiKhataStringUtility;
+
+/**
+ * @author Rudhra Koul This is a utility class for date related methods
+ *
+ */
+<span class="nc" id="L23">public class BahiKhataDateTimeUtility {</span>
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :Logger instance for DateTimeUtility
+	 */
+<span class="fc" id="L27">	private static final Logger logger = LogManager.getLogger(BahiKhataDateTimeUtility.class);</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 : This method returns Sql date
+	 * 
+	 * @return date in java.sql.date format
+	 */
+	public static Date getCurrentSqlDate() {
+
+<span class="nc" id="L36">		long millis = System.currentTimeMillis();</span>
+<span class="nc" id="L37">		Date date = new Date(millis);</span>
+<span class="nc" id="L38">		return date;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method returns date in string format
+	 * 
+	 * @return date in yyy/MM/dd format
+	 */
+
+	public static String getCurrentDateString() {
+<span class="fc" id="L48">		LocalDate localDate = LocalDate.now();</span>
+<span class="fc" id="L49">		return (DateTimeFormatter.ofPattern(BahiKhataDateTimeConstants.LOCAL_DATE_FORMAT).format(localDate));</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method returns System default locale based
+	 * current date time
+	 * 
+	 * @return currentDateTime java.time.ZonedDateTime
+	 */
+	public static ZonedDateTime getcurrentZonedDateTime() {
+<span class="nc" id="L59">		Message m = logger.traceEntry(&quot;getcurrentZonedDateTime&quot;);</span>
+<span class="nc" id="L60">		Instant instant = Instant.now();</span>
+<span class="nc" id="L61">		ZonedDateTime currentDateTime = instant.atZone(ZoneId.systemDefault());</span>
+<span class="nc" id="L62">		return logger.traceExit(m, currentDateTime);</span>
+
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method checks the supplied timestamp for
+	 * expiry
+	 * 
+	 * @return true if date is expired else false boolean
+	 */
+	public static Boolean isDateExpired(ZonedDateTime timeStampToCheck) {
+<span class="nc" id="L73">		Message m = logger.traceEntry(&quot;isDateExpired&quot;);</span>
+<span class="nc" id="L74">		Instant instant = Instant.now();</span>
+<span class="nc" id="L75">		ZonedDateTime currentDateTime = instant.atZone(ZoneId.systemDefault());</span>
+<span class="nc" id="L76">		return logger.traceExit(m, currentDateTime.isAfter(timeStampToCheck));</span>
+
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method returns System default locale based
+	 * date time N hours after current date time
+	 * 
+	 * @param hours long
+	 * @return dateTimeAfterNHours java.time.ZonedDateTime
+	 */
+	public static ZonedDateTime getTimestampAfterNHours(long hours) {
+<span class="nc" id="L88">		Message m = logger.traceEntry(&quot;getTimestampAfterNHours&quot;);</span>
+<span class="nc" id="L89">		Instant instant = Instant.now();</span>
+<span class="nc" id="L90">		ZonedDateTime dateTimeAfterNHours = instant.atZone(ZoneId.systemDefault()).plusHours(hours);</span>
+<span class="nc" id="L91">		return logger.traceExit(m, dateTimeAfterNHours);</span>
+
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method checks if supplied date is ahead of
+	 * GMT
+	 * 
+	 * @param zonedDateTime java.time.ZonedDateTime
+	 * @return afterGMT boolean
+	 */
+	public static boolean isTimeZoneAfterGMT(ZonedDateTime zonedDateTime) {
+<span class="nc" id="L103">		Message m = logger.traceEntry(&quot;isTimeZoneAfterGMT&quot;);</span>
+<span class="nc" id="L104">		boolean afterGMT = false;</span>
+<span class="nc" id="L105">		String zonedDateTimeString = zonedDateTime.toString();</span>
+<span class="nc bnc" id="L106" title="All 4 branches missed.">		if (zonedDateTime != null &amp;&amp; zonedDateTimeString.contains(BahiKhataDateTimeConstants.GMT_AFTER)) {</span>
+<span class="nc" id="L107">			afterGMT = true;</span>
+<span class="nc" id="L108">			return logger.traceExit(m, afterGMT);</span>
+		} else {
+<span class="nc" id="L110">			logger.debug(&quot;Supplied date is empty&quot;);</span>
+<span class="nc" id="L111">			return logger.traceExit(m, afterGMT);</span>
+
+		}
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method checks if supplied date is ahead of
+	 * GMT
+	 * 
+	 * @param zonedDateTime String
+	 * @return afterGMT boolean
+	 */
+	public static boolean isTimeZoneAfterGMT(String zonedDateTime) {
+<span class="nc" id="L124">		Message m = logger.traceEntry(&quot;isTimeZoneAfterGMT&quot;);</span>
+<span class="nc" id="L125">		boolean afterGMT = false;</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">		if (BahiKhataStringUtility.isNotNullAndNotEmpty(zonedDateTime)</span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">				&amp;&amp; zonedDateTime.contains(BahiKhataDateTimeConstants.GMT_AFTER)) {</span>
+<span class="nc" id="L128">			afterGMT = true;</span>
+<span class="nc" id="L129">			return logger.traceExit(m, afterGMT);</span>
+		} else {
+<span class="nc" id="L131">			logger.debug(&quot;Supplied date is empty&quot;);</span>
+<span class="nc" id="L132">			return logger.traceExit(m, afterGMT);</span>
+		}
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method checks if supplied date is behind GMT
+	 * 
+	 * @param zonedDateTime java.time.ZonedDateTime
+	 * @return beforeGMT boolean
+	 */
+	public static boolean isTimeZoneBeforeGMT(ZonedDateTime zonedDateTime) {
+<span class="nc" id="L143">		Message m = logger.traceEntry(&quot;isTimeZoneBeforeGMT&quot;);</span>
+<span class="nc" id="L144">		boolean beforeGMT = false;</span>
+<span class="nc" id="L145">		String zonedDateTimeString = zonedDateTime.toString();</span>
+<span class="nc bnc" id="L146" title="All 4 branches missed.">		if (zonedDateTime != null &amp;&amp; zonedDateTimeString.contains(BahiKhataDateTimeConstants.GMT_BEFORE)) {</span>
+<span class="nc" id="L147">			beforeGMT = true;</span>
+<span class="nc" id="L148">			return logger.traceExit(m, beforeGMT);</span>
+		} else {
+<span class="nc" id="L150">			logger.debug(&quot;Supplied date is empty&quot;);</span>
+<span class="nc" id="L151">			return logger.traceExit(m, beforeGMT);</span>
+		}
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method checks if supplied date is behind GMT
+	 * 
+	 * @param zonedDateTime String
+	 * @return beforeGMT boolean
+	 */
+	public static boolean isTimeZoneBeforeGMT(String zonedDateTime) {
+<span class="nc" id="L162">		Message m = logger.traceEntry(&quot;isTimeZoneBeforeGMT&quot;);</span>
+<span class="nc" id="L163">		boolean beforeGMT = false;</span>
+<span class="nc bnc" id="L164" title="All 2 branches missed.">		if (BahiKhataStringUtility.isNotNullAndNotEmpty(zonedDateTime)</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">				&amp;&amp; zonedDateTime.contains(BahiKhataDateTimeConstants.GMT_BEFORE)) {</span>
+<span class="nc" id="L166">			beforeGMT = true;</span>
+<span class="nc" id="L167">			return logger.traceExit(m, beforeGMT);</span>
+		} else {
+<span class="nc" id="L169">			logger.debug(&quot;Supplied date is empty&quot;);</span>
+<span class="nc" id="L170">			return logger.traceExit(m, beforeGMT);</span>
+		}
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method converts String Date To ZonedDateTime
+	 * 
+	 * @param dateTime in 2007-12-03T10:15:30+01:00z format String
+	 * @param timeLag  Value should be either + or - based on whether ahead or
+	 *                 behind GMT String
+	 * @return zonedDateTime java.time.ZonedDateTime
+	 */
+	public static ZonedDateTime convertStringDateToZonedDateTime(String dateTime, String timeLag) {
+<span class="nc" id="L183">		Message m = logger.traceEntry(&quot;convertStringDateToZonedDateTime&quot;);</span>
+<span class="nc" id="L184">		ZonedDateTime zonedDateTime = null;</span>
+<span class="nc bnc" id="L185" title="All 2 branches missed.">		if (BahiKhataStringUtility.isNotNullAndNotEmpty(dateTime)</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">				&amp;&amp; BahiKhataStringUtility.isNotNullAndNotEmpty(timeLag)) {</span>
+<span class="nc" id="L187">			zonedDateTime = Instant.parse(dateTime.substring(0, dateTime.indexOf(timeLag))</span>
+<span class="nc" id="L188">					.concat(BahiKhataDateTimeConstants.ZONE_PLACEHOLDER)).atZone(ZoneId.systemDefault());</span>
+<span class="nc" id="L189">			return logger.traceExit(m, zonedDateTime);</span>
+		} else {
+<span class="nc" id="L191">			logger.debug(&quot;Supplied date or time lag is empty&quot;);</span>
+<span class="nc" id="L192">			return logger.traceExit(m, zonedDateTime);</span>
+		}
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method converts String unixTime in
+	 * milliseconds To ZonedDateTime
+	 * 
+	 * @author Chirag.Goyal
+	 * @since July 28,2019
+	 * 
+	 * @param unixTimeMilliSec in &quot;1564278027&quot;
+	 * @return zonedDateTime java.time.ZonedDateTime in
+	 *         2019-07-28T07:10:27+05:30[Asia/Calcutta]
+	 * 
+	 */
+	public static ZonedDateTime convertUnixTimeToZonedDateTime(String unixTimeMilliSec) {
+<span class="nc" id="L209">		Message m = logger.traceEntry(&quot;convertUnixTimeToZonedDateTime&quot;);</span>
+<span class="nc" id="L210">		ZonedDateTime zonedDateTime = null;</span>
+<span class="nc bnc" id="L211" title="All 2 branches missed.">		if (unixTimeMilliSec != null) {</span>
+<span class="nc" id="L212">			zonedDateTime = convertUnixTimeToZonedDateTime(new Long(unixTimeMilliSec));</span>
+<span class="nc" id="L213">			return logger.traceExit(m, zonedDateTime);</span>
+		} else {
+<span class="nc" id="L215">			logger.debug(&quot;Supplied unixTimeFormat is empty&quot;);</span>
+<span class="nc" id="L216">			return logger.traceExit(m, zonedDateTime);</span>
+		}
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method converts long unixTime in
+	 * milliseconds To ZonedDateTime
+	 * 
+	 * @author Chirag.Goyal
+	 * @since July 28,2019
+	 * 
+	 * @param unixTimeMilliSec in 1564278027
+	 * @return zonedDateTime java.time.ZonedDateTime in
+	 *         2019-07-28T07:10:27+05:30[Asia/Calcutta]
+	 * 
+	 */
+	public static ZonedDateTime convertUnixTimeToZonedDateTime(Long unixTimeMilliSec) {
+<span class="nc" id="L233">		Message m = logger.traceEntry(&quot;convertUnixTimeToZonedDateTime&quot;);</span>
+<span class="nc" id="L234">		ZonedDateTime zonedDateTime = null;</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">		if (unixTimeMilliSec != null) {</span>
+<span class="nc" id="L236">			zonedDateTime = Instant.ofEpochMilli(unixTimeMilliSec * 1000L).atZone(ZoneId.systemDefault());</span>
+<span class="nc" id="L237">			return logger.traceExit(m, zonedDateTime);</span>
+		} else {
+<span class="nc" id="L239">			logger.debug(&quot;Supplied unixTimeMilliSec is empty&quot;);</span>
+<span class="nc" id="L240">			return logger.traceExit(m, zonedDateTime);</span>
+		}
+
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
