@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahiKhataValidationsErrorResponseBuilderUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.validationutilities</a> &gt; <span class="el_source">BahiKhataValidationsErrorResponseBuilderUtility.java</span></div><h1>BahiKhataValidationsErrorResponseBuilderUtility.java</h1><pre class="source lang-java linenums">package bahikhata.utilities.validationutilities;
+
+import java.util.Objects;
+
+import org.apache.commons.lang.StringUtils;
+
+import bahikhata.utilities.dto.BahiKhataErrorResponseDTO;
+import bahikhata.utilities.exception.handler.BahiKhataExceptionHandlerConstants;
+import bahikhata.utilities.stringutilities.BahiKhataStringUtility;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is used for validating
+ * {@link BahiKhataDto}'s .This class should be extended for custom validation
+ * scenarios
+ * 
+ * @author Rudhra Koul
+ * @since 10 Feb 2020
+ * @version 1.0
+ */
+<span class="nc" id="L20">public abstract class BahiKhataValidationsErrorResponseBuilderUtility {</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method checks String object for null and
+	 * blank and add corresponding error message to BahiKhataErrorResponseDTO
+	 * 
+	 * @since 15-Sep-2019
+	 * @param objectToCheck             object which needs to be validated
+	 * @param bahiKhataErrorResponseDTO error response dto where errors will be
+	 *                                  added
+	 * @param code                      code to be added on
+	 *                                  bahiKhataErrorResponseDTO when object is
+	 *                                  null or empty
+	 * @param errorMsgNull              error message to be added on
+	 *                                  bahiKhataErrorResponseDTO when object is
+	 *                                  null
+	 * @param errorMsgEmpty             error message to be added on
+	 *                                  bahiKhataErrorResponseDTO when object is
+	 *                                  empty
+	 */
+	public static void validateNullAndBlank(String objectToCheck, BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO,
+			String code, String errorMsgNull, String errorMsgEmpty) {
+<span class="nc bnc" id="L42" title="All 2 branches missed.">		if (Objects.isNull(objectToCheck)) {</span>
+<span class="nc" id="L43">			bahiKhataErrorResponseDTO.putError(code, errorMsgNull);</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">		} else if (StringUtils.isBlank(objectToCheck)) {</span>
+<span class="nc" id="L45">			bahiKhataErrorResponseDTO.putError(code, errorMsgEmpty);</span>
+		}
+<span class="nc" id="L47">	}</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method null checks BahiKhataDTO's and add
+	 * corresponding error message to BahiKhataErrorResponseDTO
+	 * 
+	 * @since 15-Sep-2019
+	 * @param bahiKhataDTO              object which needs to be validated for null
+	 *                                  check
+	 * @param bahiKhataErrorResponseDTO error response dto where errors will be
+	 *                                  added
+	 * @return boolean&lt;br/&gt;
+	 *         true - BahiKhataDTO is null &lt;br/&gt;
+	 *         false - BahiKhataDTO is not null
+	 */
+	public static boolean validateBahiKhataDTO(Object bahiKhataDTO,
+			BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO) {
+<span class="nc bnc" id="L64" title="All 2 branches missed.">		if (Objects.isNull(bahiKhataDTO)) {</span>
+<span class="nc" id="L65">			bahiKhataErrorResponseDTO.putError(</span>
+					BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,
+					BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_REQUEST_BODY_RESPONSE_MESSAGE);
+<span class="nc" id="L68">			return false;</span>
+		}
+<span class="nc" id="L70">		return true;</span>
+	}
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method matches a string against a particular
+	 * regex and add corresponding error message to BahiKhataErrorResponseDTO
+	 * 
+	 * @author Rudhra Koul
+	 * @since 9 Feb 2020
+	 * @version 1.0
+	 * @param fieldToValidate
+	 * @param pattern
+	 * @param bahiKhataErrorResponseDTO error response dto where errors will be
+	 *                                  added
+	 * @param code
+	 * @param patternMismatchResponse
+	 */
+	public static void validatePatternMatch(String fieldToValidate, String pattern,
+			BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO, String code, String patternMismatchResponse) {
+<span class="nc bnc" id="L89" title="All 2 branches missed.">		if (!BahiKhataStringUtility.isMatchingPattern(fieldToValidate, pattern)) {</span>
+<span class="nc" id="L90">			bahiKhataErrorResponseDTO.putError(code, patternMismatchResponse);</span>
+		}
+
+<span class="nc" id="L93">	}</span>
+
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method checks two strings for equality and
+	 * add corresponding error message to BahiKhataErrorResponseDTO
+	 * 
+	 * @author Rudhra Koul
+	 * @since 9 Feb 2020
+	 * @version 1.0
+	 * @param field1
+	 * @param feild2
+	 * @param bahiKhataErrorResponseDTO error response dto where errors will be
+	 *                                  added
+	 * @param code
+	 * @param mismatchResponse
+	 */
+	public static void validateEquality(String field1, String feild2,
+			BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO, String code, String mismatchResponse) {
+<span class="nc bnc" id="L111" title="All 2 branches missed.">		if (!BahiKhataStringUtility.matchStringsSafely(field1, feild2)) {</span>
+<span class="nc" id="L112">			bahiKhataErrorResponseDTO.putError(code, mismatchResponse);</span>
+		}
+
+<span class="nc" id="L115">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
