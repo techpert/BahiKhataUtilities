@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.validation.ValidationException;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.logging.log4j.LogManager;
@@ -45,8 +46,7 @@ import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
 @ControllerAdvice
 public class BahiKhataExceptionHandler {
 	/**
-	 * Techpert:Bahikhata : 0.0.1 :Logger instance for
-	 * BahiKhataExceptionHandler
+	 * Techpert:Bahikhata : 0.0.1 :Logger instance for BahiKhataExceptionHandler
 	 */
 	private static final Logger logger = LogManager.getLogger(BahiKhataExceptionHandler.class);
 
@@ -65,7 +65,8 @@ public class BahiKhataExceptionHandler {
 		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();
 		logger.debug(ExceptionUtils.getFullStackTrace(ex));
 		bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_INVALID_DATA_TYPE,
-				ex.getName() + BahiKhataExceptionHandlerConstants.BAHIKHATA_NOT_SYNTACTICALLY_VALID_RESPONSE_MESSAGE,ex.getName(),ex.getValue()!=null?ex.getValue().toString():"null");
+				ex.getName() + BahiKhataExceptionHandlerConstants.BAHIKHATA_NOT_SYNTACTICALLY_VALID_RESPONSE_MESSAGE,
+				ex.getName(), ex.getValue() != null ? ex.getValue().toString() : "null");
 		return logger.traceExit(m,
 				new ResponseEntity<>(
 						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),
@@ -90,7 +91,8 @@ public class BahiKhataExceptionHandler {
 		for (ConstraintViolation<?> violation : ex.getConstraintViolations()) {
 			logger.error(violation.getMessage());
 			bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_CONSTRAINT_VIOLATED,
-					violation.getMessage(),((PathImpl) violation.getPropertyPath()).getLeafNode().getName(),((PathImpl) violation.getPropertyPath()).getLeafNode().asString());
+					violation.getMessage(), ((PathImpl) violation.getPropertyPath()).getLeafNode().getName(),
+					((PathImpl) violation.getPropertyPath()).getLeafNode().asString());
 		}
 		return logger.traceExit(m,
 				new ResponseEntity<>(
@@ -114,7 +116,8 @@ public class BahiKhataExceptionHandler {
 		logger.debug(ExceptionUtils.getFullStackTrace(ex));
 		Message m = logger.traceEntry("handleMissingServletRequestParameterException");
 		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();
-		bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_PARAMETER, ex.getLocalizedMessage(),ex.getParameterName(),null);
+		bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_PARAMETER,
+				ex.getLocalizedMessage(), ex.getParameterName(), null);
 		return logger.traceExit(m,
 				new ResponseEntity<>(
 						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),
@@ -139,10 +142,12 @@ public class BahiKhataExceptionHandler {
 		List<ObjectError> globalErrors = ex.getBindingResult().getGlobalErrors();
 		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();
 		for (FieldError fieldError : fieldErrors) {
-			bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_VALIDATION_ERROR, fieldError.getDefaultMessage(),fieldError.getField(),fieldError.getRejectedValue().toString());
+			bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_VALIDATION_ERROR,
+					fieldError.getDefaultMessage(), fieldError.getField(), fieldError.getRejectedValue().toString());
 		}
 		for (ObjectError objectError : globalErrors) {
-			bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_VALIDATION_ERROR, objectError.getDefaultMessage(),objectError.getObjectName(),null);
+			bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_VALIDATION_ERROR,
+					objectError.getDefaultMessage(), objectError.getObjectName(), null);
 		}
 		return logger.traceExit(m,
 				new ResponseEntity<>(
@@ -169,7 +174,8 @@ public class BahiKhataExceptionHandler {
 				.append(MediaType.toString(ex.getSupportedMediaTypes()));
 		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();
 		bahiKhataErrorResponseDTO.putError(
-				BahiKhataExceptionHandlerConstants.BAHIKHATA_UNSUPPORTED_CONTENT_TYPE_RESPONSE_KEY, builder.toString(),null,null);
+				BahiKhataExceptionHandlerConstants.BAHIKHATA_UNSUPPORTED_CONTENT_TYPE_RESPONSE_KEY, builder.toString(),
+				null, null);
 		return logger.traceExit(m,
 				new ResponseEntity<>(
 						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),
@@ -198,7 +204,12 @@ public class BahiKhataExceptionHandler {
 			List<Reference> list = invalidFormatException.getPath();
 			if (!list.isEmpty()) {
 				String errorFieldName = list.get(list.size() - 1).getFieldName();
-				bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_SYNTACTICALLY_INVALID, errorFieldName + BahiKhataExceptionHandlerConstants.BAHIKHATA_NOT_SYNTACTICALLY_VALID_RESPONSE_MESSAGE,errorFieldName,invalidFormatException.getValue()!=null?invalidFormatException.getValue().toString():"null");
+				bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_SYNTACTICALLY_INVALID,
+						errorFieldName
+								+ BahiKhataExceptionHandlerConstants.BAHIKHATA_NOT_SYNTACTICALLY_VALID_RESPONSE_MESSAGE,
+						errorFieldName,
+						invalidFormatException.getValue() != null ? invalidFormatException.getValue().toString()
+								: "null");
 			}
 		} else if (throwable instanceof JsonMappingException) {
 			JsonMappingException jsonMappingException = (JsonMappingException) throwable;
@@ -206,7 +217,9 @@ public class BahiKhataExceptionHandler {
 			List<Reference> list = jsonMappingException.getPath();
 			if (!list.isEmpty()) {
 				String errorFieldName = list.get(list.size() - 1).getFieldName();
-				bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_SYNTACTICALLY_INVALID_JSON, jsonMappingException.getOriginalMessage(),errorFieldName,null);
+				bahiKhataErrorResponseDTO.putError(
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_SYNTACTICALLY_INVALID_JSON,
+						jsonMappingException.getOriginalMessage(), errorFieldName, null);
 			}
 		}
 
@@ -215,11 +228,11 @@ public class BahiKhataExceptionHandler {
 			if (ex.getMessage().contains("Required request body is missing:")) {
 				bahiKhataErrorResponseDTO.putError(
 						BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,
-						BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_REQUEST_BODY_RESPONSE_MESSAGE,null,null);
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_REQUEST_BODY_RESPONSE_MESSAGE, null, null);
 			} else {
 				bahiKhataErrorResponseDTO.putError(
 						BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,
-						BahiKhataExceptionHandlerConstants.BAHIKHATA_INVALID_REQUEST_BODY_RESPONSE_KEY,null,null);
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_INVALID_REQUEST_BODY_RESPONSE_KEY, null, null);
 			}
 		}
 		return logger.traceExit(m,
@@ -229,4 +242,26 @@ public class BahiKhataExceptionHandler {
 						HttpStatus.BAD_REQUEST));
 	}
 
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This Method acts as an Exception handler response
+	 * generator for {@link ValidationException}
+	 * 
+	 * @since 12-Feb-2020
+	 * @param ex {@link ValidationException}
+	 * @return ResponseEntity Error response
+	 */
+	@ExceptionHandler(ValidationException.class)
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public ResponseEntity<Object> handleValidationException(ValidationException ex) {
+		Message m = logger.traceEntry("handleValidationException");
+
+		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();
+		bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_INTERNAL_SERVER_ERROR_KEY,
+				ex.getMessage(), null, null);
+		return logger.traceExit(m,
+				new ResponseEntity<>(
+						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.INTERNAL_SERVER_ERROR));
+	}
 }
