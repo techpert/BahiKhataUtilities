@@ -241,27 +241,4 @@ public class BahiKhataExceptionHandler {
 								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
 						HttpStatus.BAD_REQUEST));
 	}
-
-	/**
-	 * Techpert:Bahikhata : 0.0.1 :This Method acts as an Exception handler response
-	 * generator for {@link ValidationException}
-	 * 
-	 * @since 12-Feb-2020
-	 * @param ex {@link ValidationException}
-	 * @return ResponseEntity Error response
-	 */
-	@ExceptionHandler(ValidationException.class)
-	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	public ResponseEntity<Object> handleValidationException(ValidationException ex) {
-		Message m = logger.traceEntry("handleValidationException");
-
-		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();
-		bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_INTERNAL_SERVER_ERROR_KEY,
-				ex.getMessage(), null, null);
-		return logger.traceExit(m,
-				new ResponseEntity<>(
-						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),
-								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
-						HttpStatus.INTERNAL_SERVER_ERROR));
-	}
 }
