@@ -36,13 +36,15 @@ public abstract class BahiKhataValidationsErrorResponseBuilderUtility {
 	 * @param errorMsgEmpty             error message to be added on
 	 *                                  bahiKhataErrorResponseDTO when object is
 	 *                                  empty
+	 *                                  
+	 * @param fieldName                 name of the erroneous field
 	 */
-	public static void validateNullAndBlank(String objectToCheck, BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO,
+	public static void validateNullAndBlank(String fieldName,String objectToCheck, BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO,
 			String code, String errorMsgNull, String errorMsgEmpty) {
 		if (Objects.isNull(objectToCheck)) {
-			bahiKhataErrorResponseDTO.putError(code, errorMsgNull);
+			bahiKhataErrorResponseDTO.putError(code, errorMsgNull,fieldName,objectToCheck);
 		} else if (StringUtils.isBlank(objectToCheck)) {
-			bahiKhataErrorResponseDTO.putError(code, errorMsgEmpty);
+			bahiKhataErrorResponseDTO.putError(code, errorMsgEmpty,fieldName,objectToCheck);
 		}
 	}
 
@@ -64,7 +66,7 @@ public abstract class BahiKhataValidationsErrorResponseBuilderUtility {
 		if (Objects.isNull(bahiKhataDTO)) {
 			bahiKhataErrorResponseDTO.putError(
 					BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,
-					BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_REQUEST_BODY_RESPONSE_MESSAGE);
+					BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_REQUEST_BODY_RESPONSE_MESSAGE,null,null);
 			return false;
 		}
 		return true;
@@ -77,17 +79,18 @@ public abstract class BahiKhataValidationsErrorResponseBuilderUtility {
 	 * @author Rudhra Koul
 	 * @since 9 Feb 2020
 	 * @version 1.0
-	 * @param fieldToValidate
+	 * @param fieldName name of the field to validate
+	 * @param fieldToValidate field to validate
 	 * @param pattern
 	 * @param bahiKhataErrorResponseDTO error response dto where errors will be
 	 *                                  added
-	 * @param code
-	 * @param patternMismatchResponse
+	 * @param code error code 
+	 * @param patternMismatchResponse error message
 	 */
-	public static void validatePatternMatch(String fieldToValidate, String pattern,
+	public static void validatePatternMatch(String fieldName, String fieldToValidate, String pattern,
 			BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO, String code, String patternMismatchResponse) {
 		if (!BahiKhataStringUtility.isMatchingPattern(fieldToValidate, pattern)) {
-			bahiKhataErrorResponseDTO.putError(code, patternMismatchResponse);
+			bahiKhataErrorResponseDTO.putError(code, patternMismatchResponse,fieldName,fieldToValidate);
 		}
 
 	}
@@ -99,17 +102,19 @@ public abstract class BahiKhataValidationsErrorResponseBuilderUtility {
 	 * @author Rudhra Koul
 	 * @since 9 Feb 2020
 	 * @version 1.0
-	 * @param field1
-	 * @param feild2
+	 * @param field1Name Name of the first Field
+	 * @param field2Name Name of the second Field
+	 * @param field1 Value of first Field
+	 * @param feild2 Value of Second Field
 	 * @param bahiKhataErrorResponseDTO error response dto where errors will be
 	 *                                  added
-	 * @param code
-	 * @param mismatchResponse
+	 * @param code error code
+	 * @param mismatchResponse error message 
 	 */
-	public static void validateEquality(String field1, String feild2,
+	public static void validateEquality(String field1Name,String field2Name,String field1, String field2,
 			BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO, String code, String mismatchResponse) {
-		if (!BahiKhataStringUtility.matchStringsSafely(field1, feild2)) {
-			bahiKhataErrorResponseDTO.putError(code, mismatchResponse);
+		if (!BahiKhataStringUtility.matchStringsSafely(field1, field2)) {
+			bahiKhataErrorResponseDTO.putError(code, mismatchResponse ,field1Name+" , "+ field2Name, field1+" , "+ field2);
 		}
 
 	}

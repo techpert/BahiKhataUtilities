@@ -5,7 +5,6 @@ package bahikhata.utilities.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,12 +18,12 @@ import java.util.Objects;
 public class BahiKhataErrorResponseDTO implements Serializable {
 
 	private static final long serialVersionUID = -7033929908475530176L;
-	private List<HashMap<String, String>> errorList;
+	private List<BahiKhataErrorDTO> errorList;
 
 	/**
 	 * @param errorList
 	 */
-	public BahiKhataErrorResponseDTO(List<HashMap<String, String>> errorList) {
+	public BahiKhataErrorResponseDTO(List<BahiKhataErrorDTO> errorList) {
 		this.errorList = errorList;
 	}
 
@@ -38,14 +37,14 @@ public class BahiKhataErrorResponseDTO implements Serializable {
 	/**
 	 * @return the errorList
 	 */
-	public List<HashMap<String, String>> getErrorList() {
+	public List<BahiKhataErrorDTO> getErrorList() {
 		return errorList;
 	}
 
 	/**
 	 * @param errorList the errorList to set
 	 */
-	public void setErrorList(List<HashMap<String, String>> errorList) {
+	public void setErrorList(List<BahiKhataErrorDTO> errorList) {
 		this.errorList = errorList;
 	}
 
@@ -57,15 +56,24 @@ public class BahiKhataErrorResponseDTO implements Serializable {
 	 * @param key   String
 	 * @param value String
 	 */
-	public void putError(String key, String value) {
-		this.errorList.add(createErrorMap(key, value));
+	public void putError(BahiKhataErrorDTO bahiKhataErrorDTO) {
+		this.errorList.add(bahiKhataErrorDTO);
 	}
 
-	private HashMap<String, String> createErrorMap(String key, String value) {
-		HashMap<String, String> errorMap = new HashMap<>();
-		errorMap.put("code", key);
-		errorMap.put("message", value);
-		return errorMap;
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method adds an error to the
+	 * {@link BahiKhataErrorResponseDTO#errorList}
+	 * 
+	 * @author Rudhra Koul
+	 * @since 11 Feb 2020
+	 * @version 1.0
+	 * @param code
+	 * @param message
+	 * @param field
+	 * @param value
+	 */
+	public void putError(String code, String message, String field, String value) {
+		this.errorList.add(new BahiKhataErrorDTO(code, message, field, value));
 	}
 
 	/**
@@ -83,24 +91,25 @@ public class BahiKhataErrorResponseDTO implements Serializable {
 	}
 
 	/**
-	 * Techpert:Bahikhata : 0.0.1 :This method is hashcode of BahiKhataErrorResponseDTO
+	 * Techpert:Bahikhata : 0.0.1 :This method is hashcode of
+	 * BahiKhataErrorResponseDTO
 	 * 
 	 * @since 01-Sep-2019
 	 * @return hashcode
 	 */
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(errorList);
 	}
 
 	/**
-	 * Techpert:Bahikhata : 0.0.1 :This method checks equality of
-	 * two objects of BahiKhataErrorResponseDTO class
+	 * Techpert:Bahikhata : 0.0.1 :This method checks equality of two objects of
+	 * BahiKhataErrorResponseDTO class
 	 * 
 	 * @since 01-Sep-2019
 	 * @param Object of BahiKhataErrorResponseDTO class
-	 * @return true if equal
-	 * 		   false if not equal
+	 * @return true if equal false if not equal
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -116,6 +125,5 @@ public class BahiKhataErrorResponseDTO implements Serializable {
 		BahiKhataErrorResponseDTO other = (BahiKhataErrorResponseDTO) obj;
 		return Objects.equals(errorList, other.errorList);
 	}
-
 
 }

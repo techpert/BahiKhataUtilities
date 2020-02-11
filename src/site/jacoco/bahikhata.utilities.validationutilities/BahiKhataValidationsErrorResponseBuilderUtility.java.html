@@ -36,15 +36,17 @@ import bahikhata.utilities.stringutilities.BahiKhataStringUtility;
 	 * @param errorMsgEmpty             error message to be added on
 	 *                                  bahiKhataErrorResponseDTO when object is
 	 *                                  empty
+	 *                                  
+	 * @param fieldName                 name of the erroneous field
 	 */
-	public static void validateNullAndBlank(String objectToCheck, BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO,
+	public static void validateNullAndBlank(String fieldName,String objectToCheck, BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO,
 			String code, String errorMsgNull, String errorMsgEmpty) {
-<span class="nc bnc" id="L42" title="All 2 branches missed.">		if (Objects.isNull(objectToCheck)) {</span>
-<span class="nc" id="L43">			bahiKhataErrorResponseDTO.putError(code, errorMsgNull);</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">		} else if (StringUtils.isBlank(objectToCheck)) {</span>
-<span class="nc" id="L45">			bahiKhataErrorResponseDTO.putError(code, errorMsgEmpty);</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">		if (Objects.isNull(objectToCheck)) {</span>
+<span class="nc" id="L45">			bahiKhataErrorResponseDTO.putError(code, errorMsgNull,fieldName,objectToCheck);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">		} else if (StringUtils.isBlank(objectToCheck)) {</span>
+<span class="nc" id="L47">			bahiKhataErrorResponseDTO.putError(code, errorMsgEmpty,fieldName,objectToCheck);</span>
 		}
-<span class="nc" id="L47">	}</span>
+<span class="nc" id="L49">	}</span>
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method null checks BahiKhataDTO's and add
@@ -61,13 +63,13 @@ import bahikhata.utilities.stringutilities.BahiKhataStringUtility;
 	 */
 	public static boolean validateBahiKhataDTO(Object bahiKhataDTO,
 			BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO) {
-<span class="nc bnc" id="L64" title="All 2 branches missed.">		if (Objects.isNull(bahiKhataDTO)) {</span>
-<span class="nc" id="L65">			bahiKhataErrorResponseDTO.putError(</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">		if (Objects.isNull(bahiKhataDTO)) {</span>
+<span class="nc" id="L67">			bahiKhataErrorResponseDTO.putError(</span>
 					BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,
-					BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_REQUEST_BODY_RESPONSE_MESSAGE);
-<span class="nc" id="L68">			return false;</span>
+					BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_REQUEST_BODY_RESPONSE_MESSAGE,null,null);
+<span class="nc" id="L70">			return false;</span>
 		}
-<span class="nc" id="L70">		return true;</span>
+<span class="nc" id="L72">		return true;</span>
 	}
 
 	/**
@@ -77,20 +79,21 @@ import bahikhata.utilities.stringutilities.BahiKhataStringUtility;
 	 * @author Rudhra Koul
 	 * @since 9 Feb 2020
 	 * @version 1.0
-	 * @param fieldToValidate
+	 * @param fieldName name of the field to validate
+	 * @param fieldToValidate field to validate
 	 * @param pattern
 	 * @param bahiKhataErrorResponseDTO error response dto where errors will be
 	 *                                  added
-	 * @param code
-	 * @param patternMismatchResponse
+	 * @param code error code 
+	 * @param patternMismatchResponse error message
 	 */
-	public static void validatePatternMatch(String fieldToValidate, String pattern,
+	public static void validatePatternMatch(String fieldName, String fieldToValidate, String pattern,
 			BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO, String code, String patternMismatchResponse) {
-<span class="nc bnc" id="L89" title="All 2 branches missed.">		if (!BahiKhataStringUtility.isMatchingPattern(fieldToValidate, pattern)) {</span>
-<span class="nc" id="L90">			bahiKhataErrorResponseDTO.putError(code, patternMismatchResponse);</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">		if (!BahiKhataStringUtility.isMatchingPattern(fieldToValidate, pattern)) {</span>
+<span class="nc" id="L93">			bahiKhataErrorResponseDTO.putError(code, patternMismatchResponse,fieldName,fieldToValidate);</span>
 		}
 
-<span class="nc" id="L93">	}</span>
+<span class="nc" id="L96">	}</span>
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This Method checks two strings for equality and
@@ -99,20 +102,22 @@ import bahikhata.utilities.stringutilities.BahiKhataStringUtility;
 	 * @author Rudhra Koul
 	 * @since 9 Feb 2020
 	 * @version 1.0
-	 * @param field1
-	 * @param feild2
+	 * @param field1Name Name of the first Field
+	 * @param field2Name Name of the second Field
+	 * @param field1 Value of first Field
+	 * @param feild2 Value of Second Field
 	 * @param bahiKhataErrorResponseDTO error response dto where errors will be
 	 *                                  added
-	 * @param code
-	 * @param mismatchResponse
+	 * @param code error code
+	 * @param mismatchResponse error message 
 	 */
-	public static void validateEquality(String field1, String feild2,
+	public static void validateEquality(String field1Name,String field2Name,String field1, String field2,
 			BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO, String code, String mismatchResponse) {
-<span class="nc bnc" id="L111" title="All 2 branches missed.">		if (!BahiKhataStringUtility.matchStringsSafely(field1, feild2)) {</span>
-<span class="nc" id="L112">			bahiKhataErrorResponseDTO.putError(code, mismatchResponse);</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">		if (!BahiKhataStringUtility.matchStringsSafely(field1, field2)) {</span>
+<span class="nc" id="L117">			bahiKhataErrorResponseDTO.putError(code, mismatchResponse ,field1Name+&quot; , &quot;+ field2Name, field1+&quot; , &quot;+ field2);</span>
 		}
 
-<span class="nc" id="L115">	}</span>
+<span class="nc" id="L120">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

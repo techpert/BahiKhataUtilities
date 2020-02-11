@@ -5,7 +5,6 @@ package bahikhata.utilities.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,35 +18,35 @@ import java.util.Objects;
 public class BahiKhataErrorResponseDTO implements Serializable {
 
 	private static final long serialVersionUID = -7033929908475530176L;
-	private List&lt;HashMap&lt;String, String&gt;&gt; errorList;
+	private List&lt;BahiKhataErrorDTO&gt; errorList;
 
 	/**
 	 * @param errorList
 	 */
-<span class="nc" id="L27">	public BahiKhataErrorResponseDTO(List&lt;HashMap&lt;String, String&gt;&gt; errorList) {</span>
-<span class="nc" id="L28">		this.errorList = errorList;</span>
-<span class="nc" id="L29">	}</span>
+<span class="nc" id="L26">	public BahiKhataErrorResponseDTO(List&lt;BahiKhataErrorDTO&gt; errorList) {</span>
+<span class="nc" id="L27">		this.errorList = errorList;</span>
+<span class="nc" id="L28">	}</span>
 
 	/**
 	 * 
 	 */
-<span class="nc" id="L34">	public BahiKhataErrorResponseDTO() {</span>
-<span class="nc" id="L35">		errorList = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L36">	}</span>
+<span class="nc" id="L33">	public BahiKhataErrorResponseDTO() {</span>
+<span class="nc" id="L34">		errorList = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L35">	}</span>
 
 	/**
 	 * @return the errorList
 	 */
-	public List&lt;HashMap&lt;String, String&gt;&gt; getErrorList() {
-<span class="nc" id="L42">		return errorList;</span>
+	public List&lt;BahiKhataErrorDTO&gt; getErrorList() {
+<span class="nc" id="L41">		return errorList;</span>
 	}
 
 	/**
 	 * @param errorList the errorList to set
 	 */
-	public void setErrorList(List&lt;HashMap&lt;String, String&gt;&gt; errorList) {
-<span class="nc" id="L49">		this.errorList = errorList;</span>
-<span class="nc" id="L50">	}</span>
+	public void setErrorList(List&lt;BahiKhataErrorDTO&gt; errorList) {
+<span class="nc" id="L48">		this.errorList = errorList;</span>
+<span class="nc" id="L49">	}</span>
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method adds an error to the
@@ -57,16 +56,25 @@ public class BahiKhataErrorResponseDTO implements Serializable {
 	 * @param key   String
 	 * @param value String
 	 */
-	public void putError(String key, String value) {
-<span class="nc" id="L61">		this.errorList.add(createErrorMap(key, value));</span>
-<span class="nc" id="L62">	}</span>
+	public void putError(BahiKhataErrorDTO bahiKhataErrorDTO) {
+<span class="nc" id="L60">		this.errorList.add(bahiKhataErrorDTO);</span>
+<span class="nc" id="L61">	}</span>
 
-	private HashMap&lt;String, String&gt; createErrorMap(String key, String value) {
-<span class="nc" id="L65">		HashMap&lt;String, String&gt; errorMap = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L66">		errorMap.put(&quot;code&quot;, key);</span>
-<span class="nc" id="L67">		errorMap.put(&quot;message&quot;, value);</span>
-<span class="nc" id="L68">		return errorMap;</span>
-	}
+	/**
+	 * Techpert:Bahikhata : 0.0.1 :This method adds an error to the
+	 * {@link BahiKhataErrorResponseDTO#errorList}
+	 * 
+	 * @author Rudhra Koul
+	 * @since 11 Feb 2020
+	 * @version 1.0
+	 * @param code
+	 * @param message
+	 * @param field
+	 * @param value
+	 */
+	public void putError(String code, String message, String field, String value) {
+<span class="nc" id="L76">		this.errorList.add(new BahiKhataErrorDTO(code, message, field, value));</span>
+<span class="nc" id="L77">	}</span>
 
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method is string representation of
@@ -77,46 +85,46 @@ public class BahiKhataErrorResponseDTO implements Serializable {
 	 */
 	@Override
 	public String toString() {
-<span class="nc" id="L80">		StringBuilder builder = new StringBuilder();</span>
-<span class="nc" id="L81">		builder.append(&quot;BahiKhataErrorResponseDTO [errorList=&quot;).append(errorList).append(&quot;]&quot;);</span>
-<span class="nc" id="L82">		return builder.toString();</span>
+<span class="nc" id="L88">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L89">		builder.append(&quot;BahiKhataErrorResponseDTO [errorList=&quot;).append(errorList).append(&quot;]&quot;);</span>
+<span class="nc" id="L90">		return builder.toString();</span>
 	}
 
 	/**
-	 * Techpert:Bahikhata : 0.0.1 :This method is hashcode of BahiKhataErrorResponseDTO
+	 * Techpert:Bahikhata : 0.0.1 :This method is hashcode of
+	 * BahiKhataErrorResponseDTO
 	 * 
 	 * @since 01-Sep-2019
 	 * @return hashcode
 	 */
+
 	@Override
 	public int hashCode() {
-<span class="nc" id="L93">		return Objects.hash(errorList);</span>
+<span class="nc" id="L103">		return Objects.hash(errorList);</span>
 	}
 
 	/**
-	 * Techpert:Bahikhata : 0.0.1 :This method checks equality of
-	 * two objects of BahiKhataErrorResponseDTO class
+	 * Techpert:Bahikhata : 0.0.1 :This method checks equality of two objects of
+	 * BahiKhataErrorResponseDTO class
 	 * 
 	 * @since 01-Sep-2019
 	 * @param Object of BahiKhataErrorResponseDTO class
-	 * @return true if equal
-	 * 		   false if not equal
+	 * @return true if equal false if not equal
 	 */
 	@Override
 	public boolean equals(Object obj) {
-<span class="nc bnc" id="L107" title="All 2 branches missed.">		if (this == obj) {</span>
-<span class="nc" id="L108">			return true;</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">		if (this == obj) {</span>
+<span class="nc" id="L117">			return true;</span>
 		}
-<span class="nc bnc" id="L110" title="All 2 branches missed.">		if (obj == null) {</span>
-<span class="nc" id="L111">			return false;</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">		if (obj == null) {</span>
+<span class="nc" id="L120">			return false;</span>
 		}
-<span class="nc bnc" id="L113" title="All 2 branches missed.">		if (!(obj instanceof BahiKhataErrorResponseDTO)) {</span>
-<span class="nc" id="L114">			return false;</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">		if (!(obj instanceof BahiKhataErrorResponseDTO)) {</span>
+<span class="nc" id="L123">			return false;</span>
 		}
-<span class="nc" id="L116">		BahiKhataErrorResponseDTO other = (BahiKhataErrorResponseDTO) obj;</span>
-<span class="nc" id="L117">		return Objects.equals(errorList, other.errorList);</span>
+<span class="nc" id="L125">		BahiKhataErrorResponseDTO other = (BahiKhataErrorResponseDTO) obj;</span>
+<span class="nc" id="L126">		return Objects.equals(errorList, other.errorList);</span>
 	}
-
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

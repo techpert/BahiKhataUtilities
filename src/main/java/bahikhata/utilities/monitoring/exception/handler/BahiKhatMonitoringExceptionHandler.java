@@ -51,9 +51,9 @@ public class BahiKhatMonitoringExceptionHandler
         logger.debug(ExceptionUtils.getFullStackTrace(bahiKhataStatsticsBeanException));
         BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();
         bahiKhataErrorResponseDTO.putError(BahiKhataMonitoringConstants.INTERNAL_SERVER_ERROR_KEY,
-                BahiKhataMonitoringConstants.INTERNAL_SERVER_ERROR_VALUE);
+                BahiKhataMonitoringConstants.INTERNAL_SERVER_ERROR_VALUE,null,null);
         bahiKhataErrorResponseDTO.putError("Monitoring Error",
-                bahiKhataStatsticsBeanException.getMessage());
+                bahiKhataStatsticsBeanException.getMessage(),null,null);
         return logger.traceExit(m,
                 new ResponseEntity<>(
                         BahiKhataJsonResponseUtility.generateErrorResponseJson(
