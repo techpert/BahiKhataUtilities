@@ -3,6 +3,8 @@
  */
 package bahikhata.utilities.stringutilities;
 
+import java.util.regex.PatternSyntaxException;
+
 /**
  * Techpert:Bahikhata : 0.0.1 :This class has string related utilities
  * 
@@ -10,19 +12,31 @@ package bahikhata.utilities.stringutilities;
  * 
  *
  */
-public class BahiKhataStringUtility {
+public final class BahiKhataStringUtility {
 
+	/**
+	 * 
+	 */
+	private  BahiKhataStringUtility() {
+		throw new UnsupportedOperationException(BahiKhataStringUtility.class.getSimpleName());
+	}
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method compares the string with the regex
 	 * 
 	 * @param s     String to match
 	 * @param regex regex to match with
 	 * @return true if the string s matches the regex exactly
+	 *         false if s is null or pattern is invalid
 	 * 
 	 *
 	 */
 	public static boolean isMatchingPattern(String s, String regex) {
-		return s.matches(regex);
+		try {
+			return s!=null ?  s.matches(regex):false;
+		} catch (PatternSyntaxException  e) {
+			return false;
+		}
+		
 	}
 
 	/**
@@ -43,11 +57,7 @@ public class BahiKhataStringUtility {
 			}
 		} else if (s1 == null && s2 == null) {
 			matches = true;
-		} else if (s2 == null && s1 == null) {
-			matches = true;
-		} else if (s1 == null && s2 != null) {
-			matches = false;
-		} else if (s2 == null && s1 != null) {
+		}  else if (s1 == null || s2 == null ) {
 			matches = false;
 		} else if (s1.equalsIgnoreCase("") && s1.equalsIgnoreCase(s2)) {
 			matches = true;

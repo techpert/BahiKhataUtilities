@@ -3,6 +3,8 @@
  */
 package bahikhata.utilities.stringutilities;
 
+import java.util.regex.PatternSyntaxException;
+
 /**
  * Techpert:Bahikhata : 0.0.1 :This class has string related utilities
  * 
@@ -10,19 +12,31 @@ package bahikhata.utilities.stringutilities;
  * 
  *
  */
-<span class="nc" id="L13">public class BahiKhataStringUtility {</span>
+public final class BahiKhataStringUtility {
 
+	/**
+	 * 
+	 */
+<span class="nc" id="L20">	private  BahiKhataStringUtility() {</span>
+<span class="nc" id="L21">		throw new UnsupportedOperationException(BahiKhataStringUtility.class.getSimpleName());</span>
+	}
 	/**
 	 * Techpert:Bahikhata : 0.0.1 :This method compares the string with the regex
 	 * 
 	 * @param s     String to match
 	 * @param regex regex to match with
 	 * @return true if the string s matches the regex exactly
+	 *         false if s is null or pattern is invalid
 	 * 
 	 *
 	 */
 	public static boolean isMatchingPattern(String s, String regex) {
-<span class="fc" id="L25">		return s.matches(regex);</span>
+		try {
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">			return s!=null ?  s.matches(regex):false;</span>
+<span class="nc" id="L36">		} catch (PatternSyntaxException  e) {</span>
+<span class="nc" id="L37">			return false;</span>
+		}
+		
 	}
 
 	/**
@@ -36,23 +50,19 @@ package bahikhata.utilities.stringutilities;
 	 *         all other cases it returns false
 	 */
 	public static boolean matchStringsSafely(String s1, String s2) {
-<span class="fc" id="L39">		boolean matches = false;</span>
-<span class="fc bfc" id="L40" title="All 4 branches covered.">		if (isNotNullAndNotEmpty(s1) &amp;&amp; isNotNullAndNotEmpty(s2)) {</span>
-<span class="fc bfc" id="L41" title="All 2 branches covered.">			if (s1.equalsIgnoreCase(s2)) {</span>
-<span class="fc" id="L42">				matches = true;</span>
+<span class="fc" id="L53">		boolean matches = false;</span>
+<span class="fc bfc" id="L54" title="All 4 branches covered.">		if (isNotNullAndNotEmpty(s1) &amp;&amp; isNotNullAndNotEmpty(s2)) {</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">			if (s1.equalsIgnoreCase(s2)) {</span>
+<span class="fc" id="L56">				matches = true;</span>
 			}
-<span class="fc bfc" id="L44" title="All 4 branches covered.">		} else if (s1 == null &amp;&amp; s2 == null) {</span>
-<span class="fc" id="L45">			matches = true;</span>
-<span class="pc bpc" id="L46" title="1 of 4 branches missed.">		} else if (s2 == null &amp;&amp; s1 == null) {</span>
-<span class="nc" id="L47">			matches = true;</span>
-<span class="pc bpc" id="L48" title="1 of 4 branches missed.">		} else if (s1 == null &amp;&amp; s2 != null) {</span>
-<span class="fc" id="L49">			matches = false;</span>
-<span class="pc bpc" id="L50" title="1 of 4 branches missed.">		} else if (s2 == null &amp;&amp; s1 != null) {</span>
-<span class="fc" id="L51">			matches = false;</span>
-<span class="fc bfc" id="L52" title="All 4 branches covered.">		} else if (s1.equalsIgnoreCase(&quot;&quot;) &amp;&amp; s1.equalsIgnoreCase(s2)) {</span>
-<span class="fc" id="L53">			matches = true;</span>
+<span class="fc bfc" id="L58" title="All 4 branches covered.">		} else if (s1 == null &amp;&amp; s2 == null) {</span>
+<span class="fc" id="L59">			matches = true;</span>
+<span class="fc bfc" id="L60" title="All 4 branches covered.">		}  else if (s1 == null || s2 == null ) {</span>
+<span class="fc" id="L61">			matches = false;</span>
+<span class="fc bfc" id="L62" title="All 4 branches covered.">		} else if (s1.equalsIgnoreCase(&quot;&quot;) &amp;&amp; s1.equalsIgnoreCase(s2)) {</span>
+<span class="fc" id="L63">			matches = true;</span>
 		}
-<span class="fc" id="L55">		return matches;</span>
+<span class="fc" id="L65">		return matches;</span>
 
 	}
 
@@ -64,12 +74,12 @@ package bahikhata.utilities.stringutilities;
 	 * @return true if string is neither null nor empty else returns false
 	 */
 	public static boolean isNotNullAndNotEmpty(String s1) {
-<span class="fc" id="L67">		boolean notNullAndEmpty = false;</span>
-<span class="fc bfc" id="L68" title="All 4 branches covered.">		if (((s1 != null) &amp;&amp; (!s1.equalsIgnoreCase(&quot;&quot;)))) {</span>
-<span class="fc" id="L69">			notNullAndEmpty = true;</span>
+<span class="fc" id="L77">		boolean notNullAndEmpty = false;</span>
+<span class="fc bfc" id="L78" title="All 4 branches covered.">		if (((s1 != null) &amp;&amp; (!s1.equalsIgnoreCase(&quot;&quot;)))) {</span>
+<span class="fc" id="L79">			notNullAndEmpty = true;</span>
 		}
 
-<span class="fc" id="L72">		return notNullAndEmpty;</span>
+<span class="fc" id="L82">		return notNullAndEmpty;</span>
 
 	}
 

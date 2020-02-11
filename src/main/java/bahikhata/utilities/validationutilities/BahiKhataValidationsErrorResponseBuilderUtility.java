@@ -38,14 +38,19 @@ public abstract class BahiKhataValidationsErrorResponseBuilderUtility {
 	 *                                  empty
 	 *                                  
 	 * @param fieldName                 name of the erroneous field
+	 * @return 							true - objectToCheck is null/blank <br/>
+	 *         							false - objectToCheck is not null/blank
 	 */
-	public static void validateNullAndBlank(String fieldName,String objectToCheck, BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO,
+	public static boolean validateNullAndBlank(String fieldName,String objectToCheck, BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO,
 			String code, String errorMsgNull, String errorMsgEmpty) {
 		if (Objects.isNull(objectToCheck)) {
 			bahiKhataErrorResponseDTO.putError(code, errorMsgNull,fieldName,objectToCheck);
+			return true;
 		} else if (StringUtils.isBlank(objectToCheck)) {
 			bahiKhataErrorResponseDTO.putError(code, errorMsgEmpty,fieldName,objectToCheck);
+			return true;
 		}
+		return false;
 	}
 
 	/**
