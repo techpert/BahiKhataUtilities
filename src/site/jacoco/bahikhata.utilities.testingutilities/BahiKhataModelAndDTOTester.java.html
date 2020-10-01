@@ -59,60 +59,69 @@ public final class BahiKhataModelAndDTOTester {
 	public &lt;T,U&gt; void equalsAndHashCodeContractWithPrefabValues(Class&lt;T&gt; type,Class&lt;U&gt; prefabType,U[] prefabValues) {
 <span class="nc" id="L60">		EqualsVerifier.forClass(type).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).withPrefabValues(prefabType, prefabValues[0], prefabValues[1]).verify();</span>
 <span class="nc" id="L61">	}</span>
+	
+	@Test
+	public &lt;T,U&gt; void equalsAndHashCodeContractWithPrefabValuesAndIgnoredAnnotations(Class&lt;T&gt; type,Class&lt;U&gt; prefabType,U[] prefabValues,Class... ignoredAnnotations) {
+<span class="nc" id="L65">		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).withPrefabValues(prefabType, prefabValues[0], prefabValues[1]).verify();</span>
+<span class="nc" id="L66">	}</span>
+	@Test
+	public &lt;T&gt; void equalsAndHashCodeContractWithIgnoredAnnotations(Class&lt;T&gt; type,Class... ignoredAnnotations) {
+<span class="nc" id="L69">		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).verify();</span>
+<span class="nc" id="L70">	}</span>
 
 	@Test
 	public &lt;T&gt; void getterAndSetterCorrectness(Class&lt;T&gt; type) {
-<span class="nc" id="L65">		final BeanTester beanTester = new BeanTester();</span>
-<span class="nc" id="L66">		Iterator&lt;BahiKhataFactory&gt; factoryIterator = customFactories.iterator();</span>
-<span class="nc" id="L67">		FactoryCollection factoryCollection = beanTester.getFactoryCollection();</span>
-<span class="nc bnc" id="L68" title="All 2 branches missed.">		while (factoryIterator.hasNext()) {</span>
-<span class="nc" id="L69">			BahiKhataFactory&lt;?&gt; factory = factoryIterator.next();</span>
-<span class="nc" id="L70">			factoryCollection.addFactory(factory.getClassProducedByFactory(), factory.getFactoryObjectInstance());</span>
-		}
-<span class="nc" id="L72">		beanTester.testBean(type);</span>
-<span class="nc" id="L73">	}</span>
+<span class="nc" id="L74">		final BeanTester beanTester = new BeanTester();</span>
+<span class="nc" id="L75">		Iterator&lt;BahiKhataFactory&gt; factoryIterator = customFactories.iterator();</span>
+<span class="nc" id="L76">		FactoryCollection factoryCollection = beanTester.getFactoryCollection();</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">		while (factoryIterator.hasNext()) {</span>
+<span class="nc" id="L78">			BahiKhataFactory&lt;?&gt; factory = factoryIterator.next();</span>
+<span class="nc" id="L79">			factoryCollection.addFactory(factory.getClassProducedByFactory(), factory.getFactoryObjectInstance());</span>
+<span class="nc" id="L80">		}</span>
+<span class="nc" id="L81">		beanTester.testBean(type);</span>
+<span class="nc" id="L82">	}</span>
 
 
 	/**
 	 * @return the suppressWarnings
 	 */
 	public ArrayList&lt;Warning&gt; getSuppressWarnings() {
-<span class="nc" id="L80">		return suppressWarnings;</span>
+<span class="nc" id="L89">		return suppressWarnings;</span>
 	}
 
 	/**
 	 * @param suppressWarnings the suppressWarnings to set
 	 */
 	public void setSuppressWarnings(ArrayList&lt;Warning&gt; suppressWarnings) {
-<span class="nc" id="L87">		this.suppressWarnings = suppressWarnings;</span>
-<span class="nc" id="L88">	}</span>
+<span class="nc" id="L96">		this.suppressWarnings = suppressWarnings;</span>
+<span class="nc" id="L97">	}</span>
 
 	/**
 	 * @param suppressWarnings the suppressWarnings to set
 	 */
 	public void addSuppressWarnings(Warning suppressWarning) {
-<span class="nc" id="L94">		this.suppressWarnings.add(suppressWarning);</span>
-<span class="nc" id="L95">	}</span>
+<span class="nc" id="L103">		this.suppressWarnings.add(suppressWarning);</span>
+<span class="nc" id="L104">	}</span>
 	/**
 	 * @return the customFactories
 	 */
 	public List&lt;BahiKhataFactory&gt; getCustomFactories() {
-<span class="nc" id="L100">		return customFactories;</span>
+<span class="nc" id="L109">		return customFactories;</span>
 	}
 
 	/**
 	 * @param customFactories the customFactories to set
 	 */
 	public void setCustomFactories(List&lt;BahiKhataFactory&gt; customFactories) {
-<span class="nc" id="L107">		this.customFactories = (ArrayList&lt;BahiKhataFactory&gt;) customFactories;</span>
-<span class="nc" id="L108">	}</span>
+<span class="nc" id="L116">		this.customFactories = (ArrayList&lt;BahiKhataFactory&gt;) customFactories;</span>
+<span class="nc" id="L117">	}</span>
 
 	/**
 	 * @param customFactories the customFactories to set
 	 */
 	public void addCustomFactories(BahiKhataFactory&lt;?&gt; customFactory) {
-<span class="nc" id="L114">		this.customFactories.add(customFactory);</span>
-<span class="nc" id="L115">	}</span>
+<span class="nc" id="L123">		this.customFactories.add(customFactory);</span>
+<span class="nc" id="L124">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

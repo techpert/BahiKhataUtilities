@@ -24,15 +24,15 @@ public class BahiKhataRuntimeStatisticsDTO
     @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_RUNTIME_STATISTICS_LIBRARY_PATH_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_RUNTIME_STATISTICS_LIBRARY_PATH_VALUE)
     private String libraryPath;
 
-<span class="nc" id="L27">    public BahiKhataRuntimeStatisticsDTO(String bootClassPath, String classPath, String libraryPath)</span>
-    {
+    public BahiKhataRuntimeStatisticsDTO(String bootClassPath, String classPath, String libraryPath)
+<span class="nc" id="L28">    {</span>
 <span class="nc" id="L29">        this.bootClassPath = bootClassPath;</span>
 <span class="nc" id="L30">        this.classPath = classPath;</span>
 <span class="nc" id="L31">        this.libraryPath = libraryPath;</span>
 <span class="nc" id="L32">    }</span>
 
-<span class="nc" id="L34">    public BahiKhataRuntimeStatisticsDTO()</span>
-    {
+    public BahiKhataRuntimeStatisticsDTO()
+<span class="nc" id="L35">    {</span>
 <span class="nc" id="L36">    }</span>
 
     public String getBootClassPath()
@@ -69,7 +69,7 @@ public class BahiKhataRuntimeStatisticsDTO
     public String toString()
     {
 <span class="nc" id="L71">        return &quot;BahiKhataRuntimeStatisticsDTO [bootClassPath=&quot; + bootClassPath + &quot;, classPath=&quot;</span>
-<span class="nc" id="L72">                + classPath + &quot;, libraryPath=&quot; + libraryPath + &quot;]&quot;;</span>
+                + classPath + &quot;, libraryPath=&quot; + libraryPath + &quot;]&quot;;
     }
 
 }

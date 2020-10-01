@@ -131,14 +131,14 @@ import bahikhata.utilities.monitoring.exception.BahiKhataStatsticsBeanException;
 <span class="nc bnc" id="L131" title="All 2 branches missed.">            if (!mbeanServer.isRegistered(mBeanName))</span>
             {
 <span class="nc" id="L133">                throw new BahiKhataStatsticsBeanException(</span>
-<span class="nc" id="L134">                        &quot;The Object is not registered with MBean Server: &quot; + objectName);</span>
+                        &quot;The Object is not registered with MBean Server: &quot; + objectName);
             }
         }
 <span class="nc" id="L137">        catch (MalformedObjectNameException e)</span>
         {
 <span class="nc" id="L139">            throw new BahiKhataStatsticsBeanException(</span>
-<span class="nc" id="L140">                    &quot;Object Name used to query MBean is incorrect or malformed: &quot; + objectName, e);</span>
-        }
+                    &quot;Object Name used to query MBean is incorrect or malformed: &quot; + objectName, e);
+<span class="nc" id="L141">        }</span>
 <span class="nc" id="L142">        return JMX.newMBeanProxy(mbeanServer, mBeanName, monitoringBean);</span>
     }
 

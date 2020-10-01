@@ -68,6 +68,14 @@ public final class BahiKhataModelAndDTOTester {
 	public <T> void equalsAndHashCodeContractWithIgnoredAnnotations(Class<T> type,Class... ignoredAnnotations) {
 		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).verify();
 	}
+	@Test
+	public <T,U> void equalsAndHashCodeContractWithPrefabValuesAndIgnoredAnnotationsAndIgnoredFields(Class<T> type,Class<U> prefabType,U[] prefabValues,Class[] ignoredAnnotations, String[] ignoredFields) {
+		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).withIgnoredFields(ignoredFields).withPrefabValues(prefabType, prefabValues[0], prefabValues[1]).verify();
+	}
+	@Test
+	public <T> void equalsAndHashCodeContractWithIgnoredAnnotationsAndIgnoredFields(Class<T> type,Class[] ignoredAnnotations, String[] ignoredFields) {
+		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).withIgnoredFields(ignoredFields).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).verify();
+	}
 
 	@Test
 	public <T> void getterAndSetterCorrectness(Class<T> type) {

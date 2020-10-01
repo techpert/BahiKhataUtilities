@@ -68,10 +68,10 @@ import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
 <span class="nc" id="L68">				ex.getName() + BahiKhataExceptionHandlerConstants.BAHIKHATA_NOT_SYNTACTICALLY_VALID_RESPONSE_MESSAGE,</span>
 <span class="nc bnc" id="L69" title="All 2 branches missed.">				ex.getName(), ex.getValue() != null ? ex.getValue().toString() : &quot;null&quot;);</span>
 <span class="nc" id="L70">		return logger.traceExit(m,</span>
-<span class="nc" id="L71">				new ResponseEntity&lt;&gt;(</span>
+				new ResponseEntity&lt;&gt;(
 <span class="nc" id="L72">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
-<span class="nc" id="L73">								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),</span>
-<span class="nc" id="L74">						HttpStatus.BAD_REQUEST));</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
 	}
 
 	/**
@@ -93,12 +93,12 @@ import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
 <span class="nc" id="L93">			bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_CONSTRAINT_VIOLATED,</span>
 <span class="nc" id="L94">					violation.getMessage(), ((PathImpl) violation.getPropertyPath()).getLeafNode().getName(),</span>
 <span class="nc" id="L95">					((PathImpl) violation.getPropertyPath()).getLeafNode().asString());</span>
-		}
+<span class="nc" id="L96">		}</span>
 <span class="nc" id="L97">		return logger.traceExit(m,</span>
-<span class="nc" id="L98">				new ResponseEntity&lt;&gt;(</span>
+				new ResponseEntity&lt;&gt;(
 <span class="nc" id="L99">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
-<span class="nc" id="L100">								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),</span>
-<span class="nc" id="L101">						HttpStatus.BAD_REQUEST));</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
 	}
 
 	/**
@@ -119,10 +119,10 @@ import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
 <span class="nc" id="L119">		bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_PARAMETER,</span>
 <span class="nc" id="L120">				ex.getLocalizedMessage(), ex.getParameterName(), null);</span>
 <span class="nc" id="L121">		return logger.traceExit(m,</span>
-<span class="nc" id="L122">				new ResponseEntity&lt;&gt;(</span>
+				new ResponseEntity&lt;&gt;(
 <span class="nc" id="L123">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
-<span class="nc" id="L124">								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),</span>
-<span class="nc" id="L125">						HttpStatus.BAD_REQUEST));</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
 	}
 
 	/**
@@ -144,16 +144,16 @@ import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
 <span class="nc bnc" id="L144" title="All 2 branches missed.">		for (FieldError fieldError : fieldErrors) {</span>
 <span class="nc" id="L145">			bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_VALIDATION_ERROR,</span>
 <span class="nc" id="L146">					fieldError.getDefaultMessage(), fieldError.getField(), fieldError.getRejectedValue().toString());</span>
-		}
+<span class="nc" id="L147">		}</span>
 <span class="nc bnc" id="L148" title="All 2 branches missed.">		for (ObjectError objectError : globalErrors) {</span>
 <span class="nc" id="L149">			bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_VALIDATION_ERROR,</span>
 <span class="nc" id="L150">					objectError.getDefaultMessage(), objectError.getObjectName(), null);</span>
-		}
+<span class="nc" id="L151">		}</span>
 <span class="nc" id="L152">		return logger.traceExit(m,</span>
-<span class="nc" id="L153">				new ResponseEntity&lt;&gt;(</span>
+				new ResponseEntity&lt;&gt;(
 <span class="nc" id="L154">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
-<span class="nc" id="L155">								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),</span>
-<span class="nc" id="L156">						HttpStatus.BAD_REQUEST));</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
 	}
 
 	/**
@@ -175,12 +175,12 @@ import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
 <span class="nc" id="L175">		BahiKhataErrorResponseDTO bahiKhataErrorResponseDTO = new BahiKhataErrorResponseDTO();</span>
 <span class="nc" id="L176">		bahiKhataErrorResponseDTO.putError(</span>
 <span class="nc" id="L177">				BahiKhataExceptionHandlerConstants.BAHIKHATA_UNSUPPORTED_CONTENT_TYPE_RESPONSE_KEY, builder.toString(),</span>
-<span class="nc" id="L178">				null, null);</span>
+				null, null);
 <span class="nc" id="L179">		return logger.traceExit(m,</span>
-<span class="nc" id="L180">				new ResponseEntity&lt;&gt;(</span>
+				new ResponseEntity&lt;&gt;(
 <span class="nc" id="L181">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
-<span class="nc" id="L182">								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),</span>
-<span class="nc" id="L183">						HttpStatus.BAD_REQUEST));</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
 	}
 
 	/**
@@ -205,11 +205,11 @@ import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
 <span class="nc bnc" id="L205" title="All 2 branches missed.">			if (!list.isEmpty()) {</span>
 <span class="nc" id="L206">				String errorFieldName = list.get(list.size() - 1).getFieldName();</span>
 <span class="nc" id="L207">				bahiKhataErrorResponseDTO.putError(BahiKhataExceptionHandlerConstants.BAHIKHATA_SYNTACTICALLY_INVALID,</span>
-<span class="nc" id="L208">						errorFieldName</span>
-<span class="nc" id="L209">								+ BahiKhataExceptionHandlerConstants.BAHIKHATA_NOT_SYNTACTICALLY_VALID_RESPONSE_MESSAGE,</span>
-<span class="nc" id="L210">						errorFieldName,</span>
+						errorFieldName
+								+ BahiKhataExceptionHandlerConstants.BAHIKHATA_NOT_SYNTACTICALLY_VALID_RESPONSE_MESSAGE,
+						errorFieldName,
 <span class="nc bnc" id="L211" title="All 2 branches missed.">						invalidFormatException.getValue() != null ? invalidFormatException.getValue().toString()</span>
-<span class="nc" id="L212">								: &quot;null&quot;);</span>
+								: &quot;null&quot;);
 			}
 <span class="nc bnc" id="L214" title="All 2 branches missed.">		} else if (throwable instanceof JsonMappingException) {</span>
 <span class="nc" id="L215">			JsonMappingException jsonMappingException = (JsonMappingException) throwable;</span>
@@ -218,7 +218,7 @@ import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
 <span class="nc bnc" id="L218" title="All 2 branches missed.">			if (!list.isEmpty()) {</span>
 <span class="nc" id="L219">				String errorFieldName = list.get(list.size() - 1).getFieldName();</span>
 <span class="nc" id="L220">				bahiKhataErrorResponseDTO.putError(</span>
-<span class="nc" id="L221">						BahiKhataExceptionHandlerConstants.BAHIKHATA_SYNTACTICALLY_INVALID_JSON,</span>
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_SYNTACTICALLY_INVALID_JSON,
 <span class="nc" id="L222">						jsonMappingException.getOriginalMessage(), errorFieldName, null);</span>
 			}
 		}
@@ -227,19 +227,19 @@ import bahikhata.utilities.responsejson.BahiKhataJsonResponseUtility;
 <span class="nc" id="L227">			logger.debug(ExceptionUtils.getFullStackTrace(ex));</span>
 <span class="nc bnc" id="L228" title="All 2 branches missed.">			if (ex.getMessage().contains(&quot;Required request body is missing:&quot;)) {</span>
 <span class="nc" id="L229">				bahiKhataErrorResponseDTO.putError(</span>
-<span class="nc" id="L230">						BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,</span>
-<span class="nc" id="L231">						BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_REQUEST_BODY_RESPONSE_MESSAGE, null, null);</span>
-<span class="nc" id="L232">			} else {</span>
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_MISSING_REQUEST_BODY_RESPONSE_MESSAGE, null, null);
+			} else {
 <span class="nc" id="L233">				bahiKhataErrorResponseDTO.putError(</span>
-<span class="nc" id="L234">						BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,</span>
-<span class="nc" id="L235">						BahiKhataExceptionHandlerConstants.BAHIKHATA_INVALID_REQUEST_BODY_RESPONSE_KEY, null, null);</span>
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_REQUEST_BODY_EXCEPTION_RESPONSE_KEY,
+						BahiKhataExceptionHandlerConstants.BAHIKHATA_INVALID_REQUEST_BODY_RESPONSE_KEY, null, null);
 			}
 		}
 <span class="nc" id="L238">		return logger.traceExit(m,</span>
-<span class="nc" id="L239">				new ResponseEntity&lt;&gt;(</span>
+				new ResponseEntity&lt;&gt;(
 <span class="nc" id="L240">						BahiKhataJsonResponseUtility.generateErrorResponseJson(bahiKhataErrorResponseDTO.getErrorList(),</span>
-<span class="nc" id="L241">								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),</span>
-<span class="nc" id="L242">						HttpStatus.BAD_REQUEST));</span>
+								BahiKhataExceptionHandlerConstants.BAHIKHATA_ERROR_KEY),
+						HttpStatus.BAD_REQUEST));
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

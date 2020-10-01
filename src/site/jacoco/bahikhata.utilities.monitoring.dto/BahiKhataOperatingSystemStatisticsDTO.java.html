@@ -26,13 +26,13 @@ public class BahiKhataOperatingSystemStatisticsDTO
     @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_OPERATING_SYSTEM_STATISTICS_SYSTEM_CPU_USAGE_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_OPERATING_SYSTEM_STATISTICS_SYSTEM_CPU_USAGE_VALUE)
     private String systemCPUUsage;
 
-<span class="nc" id="L29">    public BahiKhataOperatingSystemStatisticsDTO()</span>
-    {
+    public BahiKhataOperatingSystemStatisticsDTO()
+<span class="nc" id="L30">    {</span>
 <span class="nc" id="L31">    }</span>
 
-<span class="nc" id="L33">    public BahiKhataOperatingSystemStatisticsDTO(String operatingSystemName, int processor,</span>
+    public BahiKhataOperatingSystemStatisticsDTO(String operatingSystemName, int processor,
             String jvmCPUUsage, String systemCPUUsage)
-    {
+<span class="nc" id="L35">    {</span>
 <span class="nc" id="L36">        this.operatingSystemName = operatingSystemName;</span>
 <span class="nc" id="L37">        this.availableProcessors = processor;</span>
 <span class="nc" id="L38">        this.jvmCPUUsage = jvmCPUUsage;</span>
@@ -83,8 +83,8 @@ public class BahiKhataOperatingSystemStatisticsDTO
     public String toString()
     {
 <span class="nc" id="L85">        return &quot;BahiKhataOperatingSystemStatisticsDTO [OperatingSystemName=&quot; + operatingSystemName</span>
-<span class="nc" id="L86">                + &quot;, processor=&quot; + availableProcessors + &quot;, jvmCPUUsage=&quot; + jvmCPUUsage</span>
-<span class="nc" id="L87">                + &quot;, systemCPUUsage=&quot; + systemCPUUsage + &quot;]&quot;;</span>
+                + &quot;, processor=&quot; + availableProcessors + &quot;, jvmCPUUsage=&quot; + jvmCPUUsage
+                + &quot;, systemCPUUsage=&quot; + systemCPUUsage + &quot;]&quot;;
     }
 
 }
