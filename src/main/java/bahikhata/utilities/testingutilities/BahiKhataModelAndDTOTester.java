@@ -16,6 +16,7 @@ import org.meanbean.factories.FactoryCollection;
 import org.meanbean.test.BeanTester;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.EqualsVerifierApi;
 import nl.jqno.equalsverifier.Warning;
 
 /**
@@ -57,20 +58,49 @@ public final class BahiKhataModelAndDTOTester {
 	
 	@Test
 	public <T,U> void equalsAndHashCodeContractWithPrefabValues(Class<T> type,Class<U> prefabType,U[] prefabValues) {
-		EqualsVerifier.forClass(type).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).withPrefabValues(prefabType, prefabValues[0], prefabValues[1]).verify();
+		EqualsVerifierApi<T> api=EqualsVerifier.forClass(type).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()]));
+		int prefabValuesSize=prefabValues.length;
+		int count=0;
+		while(prefabValuesSize>0) {
+			api=api.withPrefabValues(prefabType, prefabValues[count], prefabValues[++count]);
+			prefabValuesSize=prefabValuesSize-2;
+			count++;
+		}
+		
+		api.verify();
 	}
 	
 	@Test
 	public <T,U> void equalsAndHashCodeContractWithPrefabValuesAndIgnoredAnnotations(Class<T> type,Class<U> prefabType,U[] prefabValues,Class... ignoredAnnotations) {
-		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).withPrefabValues(prefabType, prefabValues[0], prefabValues[1]).verify();
+		EqualsVerifierApi<T> api=EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()]));
+		int prefabValuesSize=prefabValues.length;
+		int count=0;
+		while(prefabValuesSize>0) {
+			api=api.withPrefabValues(prefabType, prefabValues[count], prefabValues[++count]);
+			prefabValuesSize=prefabValuesSize-2;
+			count++;
+		}
+		
+		api.verify();
 	}
+	
 	@Test
 	public <T> void equalsAndHashCodeContractWithIgnoredAnnotations(Class<T> type,Class... ignoredAnnotations) {
 		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).verify();
 	}
+	
 	@Test
 	public <T,U> void equalsAndHashCodeContractWithPrefabValuesAndIgnoredAnnotationsAndIgnoredFields(Class<T> type,Class<U> prefabType,U[] prefabValues,Class[] ignoredAnnotations, String[] ignoredFields) {
-		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).withIgnoredFields(ignoredFields).withPrefabValues(prefabType, prefabValues[0], prefabValues[1]).verify();
+		EqualsVerifierApi<T> api=EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).withIgnoredFields(ignoredFields);
+		int prefabValuesSize=prefabValues.length;
+		int count=0;
+		while(prefabValuesSize>0) {
+			api=api.withPrefabValues(prefabType, prefabValues[count], prefabValues[++count]);
+			prefabValuesSize=prefabValuesSize-2;
+			count++;
+		}
+		
+		api.verify();
 	}
 	@Test
 	public <T> void equalsAndHashCodeContractWithIgnoredAnnotationsAndIgnoredFields(Class<T> type,Class[] ignoredAnnotations, String[] ignoredFields) {
