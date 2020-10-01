@@ -210,10 +210,10 @@ import org.springframework.security.test.context.support.WithSecurityContextFact
 <span class="nc" id="L210">			Map&lt;String, Serializable&gt; extensionProperties = Collections.emptyMap();</span>
 
 <span class="nc" id="L212">			OAuth2Request oAuth2Request = new OAuth2Request(requestParameters, bahiKhataMockUser.clientId(),</span>
-					grantedAuthorities, approved, scopes, null, redirectUrl, responseTypes, extensionProperties);
+<span class="nc" id="L213">					grantedAuthorities, approved, scopes, null, redirectUrl, responseTypes, extensionProperties);</span>
 
 <span class="nc" id="L215">			User userPrincipal = new User(bahiKhataMockUser.username(), bahiKhataMockUser.password(), true, true, true,</span>
-					true, grantedAuthorities);
+<span class="nc" id="L216">					true, grantedAuthorities);</span>
 <span class="nc" id="L217">			Authentication authenticationToken = new UsernamePasswordAuthenticationToken(userPrincipal,</span>
 <span class="nc" id="L218">					userPrincipal.getPassword(), userPrincipal.getAuthorities());</span>
 <span class="nc" id="L219">			OAuth2Authentication auth = new OAuth2Authentication(oAuth2Request, authenticationToken);</span>

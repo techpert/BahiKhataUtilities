@@ -34,14 +34,14 @@ public class BahiKhataMemoryStatsticsDTO
     @ApiModelProperty(required = true, notes = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_MAX_HEAP_MEMORY_DESCRIPTION, example = BahiKhataMonitoringConstants.BAHIKHATA_MEMORY_STATISTICS_MAX_HEAP_MEMORY_VALUE)
     private String maxHeapMemory;
 
-    public BahiKhataMemoryStatsticsDTO()
-<span class="nc" id="L38">    {</span>
+<span class="nc" id="L37">    public BahiKhataMemoryStatsticsDTO()</span>
+    {
 <span class="nc" id="L39">    }</span>
 
-    public BahiKhataMemoryStatsticsDTO(String initialNonHeapMemory, String usedNonHeapMemory,
+<span class="nc" id="L41">    public BahiKhataMemoryStatsticsDTO(String initialNonHeapMemory, String usedNonHeapMemory,</span>
             String committedNonHeapMemory, String maxNonHeapMemory, String initialHeapMemory,
             String usedHeapMemory, String committedHeapMemory, String maxHeapMemory)
-<span class="nc" id="L44">    {</span>
+    {
 <span class="nc" id="L45">        this.initialNonHeapMemory = initialNonHeapMemory;</span>
 <span class="nc" id="L46">        this.usedNonHeapMemory = usedNonHeapMemory;</span>
 <span class="nc" id="L47">        this.committedNonHeapMemory = committedNonHeapMemory;</span>
@@ -136,11 +136,11 @@ public class BahiKhataMemoryStatsticsDTO
     public String toString()
     {
 <span class="nc" id="L138">        return &quot;BahiKhataMemoryStatsticsDTO [initialNonHeapMemory=&quot; + initialNonHeapMemory</span>
-                + &quot;, usedNonHeapMemory=&quot; + usedNonHeapMemory + &quot;, committedNonHeapMemory=&quot;
-                + committedNonHeapMemory + &quot;, maxNonHeapMemory=&quot; + maxNonHeapMemory
-                + &quot;, initialHeapMemory=&quot; + initialHeapMemory + &quot;, usedHeapMemory=&quot; + usedHeapMemory
-                + &quot;, committedHeapMemory=&quot; + committedHeapMemory + &quot;, maxHeapMemory=&quot;
-                + maxHeapMemory + &quot;]&quot;;
+<span class="nc" id="L139">                + &quot;, usedNonHeapMemory=&quot; + usedNonHeapMemory + &quot;, committedNonHeapMemory=&quot;</span>
+<span class="nc" id="L140">                + committedNonHeapMemory + &quot;, maxNonHeapMemory=&quot; + maxNonHeapMemory</span>
+<span class="nc" id="L141">                + &quot;, initialHeapMemory=&quot; + initialHeapMemory + &quot;, usedHeapMemory=&quot; + usedHeapMemory</span>
+<span class="nc" id="L142">                + &quot;, committedHeapMemory=&quot; + committedHeapMemory + &quot;, maxHeapMemory=&quot;</span>
+<span class="nc" id="L143">                + maxHeapMemory + &quot;]&quot;;</span>
     }
 
 }

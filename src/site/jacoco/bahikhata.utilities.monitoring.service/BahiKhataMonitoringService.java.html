@@ -58,9 +58,9 @@ public class BahiKhataMonitoringService
 <span class="nc" id="L58">    private static final Logger logger = LogManager.getLogger(BahiKhataMonitoringService.class);</span>
 
     @Autowired
-    public BahiKhataMonitoringService(
+<span class="nc" id="L61">    public BahiKhataMonitoringService(</span>
             BahiKhataMonitoringMBeanFactory bahiKhataMonitoringMBeanFactory)
-<span class="nc" id="L63">    {</span>
+    {
 <span class="nc" id="L64">        this.bahiKhataMonitoringMBeanFactory = bahiKhataMonitoringMBeanFactory;</span>
 <span class="nc" id="L65">    }</span>
 
@@ -101,7 +101,7 @@ public class BahiKhataMonitoringService
 <span class="nc" id="L101">                bahiKhataCacheStatisticsDTO</span>
 <span class="nc" id="L102">                        .setCacheRemovals(cacheStatisticsMXBean.getCacheRemovals());</span>
 <span class="nc" id="L103">                bahiKhataCacheStatisticsDTOList.add(bahiKhataCacheStatisticsDTO);</span>
-<span class="nc" id="L104">            }</span>
+            }
 <span class="nc" id="L105">            return logger.traceExit(m,</span>
 <span class="nc" id="L106">                    ResponseEntity.status(HttpStatus.OK).body(bahiKhataCacheStatisticsDTOList));</span>
         }
@@ -241,7 +241,7 @@ public class BahiKhataMonitoringService
 <span class="nc bnc" id="L241" title="All 2 branches missed.">        for (String name : cacheManager.getCacheNames())</span>
         {
 <span class="nc" id="L243">            cacheManager.getCache(name).clear();</span>
-<span class="nc" id="L244">        }</span>
+        }
 <span class="nc" id="L245">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

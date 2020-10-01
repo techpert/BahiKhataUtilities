@@ -38,7 +38,7 @@ public class BahiKhataMockUserImpl {
 	 * @param clientId
 	 * @param clientSecret
 	 */
-	public BahiKhataMockUserImpl(String username,
+<span class="nc" id="L41">	public BahiKhataMockUserImpl(String username,</span>
 
 			String authorities,
 
@@ -48,7 +48,7 @@ public class BahiKhataMockUserImpl {
 
 			String clientId,
 
-<span class="nc" id="L51">			String clientSecret) {</span>
+			String clientSecret) {
 <span class="nc" id="L52">		this.authorities = new String[] { authorities };</span>
 <span class="nc" id="L53">		this.password = password;</span>
 <span class="nc" id="L54">		this.scopes = new String[] { scopes };</span>
@@ -56,7 +56,7 @@ public class BahiKhataMockUserImpl {
 <span class="nc" id="L56">		this.clientSecret = clientSecret;</span>
 <span class="nc" id="L57">		this.username = username;</span>
 <span class="nc" id="L58">		BahiKhataMockUserImpl.bahiKhataMockUser = createMockUser(username, authorities, password, scopes, clientId,</span>
-				clientSecret);
+<span class="nc" id="L59">				clientSecret);</span>
 <span class="nc" id="L60">	}</span>
 
 	/**
@@ -66,13 +66,13 @@ public class BahiKhataMockUserImpl {
 	 * @param scopes
 	 * @param authorities
 	 */
-	public BahiKhataMockUserImpl(
+<span class="nc" id="L69">	public BahiKhataMockUserImpl(</span>
 
 			String scopes,
 
 			String authorities
 
-<span class="nc" id="L75">	) {</span>
+	) {
 <span class="nc" id="L76">		this.authorities = new String[] { authorities };</span>
 <span class="nc" id="L77">		this.password = &quot;bahiKhataTestPassword&quot;;</span>
 <span class="nc" id="L78">		this.scopes = new String[] { scopes };</span>
@@ -80,7 +80,7 @@ public class BahiKhataMockUserImpl {
 <span class="nc" id="L80">		this.clientSecret = &quot;BahiKhataManagerReadTestClientSecret&quot;;</span>
 <span class="nc" id="L81">		this.username = &quot;bahiKhataTestUser&quot;;</span>
 <span class="nc" id="L82">		BahiKhataMockUserImpl.bahiKhataMockUser = createMockUser(username, authorities, password, scopes, clientId,</span>
-				clientSecret);
+<span class="nc" id="L83">				clientSecret);</span>
 <span class="nc" id="L84">	}</span>
 
 	/**
@@ -122,8 +122,8 @@ public class BahiKhataMockUserImpl {
 	 */
 	public static void createDefaultBahiKhataMockUser() {
 <span class="nc" id="L124">		BahiKhataMockUserImpl.bahiKhataMockUser = createMockUser(&quot;bahiKhataTestUser&quot;, &quot;SecureService&quot;,</span>
-				&quot;bahiKhataTestPassword&quot;, &quot;read&quot;, &quot;BahiKhataManagerReadTestClientId&quot;,
-				&quot;BahiKhataManagerReadTestClientSecret&quot;);
+<span class="nc" id="L125">				&quot;bahiKhataTestPassword&quot;, &quot;read&quot;, &quot;BahiKhataManagerReadTestClientId&quot;,</span>
+<span class="nc" id="L126">				&quot;BahiKhataManagerReadTestClientSecret&quot;);</span>
 <span class="nc" id="L127">	}</span>
 
 	/**
