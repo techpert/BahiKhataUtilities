@@ -24,7 +24,7 @@ BahiKhataUtilities,bahikhata.utilities.testingutilities,BahiKhataZonedDateTimeFa
 BahiKhataUtilities,bahikhata.utilities.testingutilities,BahiKhataMockUserImpl.new BahiKhataMockUser() {...},51,0,0,0,8,0,8,0,8,0
 BahiKhataUtilities,bahikhata.utilities.testingutilities,BahiKhataResourceServerTestConfiguration,11,0,0,0,4,0,2,0,2,0
 BahiKhataUtilities,bahikhata.utilities.testingutilities,BahiKhataMockUserImpl,108,0,0,0,25,0,6,0,6,0
-BahiKhataUtilities,bahikhata.utilities.testingutilities,BahiKhataModelAndDTOTester,274,0,8,0,65,0,19,0,15,0
+BahiKhataUtilities,bahikhata.utilities.testingutilities,BahiKhataModelAndDTOTester,289,0,8,0,71,0,19,0,15,0
 BahiKhataUtilities,bahikhata.utilities.testingutilities,BahiKhataTestToken,48,0,0,0,15,0,6,0,6,0
 BahiKhataUtilities,bahikhata.utilities.password,BahiKhataPasswordEncoderConstants,8,0,0,0,2,0,1,0,1,0
 BahiKhataUtilities,bahikhata.utilities.password,BahiKhataPasswordEncoder,299,0,10,0,54,0,12,0,7,0

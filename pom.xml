@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>techpert.bahikhata</groupId>
 	<artifactId>BahiKhataUtilities</artifactId>
-	<version>1.0.22-SNAPSHOT</version>
+	<version>1.0.23-SNAPSHOT</version>
 	<name>BahiKhataUtilities</name>
 	<description>This is the utilities JAR for BahiKhata</description>
 

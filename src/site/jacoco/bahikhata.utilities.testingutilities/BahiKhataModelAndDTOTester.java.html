@@ -57,109 +57,115 @@ public final class BahiKhataModelAndDTOTester {
 <span class="nc" id="L57">	}</span>
 	
 	@Test
-	public &lt;T,U&gt; void equalsAndHashCodeContractWithPrefabValues(Class&lt;T&gt; type,Class&lt;U&gt; prefabType,U[] prefabValues) {
+	public &lt;T&gt; void equalsAndHashCodeContractWithPrefabValues(Class&lt;T&gt; type,Class[] prefabType,Object[] prefabValues) {
 <span class="nc" id="L61">		EqualsVerifierApi&lt;T&gt; api=EqualsVerifier.forClass(type).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()]));</span>
 <span class="nc" id="L62">		int prefabValuesSize=prefabValues.length;</span>
 <span class="nc" id="L63">		int count=0;</span>
-<span class="nc bnc" id="L64" title="All 2 branches missed.">		while(prefabValuesSize&gt;0) {</span>
-<span class="nc" id="L65">			api=api.withPrefabValues(prefabType, prefabValues[count], prefabValues[++count]);</span>
-<span class="nc" id="L66">			prefabValuesSize=prefabValuesSize-2;</span>
-<span class="nc" id="L67">			count++;</span>
+<span class="nc" id="L64">		int prefabTypeCount=0;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">		while(prefabValuesSize&gt;0) {</span>
+<span class="nc" id="L66">			api=api.withPrefabValues(prefabType[prefabTypeCount], prefabValues[count], prefabValues[++count]);</span>
+<span class="nc" id="L67">			prefabValuesSize=prefabValuesSize-2;</span>
+<span class="nc" id="L68">			count++;</span>
+<span class="nc" id="L69">			prefabTypeCount++;</span>
 		}
 		
-<span class="nc" id="L70">		api.verify();</span>
-<span class="nc" id="L71">	}</span>
+<span class="nc" id="L72">		api.verify();</span>
+<span class="nc" id="L73">	}</span>
 	
 	@Test
-	public &lt;T,U&gt; void equalsAndHashCodeContractWithPrefabValuesAndIgnoredAnnotations(Class&lt;T&gt; type,Class&lt;U&gt; prefabType,U[] prefabValues,Class... ignoredAnnotations) {
-<span class="nc" id="L75">		EqualsVerifierApi&lt;T&gt; api=EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()]));</span>
-<span class="nc" id="L76">		int prefabValuesSize=prefabValues.length;</span>
-<span class="nc" id="L77">		int count=0;</span>
-<span class="nc bnc" id="L78" title="All 2 branches missed.">		while(prefabValuesSize&gt;0) {</span>
-<span class="nc" id="L79">			api=api.withPrefabValues(prefabType, prefabValues[count], prefabValues[++count]);</span>
-<span class="nc" id="L80">			prefabValuesSize=prefabValuesSize-2;</span>
-<span class="nc" id="L81">			count++;</span>
+	public &lt;T&gt; void equalsAndHashCodeContractWithPrefabValuesAndIgnoredAnnotations(Class&lt;T&gt; type,Class[] prefabType,Object[] prefabValues,Class... ignoredAnnotations) {
+<span class="nc" id="L77">		EqualsVerifierApi&lt;T&gt; api=EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()]));</span>
+<span class="nc" id="L78">		int prefabValuesSize=prefabValues.length;</span>
+<span class="nc" id="L79">		int count=0;</span>
+<span class="nc" id="L80">		int prefabTypeCount=0;</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		while(prefabValuesSize&gt;0) {</span>
+<span class="nc" id="L82">			api=api.withPrefabValues(prefabType[prefabTypeCount], prefabValues[count], prefabValues[++count]);</span>
+<span class="nc" id="L83">			prefabValuesSize=prefabValuesSize-2;</span>
+<span class="nc" id="L84">			count++;</span>
+<span class="nc" id="L85">			prefabTypeCount++;</span>
 		}
 		
-<span class="nc" id="L84">		api.verify();</span>
-<span class="nc" id="L85">	}</span>
+<span class="nc" id="L88">		api.verify();</span>
+<span class="nc" id="L89">	}</span>
 	
 	@Test
 	public &lt;T&gt; void equalsAndHashCodeContractWithIgnoredAnnotations(Class&lt;T&gt; type,Class... ignoredAnnotations) {
-<span class="nc" id="L89">		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).verify();</span>
-<span class="nc" id="L90">	}</span>
+<span class="nc" id="L93">		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).verify();</span>
+<span class="nc" id="L94">	}</span>
 	
 	@Test
-	public &lt;T,U&gt; void equalsAndHashCodeContractWithPrefabValuesAndIgnoredAnnotationsAndIgnoredFields(Class&lt;T&gt; type,Class&lt;U&gt; prefabType,U[] prefabValues,Class[] ignoredAnnotations, String[] ignoredFields) {
-<span class="nc" id="L94">		EqualsVerifierApi&lt;T&gt; api=EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).withIgnoredFields(ignoredFields);</span>
-<span class="nc" id="L95">		int prefabValuesSize=prefabValues.length;</span>
-<span class="nc" id="L96">		int count=0;</span>
-<span class="nc bnc" id="L97" title="All 2 branches missed.">		while(prefabValuesSize&gt;0) {</span>
-<span class="nc" id="L98">			api=api.withPrefabValues(prefabType, prefabValues[count], prefabValues[++count]);</span>
-<span class="nc" id="L99">			prefabValuesSize=prefabValuesSize-2;</span>
-<span class="nc" id="L100">			count++;</span>
+	public &lt;T&gt; void equalsAndHashCodeContractWithPrefabValuesAndIgnoredAnnotationsAndIgnoredFields(Class&lt;T&gt; type,Class[] prefabType,Object[] prefabValues,Class[] ignoredAnnotations, String[] ignoredFields) {
+<span class="nc" id="L98">		EqualsVerifierApi&lt;T&gt; api=EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).withIgnoredFields(ignoredFields);</span>
+<span class="nc" id="L99">		int prefabValuesSize=prefabValues.length;</span>
+<span class="nc" id="L100">		int count=0;</span>
+<span class="nc" id="L101">		int prefabTypeCount=0;</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">		while(prefabValuesSize&gt;0) {</span>
+<span class="nc" id="L103">			api=api.withPrefabValues(prefabType[prefabTypeCount], prefabValues[count], prefabValues[++count]);</span>
+<span class="nc" id="L104">			prefabValuesSize=prefabValuesSize-2;</span>
+<span class="nc" id="L105">			count++;</span>
+<span class="nc" id="L106">			prefabTypeCount++;</span>
 		}
 		
-<span class="nc" id="L103">		api.verify();</span>
-<span class="nc" id="L104">	}</span>
+<span class="nc" id="L109">		api.verify();</span>
+<span class="nc" id="L110">	}</span>
 	@Test
 	public &lt;T&gt; void equalsAndHashCodeContractWithIgnoredAnnotationsAndIgnoredFields(Class&lt;T&gt; type,Class[] ignoredAnnotations, String[] ignoredFields) {
-<span class="nc" id="L107">		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).withIgnoredFields(ignoredFields).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).verify();</span>
-<span class="nc" id="L108">	}</span>
+<span class="nc" id="L113">		EqualsVerifier.forClass(type).withIgnoredAnnotations(ignoredAnnotations).withIgnoredFields(ignoredFields).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).verify();</span>
+<span class="nc" id="L114">	}</span>
 
 	@Test
 	public &lt;T&gt; void getterAndSetterCorrectness(Class&lt;T&gt; type) {
-<span class="nc" id="L112">		final BeanTester beanTester = new BeanTester();</span>
-<span class="nc" id="L113">		Iterator&lt;BahiKhataFactory&gt; factoryIterator = customFactories.iterator();</span>
-<span class="nc" id="L114">		FactoryCollection factoryCollection = beanTester.getFactoryCollection();</span>
-<span class="nc bnc" id="L115" title="All 2 branches missed.">		while (factoryIterator.hasNext()) {</span>
-<span class="nc" id="L116">			BahiKhataFactory&lt;?&gt; factory = factoryIterator.next();</span>
-<span class="nc" id="L117">			factoryCollection.addFactory(factory.getClassProducedByFactory(), factory.getFactoryObjectInstance());</span>
-<span class="nc" id="L118">		}</span>
-<span class="nc" id="L119">		beanTester.testBean(type);</span>
-<span class="nc" id="L120">	}</span>
+<span class="nc" id="L118">		final BeanTester beanTester = new BeanTester();</span>
+<span class="nc" id="L119">		Iterator&lt;BahiKhataFactory&gt; factoryIterator = customFactories.iterator();</span>
+<span class="nc" id="L120">		FactoryCollection factoryCollection = beanTester.getFactoryCollection();</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">		while (factoryIterator.hasNext()) {</span>
+<span class="nc" id="L122">			BahiKhataFactory&lt;?&gt; factory = factoryIterator.next();</span>
+<span class="nc" id="L123">			factoryCollection.addFactory(factory.getClassProducedByFactory(), factory.getFactoryObjectInstance());</span>
+<span class="nc" id="L124">		}</span>
+<span class="nc" id="L125">		beanTester.testBean(type);</span>
+<span class="nc" id="L126">	}</span>
 
 
 	/**
 	 * @return the suppressWarnings
 	 */
 	public ArrayList&lt;Warning&gt; getSuppressWarnings() {
-<span class="nc" id="L127">		return suppressWarnings;</span>
+<span class="nc" id="L133">		return suppressWarnings;</span>
 	}
 
 	/**
 	 * @param suppressWarnings the suppressWarnings to set
 	 */
 	public void setSuppressWarnings(ArrayList&lt;Warning&gt; suppressWarnings) {
-<span class="nc" id="L134">		this.suppressWarnings = suppressWarnings;</span>
-<span class="nc" id="L135">	}</span>
+<span class="nc" id="L140">		this.suppressWarnings = suppressWarnings;</span>
+<span class="nc" id="L141">	}</span>
 
 	/**
 	 * @param suppressWarnings the suppressWarnings to set
 	 */
 	public void addSuppressWarnings(Warning suppressWarning) {
-<span class="nc" id="L141">		this.suppressWarnings.add(suppressWarning);</span>
-<span class="nc" id="L142">	}</span>
+<span class="nc" id="L147">		this.suppressWarnings.add(suppressWarning);</span>
+<span class="nc" id="L148">	}</span>
 	/**
 	 * @return the customFactories
 	 */
 	public List&lt;BahiKhataFactory&gt; getCustomFactories() {
-<span class="nc" id="L147">		return customFactories;</span>
+<span class="nc" id="L153">		return customFactories;</span>
 	}
 
 	/**
 	 * @param customFactories the customFactories to set
 	 */
 	public void setCustomFactories(List&lt;BahiKhataFactory&gt; customFactories) {
-<span class="nc" id="L154">		this.customFactories = (ArrayList&lt;BahiKhataFactory&gt;) customFactories;</span>
-<span class="nc" id="L155">	}</span>
+<span class="nc" id="L160">		this.customFactories = (ArrayList&lt;BahiKhataFactory&gt;) customFactories;</span>
+<span class="nc" id="L161">	}</span>
 
 	/**
 	 * @param customFactories the customFactories to set
 	 */
 	public void addCustomFactories(BahiKhataFactory&lt;?&gt; customFactory) {
-<span class="nc" id="L161">		this.customFactories.add(customFactory);</span>
-<span class="nc" id="L162">	}</span>
+<span class="nc" id="L167">		this.customFactories.add(customFactory);</span>
+<span class="nc" id="L168">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
