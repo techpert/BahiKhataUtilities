@@ -54,6 +54,11 @@ public final class BahiKhataModelAndDTOTester {
 	public <T> void equalsAndHashCodeContract(Class<T> type) {
 		EqualsVerifier.forClass(type).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).verify();
 	}
+	
+	@Test
+	public <T,U> void equalsAndHashCodeContractWithPrefabValues(Class<T> type,Class<U> prefabType,U[] prefabValues) {
+		EqualsVerifier.forClass(type).suppress(suppressWarnings.toArray(new Warning[suppressWarnings.size()])).withPrefabValues(prefabType, prefabValues[0], prefabValues[1]).verify();
+	}
 
 	@Test
 	public <T> void getterAndSetterCorrectness(Class<T> type) {
