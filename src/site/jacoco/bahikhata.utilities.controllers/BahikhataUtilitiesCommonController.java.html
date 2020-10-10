@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BahikhataUtilitiesCommonController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BahiKhataUtilities</a> &gt; <a href="index.source.html" class="el_package">bahikhata.utilities.controllers</a> &gt; <span class="el_source">BahikhataUtilitiesCommonController.java</span></div><h1>BahikhataUtilitiesCommonController.java</h1><pre class="source lang-java linenums">/**
+ * copyright © 2019 Techpert It Solutions Private Limited
+ */
+package bahikhata.utilities.controllers;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * Techpert:Bahikhata : 0.0.1 :This class is used
+ * 
+ * @author Rudhra Koul
+ * @since 11 Oct 2020
+ * @version 1.0
+ */
+@RestController
+public class BahikhataUtilitiesCommonController {
+
+	/**
+	 * 
+	 */
+<span class="nc" id="L25">	public BahikhataUtilitiesCommonController() {</span>
+		// TODO Auto-generated constructor stub
+<span class="nc" id="L27">	}</span>
+
+	@GetMapping(value = &quot;/error&quot;, produces = { MediaType.TEXT_HTML_VALUE })
+
+	public ResponseEntity&lt;String&gt; error() {
+<span class="nc" id="L32">		return new ResponseEntity&lt;String&gt;(</span>
+				&quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Bahikhata Error Page&lt;/h1&gt;&lt;p&gt;An Internal Server error has occured.&lt;/p&gt;&lt;div&gt;GENERAL&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;,
+				HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
